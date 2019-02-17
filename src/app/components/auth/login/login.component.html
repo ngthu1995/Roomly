@@ -1,0 +1,55 @@
+<!-- Default form login -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form class="text-center border border-light p-5">
+                <p class="lead mb-4">Sign in</p>
+                <small>*Please provide valid email and password</small>
+            
+                <!-- Email -->
+                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+                
+                <!-- Password -->
+                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                
+                
+                <!-- Sign in button -->
+                <button type="submit" class="btn btn-dark">SIGN IN</button>
+            
+                <!-- Register -->
+                <p>Don't have an account?
+                    <a href="http://localhost:4200/register">Register</a>
+                </p>
+            
+                <!-- Social login -->
+                <p>or sign in with:</p>
+                <div class="socialIcons">
+                    <!--Facebook Login-->
+                    <a routerLink="">
+                        <i class="devicon-facebook-plain colored"></i>
+                    </a>
+                    <!--Twitter Login-->
+                    <a routerLink="">
+                        <i class="devicon-twitter-plain colored"></i>
+                    </a>
+                    <!--Google Login-->
+                    <a routerLink="" style="color: red">
+                        <i class="devicon-google-plain"></i>
+                    </a>
+                </div>
+
+
+                <!--Account Forgotten-->
+                <div class="d-flex justify-content-around">
+                    <div id="forgottenAccount">
+                        <!-- Forgot password -->
+                        <a href="">Forgot your email?</a>
+                        <!-- Forgot password -->
+                        <a href="">Forgot  your password?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

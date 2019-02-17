@@ -1,0 +1,28 @@
+.container {
+    margin-top: 80px;
+}
+
+p.lead {
+    font-size: 30px;
+}
+
+button {
+    margin: 10px 0 30px 0;
+}
+
+/* Account Fogotten*/
+#forgottenAccount {
+    margin-top: 20px;
+}
+
+#forgottenAccount a {
+    margin: 5px;
+}
+
+
+
+/* Social Icons*/
+.socialIcons a {
+    font-size: 16px;
+    margin: 5px 10px;
+}

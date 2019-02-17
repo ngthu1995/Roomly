@@ -1,0 +1,32 @@
+.container {
+    margin-top: 80px;
+}
+
+p.lead {
+    font-size: 30px;
+}
+
+/* Upload Button*/
+#campaignImage a i {
+    color: red;
+    font-size: 30px;
+    transition: transform .2s;
+}
+
+#campaignImage a i:hover {
+    color: blue;
+    transform: scale(1.2);
+}
+
+input[type="file"] {
+    visibility: hidden;
+}
+
+.image-preview {
+    height: 5rem;
+    margin: 1rem 0;
+}
+
+.image-preview img {
+    height: 100%;
+}
