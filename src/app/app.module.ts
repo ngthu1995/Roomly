@@ -10,9 +10,14 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { DonationComponent } from './components/donation/donation.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { BannerComponent } from './components/landing/banner/banner.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 /* Bootstrap */
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 
 @NgModule({
@@ -22,7 +27,11 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     LandingComponent,
     LoginComponent,
     RegisterComponent,
-    DonationComponent
+    DonationComponent,
+    ProfileComponent,
+    BannerComponent,
+    CarouselComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
