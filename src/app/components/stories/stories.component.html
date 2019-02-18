@@ -1,0 +1,81 @@
+<mdb-card cascade="true" wider="true" reverse="true" class="my-4">
+  <!--Card image-->
+  <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+    <mdb-card-img class="img" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"></mdb-card-img>
+    <a>
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+  <!--/Card image-->
+
+  <!-- Card content -->
+  <mdb-card-body cascade="true" class="text-center">
+
+    <!--Title-->
+    <mdb-card-title>
+      <h4>
+        <strong>My adventure</strong>
+      </h4>
+    </mdb-card-title>
+
+    <h5 class="indigo-text">
+      <strong>Photography</strong>
+    </h5>
+
+    <mdb-card-text>
+      Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem
+      aperiam.
+    </mdb-card-text>
+
+    <h5 class="waves-light" mdbWavesEffect>Read more
+      <i class="fas fa-chevron-right waves-light" mdbWavesEffect></i>
+    </h5>
+    <button *ngIf="isAuthenticated()" type="button" mdbBtn color="light" (click)="openDonate()"
+      mdbWavesEffect>Donate</button>
+    <button *ngIf="!isAuthenticated()" type="button" mdbBtn color="light" routerLink='/register'>Please Register to
+      Donate</button>
+  </mdb-card-body>
+
+</mdb-card>
+
+
+<mdb-card cascade="true" wider="true" reverse="true" class="my-4">
+  <!--Card image-->
+  <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+    <mdb-card-img src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"></mdb-card-img>
+    <a>
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+  <!--/Card image-->
+
+  <!-- Card content -->
+  <mdb-card-body cascade="true" class="text-center">
+
+    <!--Title-->
+    <mdb-card-title>
+      <h4>
+        <strong>My adventure</strong>
+      </h4>
+    </mdb-card-title>
+
+    <h5 class="indigo-text">
+      <strong>Photography</strong>
+    </h5>
+
+    <mdb-card-text>
+      Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem
+      aperiam.
+    </mdb-card-text>
+
+    <h5 class="waves-light" mdbWavesEffect>Read more
+      <i class="fas fa-chevron-right waves-light" mdbWavesEffect></i>
+    </h5>
+
+    <button *ngIf="isAuthenticated()" type="button" mdbBtn color="light" (click)="openDonate()"
+      mdbWavesEffect>Donate</button>
+    <button *ngIf="!isAuthenticated()" type="button" mdbBtn color="light" routerLink='/register'>Please Register to
+      Donate</button>
+  </mdb-card-body>
+
+</mdb-card>

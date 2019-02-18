@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DonationOptionsComponent } from '../../donation-options/donation-options.component';
 
 @Component({
   selector: 'app-banner',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BannerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private matDialog: MatDialog,
+  ) { }
 
   ngOnInit() {
   }
+
+  openDonation() {
+    const ref = this.matDialog.open(DonationOptionsComponent, {
+      width: '500px',
+      height: '500px'
+    })
+  }
+
 
 }

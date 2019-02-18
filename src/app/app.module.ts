@@ -17,9 +17,25 @@ import { FooterComponent } from './components/footer/footer.component';
 
 /* Bootstrap */
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DonationOptionsComponent } from './components/donation-options/donation-options.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { StoriesComponent } from './components/stories/stories.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DonationCreditCardComponent } from './components/donation-options/donation-credit-card/donation-credit-card.component';
+import { DonationStuffComponent } from './components/donation-options/donation-stuff/donation-stuff.component';
 
-
-
+// map Module
+import { AgmCoreModule } from "@agm/core";
+import { CamelizePipe } from 'ngx-pipes';
+import { MapService } from './services/map.service';
+import { MapComponent } from './components/donation-options/donation-stuff/map/map.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './components/auth/auth.guard';
+import { HTTP_INTERCEPTORS, HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from './components/auth/token.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,14 +47,37 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ProfileComponent,
     BannerComponent,
     CarouselComponent,
-    FooterComponent
+    FooterComponent,
+    DonationOptionsComponent,
+    StoriesComponent,
+    DonationCreditCardComponent,
+    DonationStuffComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatTabsModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyBAp-IE7yjSGvycutmK1Y8zLZ_Htq1TtgU"
+    }),
+    HttpClientModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  entryComponents: [DonationOptionsComponent],
+  providers: [MapService, CamelizePipe, AuthService, AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
