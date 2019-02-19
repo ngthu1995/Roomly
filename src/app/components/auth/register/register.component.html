@@ -9,8 +9,10 @@
                 <div class="form-row mb-4">
                     <div class="col">
                         <!-- First name -->
-                        <input [(ngModel)]="formData.firstName" type="text" id="defaultRegisterFormFirstName"
-                            class="form-control" placeholder="First name" name="firstName" #firstName required>
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="formData.firstName" type="text" id="defaultRegisterFormFirstName"
+                                class="" placeholder="First name" name="firstName" #firstName required>
+                        </mat-form-field>
                     </div>
 
                     <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
@@ -20,8 +22,10 @@
                     </div>
                     <div class="col">
                         <!-- Last name -->
-                        <input [(ngModel)]="formData.lastName" type="text" id="defaultRegisterFormLastName"
-                            class="form-control" placeholder="Last name" name="lastName" #lastName required>
+                        <mat-form-field>
+                            <input matInput [(ngModel)]="formData.lastName" type="text" id="defaultRegisterFormLastName"
+                                class="" placeholder="Last name" name="lastName" #lastName required>
+                        </mat-form-field>
                     </div>
 
                     <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
@@ -30,17 +34,21 @@
                 </div>
 
                 <!-- E-mail -->
-                <input [(ngModel)]="formData.email" type="email" id="defaultRegisterFormEmail" class="form-control mb-4"
-                    placeholder="E-mail" name="email" #email required>
-
+                <mat-form-field class="email">
+                    <input matInput [(ngModel)]="formData.email" type="email" id="defaultRegisterFormEmail" class=""
+                        placeholder="E-mail" name="email" #email required>
+                </mat-form-field>
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                     <div *ngIf="email.errors.required">Email is required.</div>
                 </div>
 
                 <!-- Password -->
-                <input [(ngModel)]="formData.password" type="password" id="defaultRegisterFormPassword"
-                    class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock"
-                    name="password" #password required>
+                <mat-form-field>
+                    <input [(ngModel)]="formData.password" id="defaultRegisterFormPassword" class="" placeholder="Password"
+                        name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" #password matInput
+                        [type]="hide ? 'password' : 'text'" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
                 <br>
 
                 <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
@@ -50,14 +58,19 @@
                 </div>
 
 
-
-                <input [(ngModel)]="formData.passwordConfirmation" type="password" id="defaultRegisterFormPassword"
-                    class="form-control" placeholder="Password Confirmation" name="passwordConfirmation"
-                    aria-describedby="defaultRegisterFormPasswordHelpBlock" #passwordConfirmation required>
+                <mat-form-field>
+                    <input [(ngModel)]="formData.passwordConfirmation" id="defaultRegisterFormPassword" class=""
+                        placeholder="Password Confirmation" name="passwordConfirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock"
+                        #passwordConfirmation matInput [type]="hideConfirm ? 'password' : 'text'" required>
+                    <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility_off' :
+                        'visibility'}}</mat-icon>
+                </mat-form-field>
                 <br>
                 <!-- Phone number -->
-                <input [(ngModel)]="formData.phone" type="text" id="defaultRegisterPhonePassword" class="form-control"
-                    placeholder="Phone number" name="phone" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                <mat-form-field>
+                    <input matInput [(ngModel)]="formData.phone" type="text" id="defaultRegisterPhonePassword" class=""
+                        placeholder="Phone number" name="phone" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                </mat-form-field>
                 <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
                     Optional - for two step authentication
                 </small>

@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors: any = [];
   notifyMessage: string = "";
-
+  hide = true;
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,

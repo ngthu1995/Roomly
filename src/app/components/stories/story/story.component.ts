@@ -15,8 +15,8 @@ export class StoryComponent {
 
     openDonate() {
         this.matDialog.open(DonationOptionsComponent, {
-            width: '700px',
-            height: '550px'
+            width: '850px',
+            height: '500px'
         })
     }
 }
