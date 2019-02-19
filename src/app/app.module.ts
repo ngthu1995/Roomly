@@ -17,7 +17,9 @@ import { FooterComponent } from './components/footer/footer.component';
 
 /* Bootstrap */
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { DonateOptionsComponent } from './components/donate-options/donate-options.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -31,12 +33,15 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ProfileComponent,
     BannerComponent,
     CarouselComponent,
-    FooterComponent
+    FooterComponent,
+    DonateOptionsComponent,
+    MatDialogModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
