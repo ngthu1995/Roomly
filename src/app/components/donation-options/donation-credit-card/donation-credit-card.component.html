@@ -2,6 +2,12 @@
 
 <form [ngClass]="isValidatingCard ? 'loading' : ''">
   <div class="group">
+
+    <mat-form-field>
+      <input matInput placeholder="Amount" type="number" class="example-right-align">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
     <label>
       <span>Card Number</span>
       <div #cardNumber class="field"></div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DonationOptionsComponent } from '../../donation-options/donation-options.component';
 
 
 @Component({
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 
 
-export class StoryComponent {}
+export class StoryComponent {
+    constructor(private matDialog: MatDialog) { }
+
+
+    openDonate() {
+        this.matDialog.open(DonationOptionsComponent, {
+            width: '700px',
+            height: '550px'
+        })
+    }
+}

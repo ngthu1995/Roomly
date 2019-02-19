@@ -1,5 +1,5 @@
 module.exports = {
-    DB_URL: "mongodb://localhost/hackathon",
+    DB_URL: "mongodb://hackathon:minhkhang1@ds237955.mlab.com:37955/hackathon-project",
     SECRET: "khang",
     AWS_ACCESS_KEY_ID: "AKIAJ2U7NVDL5PFATOEA",
     AWS_SECRET_ACCESS_KEY: "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",

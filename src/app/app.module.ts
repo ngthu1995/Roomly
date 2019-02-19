@@ -37,6 +37,10 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpHandler, HttpClientModule } from '@a
 import { TokenInterceptor } from './components/auth/token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+// ang material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +73,9 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents: [DonationOptionsComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
