@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DonationOptionsComponent } from './components/donation-options/donation-options.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StoriesComponent } from './components/stories/stories.component';
+import { StoryComponent } from './components/stories/story/story.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DonationCreditCardComponent } from './components/donation-options/donation-credit-card/donation-credit-card.component';
 import { DonationStuffComponent } from './components/donation-options/donation-stuff/donation-stuff.component';
@@ -50,6 +51,7 @@ import { CommonModule } from '@angular/common';
     FooterComponent,
     DonationOptionsComponent,
     StoriesComponent,
+    StoryComponent,
     DonationCreditCardComponent,
     DonationStuffComponent,
     MapComponent
