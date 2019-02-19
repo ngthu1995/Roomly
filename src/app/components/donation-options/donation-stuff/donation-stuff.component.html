@@ -1,0 +1,24 @@
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading">Where to find us.</h2>
+    <br />
+    <ul class="list-group border-0">
+      <li class="list-group-item border-0" *ngFor="let l of locations">
+        <i class="fas fa-map-marker-alt"></i> {{ l.address }}, {{ l.city }},
+        {{ l.state }} ,{{ l.zipcode }}
+      </li>
+      <li class="list-group-item border-0">
+        <i class="far fa-clock"></i>Weekdays Open Hours: 10:00 AM - 10:00 PM
+      </li>
+      <li class="list-group-item border-0">
+        <i class="far fa-clock"></i>Saturday, Sundday Open Hours: 10:00 AM - 2:00 PM
+      </li>
+      <!-- will implement phone number when know the phone number -->
+    </ul>
+  </div>
+  <div class="col-md-5 order-md-1" *ngIf="locations">
+    <!-- <img class="featurette-image img-fluid mx-auto" [src]="fullImagePath" alt="Generic placeholder image"> -->
+    <app-map *ngFor="let l of locations" [location]="l.address + ',' + l.city + l.state"></app-map>
+
+  </div>
+</div>

@@ -2,25 +2,33 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <form class="text-center border border-light p-5">
+            <form class="text-center border border-light p-5" [formGroup]="loginForm" (ngSubmit)="login()">
                 <p class="lead mb-4">Sign in</p>
                 <small>*Please provide valid email and password</small>
-            
+
+                <div *ngIf="notifyMessage" class="alert alert-success">
+                    {{ notifyMessage }}
+                </div>
                 <!-- Email -->
-                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-                
+                <input formControlName="email" type="email" id="defaultLoginFormEmail" class="form-control mb-4"
+                    placeholder="E-mail">
+                <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
+                    <div *ngIf="isRequired('email')">Email is required.</div>
+                    <div *ngIf="isPattern('email')">Must be valid email format!</div>
+                </div>
                 <!-- Password -->
-                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-                
-                
+                <input formControlName="password" type="password" id="defaultLoginFormPassword"
+                    class="form-control mb-4" placeholder="Password">
+
+
                 <!-- Sign in button -->
-                <button type="submit" class="btn btn-dark">SIGN IN</button>
-            
+                <button [disabled]="!loginForm.valid" type="submit" class="btn btn-dark">SIGN IN</button>
+
                 <!-- Register -->
                 <p>Don't have an account?
-                    <a href="http://localhost:4200/register">Register</a>
+                    <a routerLink='/register'>Register</a>
                 </p>
-            
+
                 <!-- Social login -->
                 <p>or sign in with:</p>
                 <div class="socialIcons">
@@ -45,11 +53,10 @@
                         <!-- Forgot password -->
                         <a href="">Forgot your email?</a>
                         <!-- Forgot password -->
-                        <a href="">Forgot  your password?</a>
+                        <a href="">Forgot your password?</a>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-

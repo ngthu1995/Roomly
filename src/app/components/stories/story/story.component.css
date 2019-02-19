@@ -1,0 +1,65 @@
+.container {
+    margin-top: 80px;
+    border: 2px solid black;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Story Header*/
+#storyHeader{
+    margin-top: 20px;
+}
+
+#storyHeader img{
+    width: 15%;
+    vertical-align: middle;
+}
+
+#storyHeader h3 p {
+    display: inline;
+}
+
+/* Navigation*/
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+}
+
+
+/* Story SHaring Content*/
+#story-sharing-content {
+    margin-top: 10px;
+}
+
+#story-sharing-content button {
+    margin-top: 20px;
+}
+
+
+/* Donation Donors */
+.donation-donors-info {
+    margin-top: 10px;
+}
+.donation-donors img {
+    width: 15%;
+    vertical-align: middle;
+}
+
+.donation-donors .donors-info {
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.donation-donors {
+    margin-top: 40px;
+}
