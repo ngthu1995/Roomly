@@ -157,6 +157,29 @@ exports.authMiddleware = (req, res, next) => {
     }
 };
 
+exports.confirmManager = async (req, res, next) => {
+    const { managerString } = req.body;
+    try {
+        const hash = bcrypt.hashSync("sweet");
+        const isMatched = bcrypt.compareSync(managerString, hash);
+        if (!isMatched) {
+            return res
+                .status(500)
+                .json({ isAuthenticated: false, message: "Confirmation failed" });
+        } else {
+            return res
+                .status(201)
+                .json({ isAuthenticated: true, message: "Manager Confirmed" });
+        }
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({
+            isAuthenticated: false,
+            message: "Auth failed"
+        });
+    }
+};
+
 function parseToken(token) {
     return jwt.verify(token.split(" ")[1], config.SECRET);
 }

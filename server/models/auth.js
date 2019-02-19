@@ -32,7 +32,7 @@ const userSchema = new Schema({
     stripeCustomerId: String,
     revenue: Number,
     phone: Number,
-
+    role: String,
 });
 
 userSchema.methods.hasSamePassword = function (requestedPassword) {

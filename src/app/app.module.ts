@@ -41,7 +41,9 @@ import { CommonModule } from '@angular/common';
 // ang material
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { ConfirmAdminComponent } from './components/confirm-admin/confirm-admin.component'
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +61,8 @@ import { MatIconModule } from '@angular/material/icon'
     StoryComponent,
     DonationCreditCardComponent,
     DonationStuffComponent,
-    MapComponent
+    MapComponent,
+    ConfirmAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { MatIconModule } from '@angular/material/icon'
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   entryComponents: [DonationOptionsComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,

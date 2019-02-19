@@ -19,6 +19,11 @@
   <div class="col-md-5 order-md-1" *ngIf="locations">
     <!-- <img class="featurette-image img-fluid mx-auto" [src]="fullImagePath" alt="Generic placeholder image"> -->
     <app-map *ngFor="let l of locations" [location]="l.address + ',' + l.city + l.state"></app-map>
-
   </div>
+
+
 </div>
+<br>
+<h3>Need A Transportation? Let we help you</h3>
+<a href="https://m.uber.com/?client_id=sqqx7SKb4l1rTdTz4Q1eynUsyQPA4Fsx"><button class="btn btn-light"><i class="fab fa-uber"></i>Click
+    here to book an Uber now </button></a>
