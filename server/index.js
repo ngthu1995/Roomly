@@ -11,6 +11,7 @@ const path = require('path')
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+const passort = require('./middleware/passport')
 
 app.use(cors());
 mongoose
