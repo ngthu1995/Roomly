@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   formData: any = {}
+  hide = true;
+  hideConfirm = true;
   errors: any[] = []
   constructor(private auth: AuthService,
     private router: Router,

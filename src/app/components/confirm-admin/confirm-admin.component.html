@@ -1,0 +1,13 @@
+<mat-card-title>
+  <h1>Please Enter a Confirmation String here</h1>
+</mat-card-title>
+
+<form (submit)="onConfirmManager(confirmMan)" #confirmMan="ngForm">
+  <mat-form-field>
+    <input type="text" name="managerString" ngModel matInput placeholder="Enter Key here" #keyInput="ngModel" required>
+    <mat-error *ngIf="keyInput.invalid">Please enter a key</mat-error>
+  </mat-form-field>
+
+  <button type="submit">Submit</button>
+  <button mat-dialog-close>Cancel</button>
+</form>

@@ -11,16 +11,14 @@ exports.charge = (req, res) => {
 
     Payment.findById(payment._id)
         .populate('toUser')
-        .populate('user')
         .exec(async (err, foundPayment) => {
             if (err) {
                 return res.status(422).send({ errors: normalizeErrors(err.errors) })
             }
 
             if (user.id === foundPayment.toUser.id) {
-                const price = foundPayment.payment;
                 const charge = await stripe.charge.create({
-                    amount: price.totalPrice,
+                    amount: foundPayment.totalPrice * 100,
                     currency: 'usd',
                     customer: payment.fromStripeCustomerId
                 })

@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DonationOptionsComponent } from './components/donation-options/donation-options.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StoriesComponent } from './components/stories/stories.component';
+import { StoryComponent } from './components/stories/story/story.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DonationCreditCardComponent } from './components/donation-options/donation-credit-card/donation-credit-card.component';
 import { DonationStuffComponent } from './components/donation-options/donation-stuff/donation-stuff.component';
@@ -36,6 +37,13 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpHandler, HttpClientModule } from '@a
 import { TokenInterceptor } from './components/auth/token.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+// ang material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { ConfirmAdminComponent } from './components/confirm-admin/confirm-admin.component'
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +58,11 @@ import { CommonModule } from '@angular/common';
     FooterComponent,
     DonationOptionsComponent,
     StoriesComponent,
+    StoryComponent,
     DonationCreditCardComponent,
     DonationStuffComponent,
-    MapComponent
+    MapComponent,
+    ConfirmAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +77,11 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatCardModule
   ],
   entryComponents: [DonationOptionsComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,

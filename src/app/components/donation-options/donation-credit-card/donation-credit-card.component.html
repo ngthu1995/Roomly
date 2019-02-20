@@ -1,7 +1,14 @@
-<h1>Please Enter Your Credit Card Here</h1>
+<br>
+<h3>Please Provide Your Credit Card Information Here</h3>
 
 <form [ngClass]="isValidatingCard ? 'loading' : ''">
   <div class="group">
+
+    <mat-form-field>
+      <input matInput placeholder="Amount" type="number" class="example-right-align">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
     <label>
       <span>Card Number</span>
       <div #cardNumber class="field"></div>
