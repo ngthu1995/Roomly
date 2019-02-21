@@ -2,14 +2,14 @@ const Bill = require("../models/bill");
 exports.get = async (req, res, next) => {
     // // down here is to fetch all users
     try {
-        const bill = await Bill.find();
+        const bills = await Bill.find();
         // return res.status(200).json({
         //   bill,
         //   maxUsers: users.length,
         //   message: "Users fetched successfully"
         // });
         // return res.status(200);
-        return res.status(200).json({ bill });
+        return res.status(200).json(bills);
     } catch (e) {
         return res.status(500).json({ message: e.message || "Unexpected error" });
     }

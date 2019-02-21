@@ -67,6 +67,21 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls[fieldName].errors.pattern;
   }
 
+  login() {
+    this.auth.login(this.loginForm.value).subscribe(
+      token => {
+        this.router.navigate([""]);
+      },
+
+      errorResponse => {
+        console.log(errorResponse);
+        this.errors = errorResponse.error.err;
+      },
+
+      () => { }
+    );
+  }
+
   // login() {
   //   this.auth.login(this.loginForm.value).subscribe(
   //     token => {
@@ -81,60 +96,62 @@ export class LoginComponent implements OnInit {
   //   );
   // }
 
-  login() {
-    if (this.loginForm.invalid) {
-      return;
-    }
-    this.auth
-      .login(this.loginForm.value)
-      .pipe(
-        switchMap(({ token, user }) => {
-          if (user && user.role === "manager") {
-            /**
-             * TODO: create ConfirmManagerComponent
-             */
-            const confirmManagerDialogRef = this.matDialog.open(
-              ConfirmAdminComponent,
-              {
-                width: '700px',
-                height: '500px'
-              }
-            );
-            return confirmManagerDialogRef.afterClosed().pipe(
-              take(1),
-              /**
-               * TODO: Should check for dialog close with no data (user click X, or cancel) to remove Authenticated data in LocalStorage??
-               */
-              /**
-               * TODO: if tap() doesn't work, change to switchMap
-               * switchMap(inputValue => {
-               *  if (!inputValue || inputValue === '') {
-               *    this.authService.clearAuthData();
-               *    return of(null);
-               *  }
-               *
-               *  return of(inputValue);
-               * })
-               */
-              tap(inputValue => {
-                if (!inputValue || inputValue === "") {
-                  this.auth.clearAuthData();
-                }
-              }),
-              filter(data => data),
-              switchMap(this.auth.checkMangerRole)
-            );
-          }
 
-          return of({ isAuthenticated: true });
-        })
-      )
-      .subscribe(response => {
-        if (this.auth.checkMangerRole(response)) {
-          this.router.navigate(["/"]);
-        } else {
-          this.router.navigate(["login"]); // TODO: Do something if checkManager fails
-        }
-      });
-  }
+
+  // login() {
+  //   if (this.loginForm.invalid) {
+  //     return;
+  //   }
+  //   this.auth
+  //     .login(this.loginForm.value)
+  //     .pipe(
+  //       switchMap(({ token, user }) => {
+  //         if (user && user.role === "manager") {
+  //           /**
+  //            * TODO: create ConfirmManagerComponent
+  //            */
+  //           const confirmManagerDialogRef = this.matDialog.open(
+  //             ConfirmAdminComponent,
+  //             {
+  //               width: '700px',
+  //               height: '500px'
+  //             }
+  //           );
+  //           return confirmManagerDialogRef.afterClosed().pipe(
+  //             take(1),
+  //             /**
+  //              * TODO: Should check for dialog close with no data (user click X, or cancel) to remove Authenticated data in LocalStorage??
+  //              */
+  //             /**
+  //              * TODO: if tap() doesn't work, change to switchMap
+  //              * switchMap(inputValue => {
+  //              *  if (!inputValue || inputValue === '') {
+  //              *    this.authService.clearAuthData();
+  //              *    return of(null);
+  //              *  }
+  //              *
+  //              *  return of(inputValue);
+  //              * })
+  //              */
+  //             tap(inputValue => {
+  //               if (!inputValue || inputValue === "") {
+  //                 this.auth.clearAuthData();
+  //               }
+  //             }),
+  //             filter(data => data),
+  //             switchMap(this.auth.checkMangerRole)
+  //           );
+  //         }
+
+  //         return of({ isAuthenticated: true });
+  //       })
+  //     )
+  //     .subscribe(response => {
+  //       if (this.auth.checkMangerRole(response)) {
+  //         this.router.navigate(["/"]);
+  //       } else {
+  //         this.router.navigate(["login"]); // TODO: Do something if checkManager fails
+  //       }
+  //     });
+  // }
 }

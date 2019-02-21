@@ -20,34 +20,43 @@ export class DonationComponent implements OnInit {
 
     timeFormOptions = timeOptions
     ngOnInit() {
-        this.initForm()
+        // this.initForm()
+
+        this.newBill = new Bill();
+
     }
 
-    private initForm() {
-        this.addBillForm = this.formBuilder.group({
-            title: [''],
-            image: [null],
-            description: [''],
-            date: [''],
-            address: [''],
-            time: [''],
-        })
+    createBill(){
+        this.billService.createBill(this.newBill).subscribe(
+            (bill: Bill) => {
+                this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')            }
+        )
     }
+    // private initForm() {
+    //     this.addBillForm = this.formBuilder.group({
+    //         title: [''],
+    //         image: [null],
+    //         description: [''],
+    //         date: [''],
+    //         address: [''],
+    //         time: [''],
+    //     })
+    // }
 
-    onCreateBill() {
-        const { title, ...rest } = this.addBillForm.value;
+    // onCreateBill() {
+    //     const { title, ...rest } = this.addBillForm.value;
 
-        const bill: Bill = {
-            title,
-            ...rest
-        }
+    //     const bill: Bill = {
+    //         title,
+    //         ...rest
+    //     }
 
 
-        this.billService.addBill(bill).subscribe(_ => {
-            this.addBillForm.reset();
-            this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')
-        })
-    }
+    //     this.billService.addBill(bill).subscribe(_ => {
+    //         this.addBillForm.reset();
+    //         this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')
+    //     })
+    // }
 
     handleImageUpload(imageUrl: string) {
         this.newBill.image = imageUrl

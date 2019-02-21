@@ -53,7 +53,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component'
 import { ImageUploadService } from './services/image-upload.service';
 
-import { ImageCropperModule } from 'ngx-image-cropper'
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ManageItemComponent } from './components/manage-item/manage-item.component'
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ImageCropperModule } from 'ngx-image-cropper'
     ConfirmAdminComponent,
     ManageComponent,
     SearchTextPipe,
-    ImageUploadComponent
+    ImageUploadComponent,
+    ManageItemComponent
   ],
   imports: [
     BrowserModule,

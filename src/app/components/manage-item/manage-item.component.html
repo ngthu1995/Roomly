@@ -1,0 +1,14 @@
+<!-- <a routerLink="/rentals/{{ childRental._id }}"> -->
+<div class="card bwm-card">
+  <img class="card-img-top" src="{{ conBill.image }}" alt="" />
+  <div class="card-block">
+    <h6 class="card-subtitle {{ conBill.title }}">
+      {{ conBill.date }}
+      {{ conBill.time }} &#183; {{ conBill.description }}
+    </h6>
+    <h4 class="card-title">{{ conBill.title }}</h4>
+    <p class="card-text">
+      {{ conBill.address }}
+    </p>
+  </div>
+</div>

@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-12">
             <!-- Default form contact -->
-            <form class="text-center border border-light p-5" [formGroup]="addBillForm" (ngSubmit)="onCreateBill()">
+            <!-- <form class="text-center border border-light p-5" [formGroup]="addBillForm" (ngSubmit)="onCreateBill()"> -->
+                    <form class="text-center border border-light p-5" #addBillForm = 'ngForm'>
 
                 <p class="lead mb-4">Your Goal</p>
                 <small>Let's create your own campaign</small>
@@ -15,48 +16,48 @@
                     >
                 </div> -->
                 <!-- calendar -->
-                <!-- <mat-form-field>
-                    <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Please choose or enter a date">
+                <mat-form-field>
+                    <input name="date" [(ngModel)]="newBill.date" matInput [matDatepicker]="picker" placeholder="Please choose or enter a date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field> -->
+                </mat-form-field>
 
-                <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'"
-                    [(ngModel)]="model" required></mdb-date-picker>
+                <!-- <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'"
+                    [(ngModel)]="model" required></mdb-date-picker> -->
 
                 <!-- time availability -->
                 <mat-form-field>
-                    <mat-select formControlName="time" placeholder="Time Availability">
+                    <mat-select name="time" [(ngModel)]="newBill.time" placeholder="Time Availability">
                         <mat-option *ngFor="let t of timeFormOptions" [value]="t?.value">{{t.label}}</mat-option>
 
                     </mat-select>
                 </mat-form-field>
 
                 <!--Campaign Title-->
-                <input formControlName="title" type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
+                <input [(ngModel)]="newBill.title" name="title" type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
                     placeholder="Title">
                 <!--Who are you raising for?-->
                 <!--Zip Code-->
-                <input formControlName="address" type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
+                <input [(ngModel)]="newBill.address" name="address"  type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
                     placeholder="Address">
 
                 <!-- Message -->
                 <div class="form-group">
-                    <textarea formControlName="description" class="form-control rounded-0" id="exampleFormControlTextarea2"
+                    <textarea [(ngModel)]="newBill.description" name="description" class="form-control rounded-0" id="exampleFormControlTextarea2"
                         rows="3" placeholder="Description"></textarea>
                 </div>
                 <hr>
 
                 <!--Image-->
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <app-image-upload (imageUploaded)="handleImageUpload($event)" (imageError)="handleImageError()">
                     </app-image-upload>
-                </div> -->
+                </div>
 
-                <input type="file" class="dropify" formControlName="Image" #AccUserImg>
+                <!-- <input type="file" class="dropify" name="Image" #AccUserImg> -->
 
                 <!-- Send button -->
-                <button type="submit" class="btn btn-dark" type="submit">Create
+                <button [disabled]="!addBillForm.form.valid" type="submit" class="btn btn-dark" type="submit" (click)="createBill()" >Create
                     Fundraiser</button>
             </form>
         </div>
