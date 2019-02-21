@@ -1,0 +1,60 @@
+<!-- <h3 class="text-center title">Resource Management Tracker</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">
+        Title <br />
+        <input class="textBox justify-content-center" type="text" placeholder="Search by name" [(ngModel)]="nameSearch" />
+      </th>
+      <th scope="col" class="text-center">
+        Description <br />
+        <input type="text" placeholder="Search by Role" [(ngModel)]="roleSearch" />
+      </th>
+      <th scope="col" class="text-center">
+        Address <br />
+        <input type="text" placeholder="Search by Team" [(ngModel)]="teamSearch" />
+      </th>
+      <th scope="col" class="text-center">
+        Date <br />
+        <input type="text" placeholder="Search by Manager" [(ngModel)]="managerSearch" />
+      </th>
+      <th scope="col" class="text-center">
+        Time <br />
+        <input type="text" placeholder="Search by Location" [(ngModel)]="locationSearch" />
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="
+        let man of users | searchText: 
+        titleSearch : descriptionSearch : addressSearch
+      ">
+      <th class="text-center">{{ man.title }}</th>
+      <td class="text-center">{{ man.description }}</td>
+      <td class="text-center">{{ man.address }}</td>
+      <td class="text-center">{{ man.date }}</td>
+      <td class="text-center">{{ man.time }}</td>
+    </tr>
+    <br />
+  </tbody>
+</table> -->
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Address</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let man of manager">
+      <th scope="row">{{man.title}}</th>
+      <td>{{man.description}}</td>
+      <td>{{man.address}}</td>
+      <td>{{man.date}}</td>
+    </tr>
+  </tbody>
+</table>

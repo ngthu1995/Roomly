@@ -9,6 +9,7 @@ import { DonationComponent } from './components/donation/donation.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { StoriesComponent } from './components/stories/stories.component';
 import { StoryComponent } from './components/stories/story/story.component';
+import { ManageComponent } from './components/manage/manage.component';
 
 const routes: Routes = [
   { path: "", component: LandingComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'donation', component: DonationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'stories', component: StoriesComponent },
-  { path: 'story', component: StoryComponent }
+  { path: 'story', component: StoryComponent },
+  { path: 'manage', component: ManageComponent }
 ];
 
 

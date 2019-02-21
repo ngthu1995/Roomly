@@ -44,6 +44,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ConfirmAdminComponent } from './components/confirm-admin/confirm-admin.component'
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule, MatSelectModule } from '@angular/material'
+import { BillService } from './services/bill.service';
+import { ManageComponent } from './components/manage/manage.component';
+import { SearchTextPipe } from '../search-text.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +67,9 @@ import { MatCardModule } from '@angular/material/card';
     DonationCreditCardComponent,
     DonationStuffComponent,
     MapComponent,
-    ConfirmAdminComponent
+    ConfirmAdminComponent,
+    ManageComponent,
+    SearchTextPipe
   ],
   imports: [
     BrowserModule,
@@ -81,7 +88,10 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   entryComponents: [DonationOptionsComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
@@ -90,7 +100,8 @@ import { MatCardModule } from '@angular/material/card';
       useClass: TokenInterceptor,
       multi: true
     },
-    HttpClient
+    HttpClient,
+    BillService
   ],
   bootstrap: [AppComponent]
 })
