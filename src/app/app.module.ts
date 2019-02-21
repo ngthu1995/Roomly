@@ -44,16 +44,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ConfirmAdminComponent } from './components/confirm-admin/confirm-admin.component'
 import { MatCardModule } from '@angular/material/card';
-<<<<<<< HEAD
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-=======
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule, MatSelectModule } from '@angular/material'
 import { BillService } from './services/bill.service';
 import { ManageComponent } from './components/manage/manage.component';
 import { SearchTextPipe } from '../search-text.pipe';
->>>>>>> fb4c26b861bf63dd8614bc0caef2f22b9ae71369
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,12 +90,8 @@ import { SearchTextPipe } from '../search-text.pipe';
     MatIconModule,
     MatCardModule,
     MatDatepickerModule,
-<<<<<<< HEAD
-    MatNativeDateModule
-=======
     MatNativeDateModule,
     MatSelectModule
->>>>>>> fb4c26b861bf63dd8614bc0caef2f22b9ae71369
   ],
   entryComponents: [DonationOptionsComponent, ConfirmAdminComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
