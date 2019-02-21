@@ -14,7 +14,6 @@ export class BillService {
 
 
     constructor(private httpClient: HttpClient) { }
-
     addBill(bill: Bill) {
         return this.httpClient
             .post<Bill>(this.rootUrl, bill, {

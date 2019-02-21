@@ -1,0 +1,10 @@
+section {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 10px 15px;
+}
+
+.col-md-4 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
