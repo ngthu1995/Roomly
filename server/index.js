@@ -6,7 +6,8 @@ const app = express();
 const config = require("./config/dev");
 
 const userRoutes = require("./routes/auth"),
-    billRoutes = require('./routes/bill')
+    billRoutes = require('./routes/bill'),
+    imageRoutes = require('./routes/image-upload')
 const path = require('path')
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 
 app.use("/api/users", userRoutes);
 app.use('/api/bill', billRoutes)
+app.use('/api/image', imageRoutes)
 
 
 if (process.env.NODE_ENV === 'production') {

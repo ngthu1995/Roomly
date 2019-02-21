@@ -49,6 +49,12 @@ import { MatNativeDateModule, MatSelectModule } from '@angular/material'
 import { BillService } from './services/bill.service';
 import { ManageComponent } from './components/manage/manage.component';
 import { SearchTextPipe } from '../search-text.pipe';
+import { ToastrModule } from 'ngx-toastr';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component'
+import { ImageUploadService } from './services/image-upload.service';
+
+import { ImageCropperModule } from 'ngx-image-cropper'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +75,8 @@ import { SearchTextPipe } from '../search-text.pipe';
     MapComponent,
     ConfirmAdminComponent,
     ManageComponent,
-    SearchTextPipe
+    SearchTextPipe,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +98,11 @@ import { SearchTextPipe } from '../search-text.pipe';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right'
+    }),
+    ImageCropperModule
   ],
   entryComponents: [DonationOptionsComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
@@ -101,7 +112,8 @@ import { SearchTextPipe } from '../search-text.pipe';
       multi: true
     },
     HttpClient,
-    BillService
+    BillService,
+    ImageUploadService
   ],
   bootstrap: [AppComponent]
 })

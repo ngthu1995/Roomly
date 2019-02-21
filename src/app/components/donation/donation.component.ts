@@ -3,8 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BillService } from '../../services/bill.service';
 import { Bill } from '../models/bill.model';
 import { SelectOption, timeOptions } from './constants';
-
-
+import { ToastrService } from 'ngx-toastr'
 @Component({
     selector: 'app-donation',
     templateUrl: './donation.component.html',
@@ -16,7 +15,8 @@ export class DonationComponent implements OnInit {
     addBillForm: FormGroup;
     newBill: Bill
     constructor(private formBuilder: FormBuilder,
-        private billService: BillService) { }
+        private billService: BillService,
+        private toastr: ToastrService) { }
 
     timeFormOptions = timeOptions
     ngOnInit() {
@@ -26,11 +26,11 @@ export class DonationComponent implements OnInit {
     private initForm() {
         this.addBillForm = this.formBuilder.group({
             title: [''],
-            image: [''],
+            image: [null],
             description: [''],
             date: [''],
             address: [''],
-            time: ['']
+            time: [''],
         })
     }
 
@@ -42,8 +42,17 @@ export class DonationComponent implements OnInit {
             ...rest
         }
 
+
         this.billService.addBill(bill).subscribe(_ => {
-            console.log(bill)
+            this.addBillForm.reset();
+            this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')
         })
+    }
+
+    handleImageUpload(imageUrl: string) {
+        this.newBill.image = imageUrl
+    }
+    handleImageError() {
+        this.newBill.image = undefined
     }
 }

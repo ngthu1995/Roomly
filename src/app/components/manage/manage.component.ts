@@ -15,6 +15,8 @@ export class ManageComponent implements OnInit, OnDestroy {
   descriptionSearch = '';
   addressSearch = ''
 
+  bill: Bill
+
   // bills: Bill[] = []
 
   manage = []

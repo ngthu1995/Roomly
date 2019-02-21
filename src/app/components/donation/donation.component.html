@@ -15,16 +15,18 @@
                     >
                 </div> -->
                 <!-- calendar -->
-                <mat-form-field>
+                <!-- <mat-form-field>
                     <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Please choose or enter a date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+                </mat-form-field> -->
 
+                <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'"
+                    [(ngModel)]="model" required></mdb-date-picker>
 
                 <!-- time availability -->
                 <mat-form-field>
-                    <mat-select formControlName="time" placeholder="Time Availability" required>
+                    <mat-select formControlName="time" placeholder="Time Availability">
                         <mat-option *ngFor="let t of timeFormOptions" [value]="t?.value">{{t.label}}</mat-option>
 
                     </mat-select>
@@ -46,15 +48,12 @@
                 <hr>
 
                 <!--Image-->
-                <div id="campaignImage" class="col-md-12" style="margin: 20px 0px">
-                    <small>Upload an image for us to better calculate truck size and time est</small>
-                    <br>
-                    <a type="button" (click)='filePicker.click()'>
-                        <i class="fas fa-plus-circle"></i>
-                    </a>
-                    <br>
-                    <input formControlName="image" type="file" #filePicker (change)="onImagePicked($event)">
-                </div>
+                <!-- <div class="form-group">
+                    <app-image-upload (imageUploaded)="handleImageUpload($event)" (imageError)="handleImageError()">
+                    </app-image-upload>
+                </div> -->
+
+                <input type="file" class="dropify" formControlName="Image" #AccUserImg>
 
                 <!-- Send button -->
                 <button type="submit" class="btn btn-dark" type="submit">Create
