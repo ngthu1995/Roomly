@@ -32,8 +32,6 @@ export class ManageComponent implements OnInit, OnDestroy {
         console.log(bill)
         this.manage.push(bill)
       })
-
-
   }
 
 
@@ -41,9 +39,8 @@ export class ManageComponent implements OnInit, OnDestroy {
   private fetchBills() {
     this.billService.getManage()
       .subscribe(data => {
-        console.log(data)
         this.manage.push(...data.bill)
-        console.log(JSON.stringify(this.manage))
+        console.log(this.manage)
       })
   }
 

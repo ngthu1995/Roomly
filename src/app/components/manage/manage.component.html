@@ -39,7 +39,7 @@
     <br />
   </tbody>
 </table> -->
-
+<h1>Lists of the day</h1>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -47,14 +47,16 @@
       <th scope="col">Description</th>
       <th scope="col">Address</th>
       <th scope="col">Date</th>
+      <th>Time</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let man of manager">
+    <tr *ngFor="let man of manage">
       <th scope="row">{{man.title}}</th>
       <td>{{man.description}}</td>
       <td>{{man.address}}</td>
-      <td>{{man.date}}</td>
+      <td>{{man.date | date}}</td>
+      <td>{{man.time}}</td>
     </tr>
   </tbody>
 </table>

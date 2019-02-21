@@ -40,21 +40,25 @@ export class BillService {
     }
 
     getBills(): Observable<{ bills: Bill[] }> {
-        return this.httpClient.get<{ manage: any }>(
+        return this.httpClient.get<{ bill: any }>(
             this.rootUrl
         )
             .pipe(map(billData => {
-                return billData.manage.map(bill => {
-                    return {
-                        title: bill.title,
-                        description: bill.description,
-                        address: bill.address,
-                        date: bill.date,
-                        time: bill.time,
-                        _id: bill._id
-                    }
+                console.log(billData)
+                return {
+                    bills: billData.bill.map(bill => {
+                        console.log(billData.bill)
+                        return {
+                            title: bill.title,
+                            description: bill.description,
+                            address: bill.address,
+                            date: bill.date,
+                            time: bill.time,
+                            _id: bill._id
+                        }
 
-                })
+                    })
+                }
             }))
     }
 
