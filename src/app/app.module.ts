@@ -44,6 +44,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ConfirmAdminComponent } from './components/confirm-admin/confirm-admin.component'
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,9 +83,11 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  entryComponents: [DonationOptionsComponent],
+  entryComponents: [DonationOptionsComponent, ConfirmAdminComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

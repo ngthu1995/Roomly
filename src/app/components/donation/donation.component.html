@@ -10,29 +10,40 @@
 
                 <!--Campaign Title-->
                 <div class="col-md-12" style="width: 100%">
-                    <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4 text-center" placeholder="money"
-                    style="width: 50%; margin: auto"
-                    >
+                    <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4 text-center"
+                        placeholder="money" style="width: 50%; margin: auto">
                 </div>
                 <!--Campaign Title-->
-                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Campaign Title">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
                 <!--Who are you raising for?-->
-                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Who are you raising for?">
+                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
+                    placeholder="Who are you raising for?">
                 <!--Zip Code-->
-                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Enter your ZIP CODE">         <!--Choose your category-->
+                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
+                    placeholder="Enter your ZIP CODE">
+                <!--Choose your category-->
                 <select class="browser-default custom-select mb-4">
-                        <option value="" disabled>Choose your category</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
+                    <option value="" disabled>Time Availability</option>
+                    <option value="1">8:00 AM - 9:00 AM</option>
+                    <option value="2">10:00AM - 11:00 AM</option>
+                    <option value="3">12:00 AM - 1:00 PM</option>
+                    <option value="4">2:00 PM - 3:00 PM</option>
+                    <option value="4">4:00 PM - 5:00 PM</option>
+
+
                 </select>
                 <!--Fundraise as-->
-                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Fundraise as ...">
+                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
+                    placeholder="Fundraise as ...">
 
                 <!-- Message -->
                 <div class="form-group">
-                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Tell us a little about your story"></textarea>
+                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"
+                        placeholder="Description"></textarea>
                 </div>
                 <hr>
 
@@ -40,10 +51,7 @@
                 <div id="campaignImage" class="col-md-12" style="margin: 20px 0px">
                     <small>Upload an image for your campaign</small>
                     <br>
-                    <a
-                    type="button"
-                    (click)='filePicker.click()'
-                    >
+                    <a type="button" (click)='filePicker.click()'>
                         <i class="fas fa-plus-circle"></i>
                     </a>
                     <br>

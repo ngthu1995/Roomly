@@ -5,8 +5,8 @@ const passport = require('../middleware/passport')
 
 router.get('/:id', UserController.authMiddleware, UserController.getUser)
 
-router.post("/login", UserController.auth);
+router.post("/login", UserController.loginAuth);
 router.post("/register", UserController.register);
 
-
+router.post('/checkManager', UserController.confirmManager)
 module.exports = router;

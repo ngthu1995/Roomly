@@ -5,6 +5,7 @@ import { map, tap } from "rxjs/operators";
 import * as jwt from "jsonwebtoken";
 import * as moment from "moment";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { AuthData } from '../components/auth/auth-data.model';
 
 const jwt = new JwtHelperService();
 
@@ -13,7 +14,7 @@ class DecodedToken {
   username: string = "";
 }
 type UserRole = 'user' | 'admin' | 'manager';
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   private isAuthenticate = false;
   private token: string;
@@ -47,14 +48,15 @@ export class AuthService {
     return this.httpClient.post(this.rootURL + "/register", userData);
   }
 
-  public login(userData: any): Observable<any> {
+  public login(email: string, password: string): Observable<any> {
+    const authData: AuthData = { email: email, password: password }
     return this.httpClient.post<{
       token: string; user: {
         _id: string;
         email: string;
         role: 'user' | 'admin' | 'manager';
       };
-    }>(this.rootURL + "/login", userData).pipe(
+    }>(this.rootURL + "/login", authData).pipe(
       tap(response => {
         const { token, user } = response;
         this.token = token;
@@ -68,6 +70,14 @@ export class AuthService {
     );
   }
 
+  getCurrentUser() {
+    return this.user;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+
   private saveAuthData(
     token: string,
     user: { _id: string; email: string; role: 'user' | 'admin' | 'manager' }
@@ -77,10 +87,7 @@ export class AuthService {
   }
 
   public logOut() {
-    localStorage.removeItem("user_auth");
-    localStorage.removeItem("user_decoded");
-
-    this.decodedToken = new DecodedToken();
+    this.clearAuthData()
   }
 
   public isAuthenticated(): boolean {
@@ -108,7 +115,7 @@ export class AuthService {
     /**
      * TODO: checkManager route on backend. req.body = {managerString: string}
      */
-    return this.httpClient.post<any>('http://localhost:3000/api/auth/checkManager', {
+    return this.httpClient.post<any>('http://localhost:3000/api/users/checkManager', {
       managerString
     });
   }

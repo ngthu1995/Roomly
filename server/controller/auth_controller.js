@@ -5,7 +5,7 @@ const config = require("../config/dev");
 
 const jwt = require("jsonwebtoken");
 
-
+const bcrypt = require('bcrypt-nodejs')
 exports.getUser = (req, res) => {
 
     const requestedUserId = req.params.id;
@@ -38,48 +38,76 @@ exports.getUser = (req, res) => {
     }
 }
 
+exports.loginAuth = async (req, res, next) => {
+    const { email, password } = req.body;
 
+    try {
+        const auth = await User.findOne({ email }).lean();
 
-exports.auth = (req, res) => {
-    const { password, email } = req.body;
+        if (!auth) {
+            return res.status(404).json({ message: "User not found" });
+        }
 
-    if (!password || !email) {
-        return res.status(422).send({
-            err: [{ title: "Data missing!", detail: "Provide email and password" }]
-        });
+        const isMatched = bcrypt.compareSync(password, auth.password);
+
+        if (!isMatched) {
+            return res.status(400).json({ message: "Password does not match" });
+        }
+
+        const { password: userPassword, __v, ...user } = auth;
+
+        const token = jwt.sign(
+            { email: user.email, id: user._id },
+            "secret_long_string",
+            { expiresIn: "1h" }
+        );
+        return res.status(201).json({ token, user });
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ message: e.message || "Auth failed" });
     }
-
-    User.findOne({ email }, (err, user) => {
-        if (err) {
-            return res.status(422).send({
-                errors: normalizeErrors(err.errors)
-            });
-        }
-
-        if (!user) {
-            return res.status(422).send({
-                err: [{ title: "Invalid User!", detail: "User does not exist" }]
-            });
-        }
-
-        if (user.hasSamePassword(password)) {
-            //  return JWT token
-            const token = jwt.sign(
-                {
-                    userId: user.id,
-                    username: user.username
-                },
-                config.SECRET,
-                { expiresIn: "1h" }
-            );
-            return res.json(token);
-        } else {
-            return res.status(422).send({
-                err: [{ title: "Wrong Data!", detail: "Wrong email or password" }]
-            });
-        }
-    });
 };
+
+// exports.auth = (req, res) => {
+//     const { password, email } = req.body;
+
+//     if (!password || !email) {
+//         return res.status(422).send({
+//             err: [{ title: "Data missing!", detail: "Provide email and password" }]
+//         });
+//     }
+
+//     User.findOne({ email }, (err, user) => {
+//         if (err) {
+//             return res.status(422).send({
+//                 errors: normalizeErrors(err.errors)
+//             });
+//         }
+
+//         if (!user) {
+//             return res.status(422).send({
+//                 err: [{ title: "Invalid User!", detail: "User does not exist" }]
+//             });
+//         }
+
+//         if (user.hasSamePassword(password)) {
+//             //  return JWT token
+//             const token = jwt.sign(
+//                 {
+//                     userId: user.id,
+//                     username: user.username
+//                 },
+//                 config.SECRET,
+//                 { expiresIn: "1h" }
+//             );
+//             return res.json(token);
+//         } else {
+//             return res.status(422).send({
+//                 err: [{ title: "Wrong Data!", detail: "Wrong email or password" }]
+//             });
+//         }
+//     });
+// };
 
 exports.register = (req, res) => {
     const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
@@ -160,7 +188,7 @@ exports.authMiddleware = (req, res, next) => {
 exports.confirmManager = async (req, res, next) => {
     const { managerString } = req.body;
     try {
-        const hash = bcrypt.hashSync("sweet");
+        const hash = bcrypt.hashSync("nothing");
         const isMatched = bcrypt.compareSync(managerString, hash);
         if (!isMatched) {
             return res

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
+  currentUser: any = {};
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.currentUser = this.authService.getCurrentUser();
+      });
   }
 
   isAuthenticated() {
@@ -20,7 +29,16 @@ export class HeaderComponent implements OnInit {
     return false
   }
 
+  get isAdmin(): boolean {
+    return this.currentUser && this.currentUser.role === 'admin';
+  }
+
+  get isManager(): boolean {
+    return this.currentUser && this.currentUser.role === 'manager';
+  }
+
   logOut() {
     this.authService.logOut();
+
   }
 }

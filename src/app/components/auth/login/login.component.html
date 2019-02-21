@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <form class="text-center border border-light p-5" [formGroup]="loginForm" (ngSubmit)="login()">
+            <form #loginForm="ngForm" class="text-center border border-light p-5" (submit)="login(loginForm)">
                 <p class="lead mb-4">Sign in</p>
                 <small>*Please provide valid email and password</small>
 
@@ -12,26 +12,31 @@
                 <!-- Email -->
                 <div class="col">
                     <mat-form-field>
-                        <input matInput formControlName="email" type="email" id="defaultLoginFormEmail" class=""
-                            placeholder="E-mail">
+                        <input matInput name="email" type="email" id="defaultLoginFormEmail" class=""
+                            placeholder="E-mail" #emailInput="ngModel" ngModel required email>
+                        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
                     </mat-form-field>
+
                 </div>
-                <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
+                <!-- <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
                     <div *ngIf="isRequired('email')">Email is required.</div>
                     <div *ngIf="isPattern('email')">Must be valid email format!</div>
-                </div>
+                </div> -->
                 <!-- Password -->
                 <div class="col">
                     <mat-form-field>
-                        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" id="defaultLoginFormPassword"
-                            class="" placeholder="Password" required>
+                        <input matInput name="password" [type]="hide ? 'password' : 'text'"
+                            id="defaultLoginFormPassword" class="" placeholder="Password" #passwordInput="ngModel"
+                            ngModel required>
                         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
                             'visibility'}}</mat-icon>
+                        <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
                     </mat-form-field>
+
                 </div>
 
                 <!-- Sign in button -->
-                <button [disabled]="!loginForm.valid" type="submit" class="btn btn-dark">SIGN IN</button>
+                <button [disabled]="!loginForm.form.valid" type="submit" class="btn btn-dark">SIGN IN</button>
 
                 <!-- Register -->
                 <p>Don't have an account?
