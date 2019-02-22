@@ -29,6 +29,7 @@ const userSchema = new Schema({
         max: [32, "Too long, max is 32 characters"],
         required: "Password is required"
     },
+    active: { type: Boolean, default: false, required: true},
     stripeCustomerId: String,
     revenue: Number,
     phone: Number,

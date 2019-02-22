@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,13 +13,15 @@ export class RegisterComponent implements OnInit {
   formData: any = {}
   hide = true;
   hideConfirm = true;
-  errors: any[] = []
-  constructor(private auth: AuthService,
+  errors: any[] = [];
+  constructor(
+    private auth: AuthService,
     private router: Router,
   ) { }
 
-  ngOnInit() {
-  }
+
+
+  ngOnInit() {}
 
   register() {
     this.auth.register(this.formData).subscribe(
@@ -29,6 +33,8 @@ export class RegisterComponent implements OnInit {
       },
       () => { }
     );
+    this.auth.sendMessage(this.formData).subscribe(() => {
+      console.log('message sent');
+    })
   }
-
 }

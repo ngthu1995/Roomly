@@ -121,4 +121,9 @@ export class AuthService {
     this.isAuthenticate = false;
     this.authStatusListener.next(false);
   }
+
+
+  public sendMessage(userData: any){
+    return this.httpClient.post(this.rootURL + "/sendemail", userData);
+  }
 }

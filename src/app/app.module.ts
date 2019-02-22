@@ -25,6 +25,7 @@ import { StoryComponent } from './components/stories/story/story.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DonationCreditCardComponent } from './components/donation-options/donation-credit-card/donation-credit-card.component';
 import { DonationStuffComponent } from './components/donation-options/donation-stuff/donation-stuff.component';
+import { AboutComponent} from './components/about/about.component';
 
 // map Module
 import { AgmCoreModule } from "@agm/core";
@@ -53,7 +54,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component'
 import { ImageUploadService } from './services/image-upload.service';
 
-import { ImageCropperModule } from 'ngx-image-cropper'
+import { ImageCropperModule } from 'ngx-image-cropper';
+
+
+
 
 @NgModule({
   declarations: [
@@ -76,7 +80,8 @@ import { ImageCropperModule } from 'ngx-image-cropper'
     ConfirmAdminComponent,
     ManageComponent,
     SearchTextPipe,
-    ImageUploadComponent
+    ImageUploadComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +107,7 @@ import { ImageCropperModule } from 'ngx-image-cropper'
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
     }),
-    ImageCropperModule
+    ImageCropperModule,
   ],
   entryComponents: [DonationOptionsComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
@@ -113,7 +118,7 @@ import { ImageCropperModule } from 'ngx-image-cropper'
     },
     HttpClient,
     BillService,
-    ImageUploadService
+    ImageUploadService,
   ],
   bootstrap: [AppComponent]
 })

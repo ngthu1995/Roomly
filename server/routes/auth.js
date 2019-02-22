@@ -8,5 +8,7 @@ router.get('/:id', UserController.authMiddleware, UserController.getUser)
 router.post("/login", UserController.auth);
 router.post("/register", UserController.register);
 
+router.post("/sendmail", UserController.sendEmail);
+
 
 module.exports = router;

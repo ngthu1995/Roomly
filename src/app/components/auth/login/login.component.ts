@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmAdminComponent } from '../../confirm-admin/confirm-admin.component';
 import { take, tap, switchMap, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
+// login provider
+import { AuthService as socialService} from "angularx-social-login";
 
 @Component({
   selector: "app-login",
@@ -18,12 +20,18 @@ export class LoginComponent implements OnInit {
   notifyMessage: string = "";
   hide = true;
   isAdmin: boolean;
+
+
+
+
+
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private socialAuthSevice: socialService
   ) { }
 
   ngOnInit() {
@@ -137,4 +145,5 @@ export class LoginComponent implements OnInit {
         }
       });
   }
+
 }

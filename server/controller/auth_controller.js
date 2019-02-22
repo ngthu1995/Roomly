@@ -2,8 +2,13 @@ const User = require("../models/auth");
 const { normalizeErrors } = require("../helpers/mongoose");
 
 const config = require("../config/dev");
-
+const session = require('express-session');
 const jwt = require("jsonwebtoken");
+
+// Setting up nodemailer
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
+
 
 
 exports.getUser = (req, res) => {
@@ -40,6 +45,7 @@ exports.getUser = (req, res) => {
 
 
 
+// Login user
 exports.auth = (req, res) => {
     const { password, email } = req.body;
 
@@ -81,6 +87,14 @@ exports.auth = (req, res) => {
     });
 };
 
+
+// Facebook login
+exports.authenticateFacebook = (req, res, next) => {
+    req.session
+}
+
+
+// Register user
 exports.register = (req, res) => {
     const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
 
@@ -117,13 +131,15 @@ exports.register = (req, res) => {
                 ]
             });
         }
+        // Define a new user
         const user = new User({
             firstName,
             lastName,
             phone,
             email,
-            password
+            password,
         });
+
         user.save(err => {
             if (err) {
                 return res.status(422).send({ errors: normalizeErrors(err.errors) });
@@ -134,6 +150,8 @@ exports.register = (req, res) => {
     });
 };
 
+
+// Check authentication
 exports.authMiddleware = (req, res, next) => {
     const token = req.headers.authorization;
 
@@ -192,5 +210,35 @@ function notAuthorized(res) {
                 detail: "You need to login to get access"
             }
         ]
+    });
+}
+
+
+exports.sendEmail = () => {
+    var options = {
+        auth: {
+          api_user: 'tintinla',
+          api_key: 'Botrinty123!'
+        }
+      }
+      
+    var client = nodemailer.createTransport(sgTransport(options));
+
+     // Nodemails 
+    var email = {
+        from: 'homesweethomek@gmail.com',
+        to: user.email,
+        subject: 'Home Sweet Home',
+        text: 'Hello <strong>${user.firstName}</strong>,<br><br>Thank you for registering at Home Sweet Home.',
+        html: `Hello <strong>${user.firstName}</strong>,<br><br>Thank you for registering at Home Sweet Home.`
+    };
+
+    client.sendMail(email, function(err, info){
+        if (err ){
+        console.log(error);
+        }
+        else {
+        console.log('Message sent: ' + info.response);
+        }
     });
 }
