@@ -7,7 +7,7 @@ import { ConfirmAdminComponent } from '../../confirm-admin/confirm-admin.compone
 import { take, tap, switchMap, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 // login provider
-import { AuthService as socialService} from "angularx-social-login";
+// import { AuthService as socialService } from "angularx-social-login";
 
 @Component({
   selector: "app-login",
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private matDialog: MatDialog,
-    private socialAuthSevice: socialService
+    // private socialAuthSevice: socialService
   ) { }
 
   ngOnInit() {
@@ -104,65 +104,6 @@ export class LoginComponent implements OnInit {
   //   );
   // }
 
-<<<<<<< HEAD
-  login() {
-    if (this.loginForm.invalid) {
-      return;
-    }
-    this.auth
-      .login(this.loginForm.value)
-      .pipe(
-        switchMap(({ token, user }) => {
-          if (user && user.role === "manager") {
-            /**
-             * TODO: create ConfirmManagerComponent
-             */
-            const confirmManagerDialogRef = this.matDialog.open(
-              ConfirmAdminComponent,
-              {
-                width: '700px',
-                height: '500px'
-              }
-            );
-            return confirmManagerDialogRef.afterClosed().pipe(
-              take(1),
-              /**
-               * TODO: Should check for dialog close with no data (user click X, or cancel) to remove Authenticated data in LocalStorage??
-               */
-              /**
-               * TODO: if tap() doesn't work, change to switchMap
-               * switchMap(inputValue => {
-               *  if (!inputValue || inputValue === '') {
-               *    this.authService.clearAuthData();
-               *    return of(null);
-               *  }
-               *
-               *  return of(inputValue);
-               * })
-               */
-              tap(inputValue => {
-                if (!inputValue || inputValue === "") {
-                  this.auth.clearAuthData();
-                }
-              }),
-              filter(data => data),
-              switchMap(this.auth.checkMangerRole)
-            );
-          }
-
-          return of({ isAuthenticated: true });
-        })
-      )
-      .subscribe(response => {
-        if (this.auth.checkMangerRole(response)) {
-          this.router.navigate(["/"]);
-        } else {
-          this.router.navigate(["login"]); // TODO: Do something if checkManager fails
-        }
-      });
-  }
-
-=======
 
 
   // login() {
@@ -221,5 +162,4 @@ export class LoginComponent implements OnInit {
   //       }
   //     });
   // }
->>>>>>> 07e7c6073fe95073dc1609b8dcd692f753e41cb3
 }
