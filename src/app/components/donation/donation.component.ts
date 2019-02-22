@@ -3,8 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BillService } from '../../services/bill.service';
 import { Bill } from '../models/bill.model';
 import { SelectOption, timeOptions } from './constants';
-
-
+import { ToastrService } from 'ngx-toastr'
 @Component({
     selector: 'app-donation',
     templateUrl: './donation.component.html',
@@ -16,34 +15,53 @@ export class DonationComponent implements OnInit {
     addBillForm: FormGroup;
     newBill: Bill
     constructor(private formBuilder: FormBuilder,
-        private billService: BillService) { }
+        private billService: BillService,
+        private toastr: ToastrService) { }
 
     timeFormOptions = timeOptions
     ngOnInit() {
-        this.initForm()
+        // this.initForm()
+
+        this.newBill = new Bill();
+
     }
 
-    private initForm() {
-        this.addBillForm = this.formBuilder.group({
-            title: [''],
-            image: [''],
-            description: [''],
-            date: [''],
-            address: [''],
-            time: ['']
-        })
+    createBill(){
+        this.billService.createBill(this.newBill).subscribe(
+            (bill: Bill) => {
+                this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')            }
+        )
     }
+    // private initForm() {
+    //     this.addBillForm = this.formBuilder.group({
+    //         title: [''],
+    //         image: [null],
+    //         description: [''],
+    //         date: [''],
+    //         address: [''],
+    //         time: [''],
+    //     })
+    // }
 
-    onCreateBill() {
-        const { title, ...rest } = this.addBillForm.value;
+    // onCreateBill() {
+    //     const { title, ...rest } = this.addBillForm.value;
 
-        const bill: Bill = {
-            title,
-            ...rest
-        }
+    //     const bill: Bill = {
+    //         title,
+    //         ...rest
+    //     }
 
-        this.billService.addBill(bill).subscribe(_ => {
-            console.log(bill)
-        })
+
+    //     this.billService.addBill(bill).subscribe(_ => {
+    //         this.addBillForm.reset();
+    //         this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')
+    //     })
+    // }
+
+    handleImageUpload(imageUrl: string) {
+        this.newBill.image = imageUrl
+    }
+    handleImageError() {
+        this.newBill.image = undefined
     }
 }

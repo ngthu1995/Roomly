@@ -6,17 +6,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchTextPipe implements PipeTransform {
 
-    transform(items: Array<any>, titleSearch: string, descriptionSearch: string, addressSearch: string,
-        appSearch: string, managerSearch: string, locationSearch: string) {
+    transform(items: Array<any>, titleSearch: string, descriptionSearch: string, addressSearch: string) {
         if (items && items.length) {
             return items.filter(item => {
-                if (titleSearch && item.name.toLowerCase().indexOf(titleSearch.toLowerCase()) === -1) {
+                if (titleSearch && item.title.toLowerCase().indexOf(titleSearch.toLowerCase()) === -1) {
                     return false;
                 }
-                if (descriptionSearch && item.role.toLowerCase().indexOf(descriptionSearch.toLowerCase()) === -1) {
+                if (descriptionSearch && item.description.toLowerCase().indexOf(descriptionSearch.toLowerCase()) === -1) {
                     return false;
                 }
-                if (addressSearch && item.company.toLowerCase().indexOf(addressSearch.toLowerCase()) === -1) {
+                if (addressSearch && item.address.toLowerCase().indexOf(addressSearch.toLowerCase()) === -1) {
                     return false;
                 }
                 return true;

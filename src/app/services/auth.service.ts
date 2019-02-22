@@ -86,8 +86,21 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+
+  getCurrentUser() {
+    return this.user;
+  }
+
   public logOut() {
-    this.clearAuthData()
+    this.clearAuthData();
+    this.isAuthenticate = false;
+    // localStorage.removeItem("user_auth");
+    // localStorage.removeItem("user_decoded");
+
+    // this.decodedToken = new DecodedToken();
   }
 
   public isAuthenticated(): boolean {
