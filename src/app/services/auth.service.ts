@@ -5,6 +5,8 @@ import { map, tap } from "rxjs/operators";
 import * as jwt from "jsonwebtoken";
 import * as moment from "moment";
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { AuthData } from '../components/auth/auth-data.model';
+import { Router } from '@angular/router';
 
 const jwt = new JwtHelperService();
 
@@ -24,6 +26,7 @@ export class AuthService {
   };
   private authStatusListener = new BehaviorSubject<boolean>(false);
   private readonly rootURL = "http://localhost:3000/api/users";
+  private router: Router
   private decodedToken;
 
   constructor(private httpClient: HttpClient) {
@@ -47,22 +50,25 @@ export class AuthService {
     return this.httpClient.post(this.rootURL + "/register", userData);
   }
 
-  public login(userData: any): Observable<any> {
+  login(email: string, password: string) {
+    const authData: AuthData = { email: email, password: password }
     return this.httpClient.post<{
       token: string; user: {
         _id: string;
         email: string;
         role: 'user' | 'admin' | 'manager';
       };
-    }>(this.rootURL + "/login", userData).pipe(
+    }>(this.rootURL + "/login", authData).pipe(
       tap(response => {
         const { token, user } = response;
         this.token = token;
         this.user = user;
+        console.log(user)
         if (token) {
           this.saveAuthData(token, user);
           this.isAuthenticate = true;
           this.authStatusListener.next(true);
+          this.router.navigate([''])
         }
       })
     );
@@ -133,7 +139,7 @@ export class AuthService {
   }
 
 
-  public sendMessage(userData: any){
+  public sendMessage(userData: any) {
     return this.httpClient.post(this.rootURL + "/sendemail", userData);
   }
 }

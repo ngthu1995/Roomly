@@ -9,83 +9,131 @@ const jwt = require("jsonwebtoken");
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
-
-
 exports.getUser = (req, res) => {
+    exports.createAuth = (req, res, next) => {
+        const { email, password } = req.body;
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(password, salt);
+        const auth = new Auth({
+            email,
+            password: hash
+        });
 
-    const requestedUserId = req.params.id;
-    const user = res.locals.user;
-
-    if (requestedUserId === user.id) {
-
-        // Display all
-        User.findById(requestedUserId, (err, foundUser) => {
-            if (err) {
-                return res.status(422).send({
-                    errors: normalizeErrors(err.errors)
+        auth
+            .save()
+            .then(result => {
+                res.status(201).json({
+                    message: "User created!",
+                    result: result
                 });
-            }
-            return res.json(foundUser);
-        })
-    } else {
-
-        User.findById(requestedUserId)
-            .select('-revenue -stripeCustomerId -password')
-            .exec((err, foundUser) => {
-                if (err) {
-                    return res.status(422).send({
-                        errors: normalizeErrors(err.errors)
-                    });
-                }
-
-                return res.json(foundUser)
             })
+            .catch(err => {
+                res.status(500).json({
+                    error: err
+                });
+            });
+    }
+}
+
+// exports.getUser = (req, res) => {
+
+//     const requestedUserId = req.params.id;
+//     const user = res.locals.user;
+
+//     if (requestedUserId === user.id) {
+
+//         // Display all
+//         User.findById(requestedUserId, (err, foundUser) => {
+//             if (err) {
+//                 return res.status(422).send({
+//                     errors: normalizeErrors(err.errors)
+//                 });
+//             }
+//             return res.json(foundUser);
+//         })
+//     } else {
+
+//         User.findById(requestedUserId)
+//             .select('-revenue -stripeCustomerId -password')
+//             .exec((err, foundUser) => {
+//                 if (err) {
+//                     return res.status(422).send({
+//                         errors: normalizeErrors(err.errors)
+//                     });
+//                 }
+
+//                 return res.json(foundUser)
+//             })
+//     }
+// }
+
+
+// Login User
+exports.loginAuth = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    try {
+        const auth = await User.findOne({ email }).lean();
+
+        const isMatched = bcrypt.compareSync(password, auth.password)
+
+        if (!isMatched) {
+            return res.status(401).json({
+                message: "Invalid Credentials"
+            })
+        }
+
+        const { password: userPassword, __v, ...user } = auth;
+
+        const token = jwt.sign({ email: user.email, id: user._id }, 'secret_long_string');
+        return res.status(201).json({ token, user })
+    } catch (error) {
+        return res.status(500).json({ message: 'Email not found. Please check your email again' })
     }
 }
 
 
-
 // Login user
-exports.auth = (req, res) => {
-    const { password, email } = req.body;
+// exports.auth = (req, res) => {
+//     const { password, email } = req.body;
 
-    if (!password || !email) {
-        return res.status(422).send({
-            err: [{ title: "Data missing!", detail: "Provide email and password" }]
-        });
-    }
+//     if (!password || !email) {
+//         return res.status(422).send({
+//             err: [{ title: "Data missing!", detail: "Provide email and password" }]
+//         });
+//     }
 
-    User.findOne({ email }, (err, user) => {
-        if (err) {
-            return res.status(422).send({
-                errors: normalizeErrors(err.errors)
-            });
-        }
+//     User.findOne({ email }, (err, user) => {
+//         if (err) {
+//             return res.status(422).send({
+//                 errors: normalizeErrors(err.errors)
+//             });
+//         }
 
-        if (!user) {
-            return res.status(422).send({
-                err: [{ title: "Invalid User!", detail: "User does not exist" }]
-            });
-        }
+//         if (!user) {
+//             return res.status(422).send({
+//                 err: [{ title: "Invalid User!", detail: "User does not exist" }]
+//             });
+//         }
 
-        if (user.hasSamePassword(password)) {
-            //  return JWT token
-            const token = jwt.sign(
-                {
-                    userId: user.id,
-                    username: user.username
-                },
-                config.SECRET,
-                { expiresIn: "1h" }
-            );
-            return res.json({token:token,user:user});
-        } else {
-            return res.status(422).send({
-                err: [{ title: "Wrong Data!", detail: "Wrong email or password" }]
-            });
-        }
-    });
-};
+//         if (user.hasSamePassword(password)) {
+//             //  return JWT token
+//             const token = jwt.sign(
+//                 {
+//                     userId: user.id,
+//                     username: user.username
+//                 },
+//                 config.SECRET,
+//                 { expiresIn: "1h" }
+//             );
+//             return res.json({token:token,user:user});
+//         } else {
+//             return res.status(422).send({
+//                 err: [{ title: "Wrong Data!", detail: "Wrong email or password" }]
+//             });
+//         }
+//     });
+// };
 
 
 // Facebook login
@@ -95,60 +143,60 @@ exports.authenticateFacebook = (req, res, next) => {
 
 
 // Register user
-exports.register = (req, res) => {
-    const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
+// exports.register = (req, res) => {
+//     const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
 
-    if (!password || !email) {
-        return res.status(422).send({
-            err: [{ title: "Data missing!", detail: "Provide email and password" }]
-        });
-    }
+//     if (!password || !email) {
+//         return res.status(422).send({
+//             err: [{ title: "Data missing!", detail: "Provide email and password" }]
+//         });
+//     }
 
-    if (password !== passwordConfirmation) {
-        return res.status(422).send({
-            err: [
-                {
-                    title: "Invalid Password!",
-                    detail: "Password isn't the same as confirmation"
-                }
-            ]
-        });
-    }
+//     if (password !== passwordConfirmation) {
+//         return res.status(422).send({
+//             err: [
+//                 {
+//                     title: "Invalid Password!",
+//                     detail: "Password isn't the same as confirmation"
+//                 }
+//             ]
+//         });
+//     }
 
-    User.findOne({ email }, (err, existingUser) => {
-        if (err) {
-            return res.status(422).send({
-                errors: normalizeErrors(err.errors)
-            });
-        }
-        if (existingUser) {
-            return res.status(422).send({
-                err: [
-                    {
-                        title: "Invalid Email!",
-                        detail: "User with this email already exist"
-                    }
-                ]
-            });
-        }
-        // Define a new user
-        const user = new User({
-            firstName,
-            lastName,
-            phone,
-            email,
-            password,
-        });
+//     User.findOne({ email }, (err, existingUser) => {
+//         if (err) {
+//             return res.status(422).send({
+//                 errors: normalizeErrors(err.errors)
+//             });
+//         }
+//         if (existingUser) {
+//             return res.status(422).send({
+//                 err: [
+//                     {
+//                         title: "Invalid Email!",
+//                         detail: "User with this email already exist"
+//                     }
+//                 ]
+//             });
+//         }
+//         // Define a new user
+//         const user = new User({
+//             firstName,
+//             lastName,
+//             phone,
+//             email,
+//             password,
+//         });
 
-        user.save(err => {
-            if (err) {
-                return res.status(422).send({ errors: normalizeErrors(err.errors) });
-            }
+//         user.save(err => {
+//             if (err) {
+//                 return res.status(422).send({ errors: normalizeErrors(err.errors) });
+//             }
 
-            return res.json({ registered: true });
-        });
-    });
-};
+//             return res.json({ registered: true });
+//         });
+//     });
+// };
 
 
 // Check authentication
@@ -217,14 +265,14 @@ function notAuthorized(res) {
 exports.sendEmail = () => {
     var options = {
         auth: {
-          api_user: 'tintinla',
-          api_key: 'Botrinty123!'
+            api_user: 'tintinla',
+            api_key: 'Botrinty123!'
         }
-      }
-      
+    }
+
     var client = nodemailer.createTransport(sgTransport(options));
 
-     // Nodemails 
+    // Nodemails 
     var email = {
         from: 'homesweethomek@gmail.com',
         to: user.email,
@@ -233,12 +281,12 @@ exports.sendEmail = () => {
         html: `Hello <strong>${user.firstName}</strong>,<br><br>Thank you for registering at Home Sweet Home.`
     };
 
-    client.sendMail(email, function(err, info){
-        if (err ){
-        console.log(error);
+    client.sendMail(email, function (err, info) {
+        if (err) {
+            console.log(error);
         }
         else {
-        console.log('Message sent: ' + info.response);
+            console.log('Message sent: ' + info.response);
         }
     });
 }

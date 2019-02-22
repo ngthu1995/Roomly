@@ -29,27 +29,27 @@ const userSchema = new Schema({
         max: [32, "Too long, max is 32 characters"],
         required: "Password is required"
     },
-    active: { type: Boolean, default: false, required: true},
+    active: { type: Boolean, default: false, required: true },
     stripeCustomerId: String,
     revenue: Number,
     phone: Number,
     role: String,
 });
 
-userSchema.methods.hasSamePassword = function (requestedPassword) {
-    return bcrypt.compareSync(requestedPassword, this.password);
-};
+// userSchema.methods.hasSamePassword = function (requestedPassword) {
+//     return bcrypt.compareSync(requestedPassword, this.password);
+// };
 
 // have to use es5 here
-userSchema.pre("save", function (next) {
-    const user = this;
+// userSchema.pre("save", function (next) {
+//     const user = this;
 
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(user.password, salt, null, function (err, hash) {
-            user.password = hash;
-            next();
-        });
-    });
-});
+//     bcrypt.genSalt(10, function (err, salt) {
+//         bcrypt.hash(user.password, salt, null, function (err, hash) {
+//             user.password = hash;
+//             next();
+//         });
+//     });
+// });
 
 module.exports = mongoose.model("User", userSchema);
