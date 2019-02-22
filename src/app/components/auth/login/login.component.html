@@ -13,7 +13,8 @@
                 <div class="col">
                     <mat-form-field>
                         <input matInput name="email" ngModel type="email" id="defaultLoginFormEmail" class=""
-                            placeholder="E-mail" required email>
+                            placeholder="E-mail" #emailInput="ngModel" required email>
+                        <mat-error *ngIf="emailInput.invalid">Please enter a valid email</mat-error>
                     </mat-form-field>
                 </div>
                 <!-- <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
@@ -24,9 +25,11 @@
                 <div class="col">
                     <mat-form-field>
                         <input matInput name="password" ngModel [type]="hide ? 'password' : 'text'" id="defaultLoginFormPassword"
-                            class="" placeholder="Password" required>
+                            class="" placeholder="Password" #passwordInput="ngModel" required>
                         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
                             'visibility'}}</mat-icon>
+                        <mat-error *ngIf="passwordInput.invalid">Password is required</mat-error>
+
                     </mat-form-field>
                 </div>
 

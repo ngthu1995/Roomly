@@ -91,13 +91,15 @@
         <input class="textBox justify-content-center" type="text" placeholder="Search by Address" [(ngModel)]="addressSearch" />
       </th>
       <th scope="col">Date
+        <input class="textBox justify-content-center" type="text" placeholder="Search by Address" [(ngModel)]="dateSearch" />
+
       </th>
       <th>Time</th>
 
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch)">
+    <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)">
       <th scope="row"><img class="image" src="{{b.image}}" alt=""></th>
       <td>{{b.title}}</td>
       <td>{{b.description}}</td>
