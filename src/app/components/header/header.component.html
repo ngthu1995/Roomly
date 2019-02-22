@@ -5,6 +5,7 @@
       </a>
   </mdb-navbar-brand>
 
+<<<<<<< HEAD
     <links>
       <div class="navbar-nav">
           <a class="nav-item nav-link waves-light" routerLink="donation">Donate</a>  
@@ -27,3 +28,41 @@
       </div>
     </links>
 </mdb-navbar>
+=======
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="donation">Donation</a>
+      </li>
+      <ng-container *ngIf="userIsAuthenticated">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="manage">Manage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="stories">Stories</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="!userIsAuthenticated">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="login">Login</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="register">Register</a>
+        </li>
+      </ng-container>
+      <li *ngIf="userIsAuthenticated" class="nav-item">
+        <a class="nav-link" (click)="logOut()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+>>>>>>> 07e7c6073fe95073dc1609b8dcd692f753e41cb3

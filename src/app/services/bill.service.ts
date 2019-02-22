@@ -27,6 +27,10 @@ export class BillService {
         return this.httpClient.post(this.rootUrl, bill)
     }
 
+    getManage(): Observable<any> {
+        return this.httpClient.get(this.rootUrl)
+    }
+
     get addBillSubject$(): Observable<Bill> {
         return this.addBillSubject.asObservable()
     }
@@ -35,9 +39,7 @@ export class BillService {
         return { 'content-type': 'application/json' }
     }
 
-    getManage(): Observable<any> {
-        return this.httpClient.get(this.rootUrl)
-    }
+
 
     getBills(): Observable<{ bills: Bill[] }> {
         return this.httpClient.get<{ bill: any }>(

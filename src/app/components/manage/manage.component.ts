@@ -10,41 +10,46 @@ import { Bill } from '../models/bill.model';
   styleUrls: ['./manage.component.scss']
 })
 export class ManageComponent implements OnInit, OnDestroy {
-  searchText = ''
+  searchText = '';
   titleSearch = '';
   descriptionSearch = '';
-  addressSearch = ''
+  addressSearch = '';
 
-  bill: Bill
+  bills: Bill[] = []
 
   // bills: Bill[] = []
 
-  manage = []
+  // manage = []
 
   destroy$: Subject<null> = new Subject<null>()
   constructor(private billService: BillService) { }
 
   ngOnInit() {
-    this.fetchBills();
+    // this.fetchBills();
+    const billObservable = this.billService.getManage();
 
-
-    this.billService.addBillSubject$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(bill => {
-        console.log(bill)
-        this.manage.push(bill)
-      })
+    billObservable.subscribe((bills: Bill[]) => {
+      this.bills = bills
+      // console.log(this.bill)
+    })
   }
+  // this.billService.addBillSubject$
+  //   .pipe(takeUntil(this.destroy$))
+  //   .subscribe(bill => {
+  //     console.log(bill)
+  //     this.manage.push(bill)
+  //   })
 
 
 
-  private fetchBills() {
-    this.billService.getManage()
-      .subscribe(data => {
-        this.manage.push(...data.bill)
-        console.log(this.manage)
-      })
-  }
+
+  // private fetchBills() {
+  //   this.billService.getManage()
+  //     .subscribe(data => {
+  //       this.manage.push(...data.bill)
+  //       console.log(this.manage)
+  //     })
+  // }
 
   ngOnDestroy() {
     this.destroy$.next();

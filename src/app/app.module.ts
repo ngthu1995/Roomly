@@ -56,9 +56,13 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
 import { ImageUploadService } from './services/image-upload.service';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
+<<<<<<< HEAD
 
 
 
+=======
+import { ManageItemComponent } from './components/manage-item/manage-item.component'
+>>>>>>> 07e7c6073fe95073dc1609b8dcd692f753e41cb3
 
 @NgModule({
   declarations: [
@@ -82,8 +86,12 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ManageComponent,
     SearchTextPipe,
     ImageUploadComponent,
+<<<<<<< HEAD
     AboutComponent,
     ContactComponent
+=======
+    ManageItemComponent
+>>>>>>> 07e7c6073fe95073dc1609b8dcd692f753e41cb3
   ],
   imports: [
     BrowserModule,
