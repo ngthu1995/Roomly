@@ -138,7 +138,7 @@ export class LoginComponent implements OnInit {
               ConfirmAdminComponent,
               {
                 width: '700px',
-                height: '500px'
+                height: '247px'
               }
             );
             return confirmManagerDialogRef.afterClosed().pipe(

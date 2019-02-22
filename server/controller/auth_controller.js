@@ -1,6 +1,6 @@
 const User = require("../models/auth");
 const { normalizeErrors } = require("../helpers/mongoose");
-
+const bcrypt = require('bcrypt-nodejs')
 const config = require("../config/dev");
 const session = require('express-session');
 const jwt = require("jsonwebtoken");
@@ -226,7 +226,7 @@ exports.authMiddleware = (req, res, next) => {
 exports.confirmManager = async (req, res, next) => {
     const { managerString } = req.body;
     try {
-        const hash = bcrypt.hashSync("sweet");
+        const hash = bcrypt.hashSync("home");
         const isMatched = bcrypt.compareSync(managerString, hash);
         if (!isMatched) {
             return res

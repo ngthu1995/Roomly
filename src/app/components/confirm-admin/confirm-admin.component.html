@@ -4,10 +4,12 @@
 
 <form (submit)="onConfirmManager(confirmMan)" #confirmMan="ngForm">
   <mat-form-field>
-    <input type="text" name="managerString" ngModel matInput placeholder="Enter Key here" #keyInput="ngModel" required>
+    <input [type]="hide ? 'password' : 'text'" name="managerString" ngModel matInput placeholder="Enter Key here"
+      #keyInput="ngModel" required>
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     <mat-error *ngIf="keyInput.invalid">Please enter a key</mat-error>
   </mat-form-field>
 
-  <button type="submit">Submit</button>
-  <button mat-dialog-close>Cancel</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button mat-dialog-close class="btn btn-danger">Cancel</button>
 </form>

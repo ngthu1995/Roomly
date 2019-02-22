@@ -68,7 +68,7 @@ export class AuthService {
           this.saveAuthData(token, user);
           this.isAuthenticate = true;
           this.authStatusListener.next(true);
-          this.router.navigate([''])
+          // this.router.navigate([''])
         }
       })
     );
@@ -124,7 +124,7 @@ export class AuthService {
     /**
      * TODO: checkManager route on backend. req.body = {managerString: string}
      */
-    return this.httpClient.post<any>('http://localhost:3000/api/auth/checkManager', {
+    return this.httpClient.post<any>('http://localhost:3000/api/users/checkManager', {
       managerString
     });
   }

@@ -56,7 +56,9 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
 import { ImageUploadService } from './services/image-upload.service';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { ManageItemComponent } from './components/manage-item/manage-item.component'
+import { ManageItemComponent } from './components/manage-item/manage-item.component';
+import { ErrorComponent } from './components/error/error.component'
+import { ErrorInterceptor } from './error-interceptor';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,8 @@ import { ManageItemComponent } from './components/manage-item/manage-item.compon
     ImageUploadComponent,
     ManageItemComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -110,11 +113,16 @@ import { ManageItemComponent } from './components/manage-item/manage-item.compon
     }),
     ImageCropperModule,
   ],
-  entryComponents: [DonationOptionsComponent],
+  entryComponents: [DonationOptionsComponent, ConfirmAdminComponent, ErrorComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     },
     HttpClient,

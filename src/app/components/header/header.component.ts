@@ -24,6 +24,10 @@ export class HeaderComponent implements OnInit {
       });
   }
 
+  get isManager() {
+    return this.currentUser && this.currentUser.role === 'manager';
+  }
+
   isAuthenticated() {
     if (this.authService.isAuthenticated()) {
       return true;

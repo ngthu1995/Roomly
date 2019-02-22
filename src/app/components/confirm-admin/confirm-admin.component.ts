@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-confirm-admin',
@@ -8,8 +9,9 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./confirm-admin.component.scss']
 })
 export class ConfirmAdminComponent implements OnInit {
-
-  constructor(private matDialogRef: MatDialogRef<ConfirmAdminComponent>) { }
+  hide = true;
+  constructor(private matDialogRef: MatDialogRef<ConfirmAdminComponent>,
+    private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -17,6 +19,10 @@ export class ConfirmAdminComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.matDialogRef.close(form.value.managerString);
+
+    this.authService.checkMangerRole(form.value.managerString)
+      .subscribe(data => {
+        this.matDialogRef.close(data)
+      })
   }
 }
