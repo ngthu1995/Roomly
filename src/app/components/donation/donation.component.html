@@ -3,7 +3,7 @@
         <div class="col-12">
             <!-- Default form contact -->
             <!-- <form class="text-center border border-light p-5" [formGroup]="addBillForm" (ngSubmit)="onCreateBill()"> -->
-                    <form class="text-center border border-light p-5" #addBillForm = 'ngForm'>
+            <form class="text-center border border-light p-5" #addBillForm='ngForm'>
 
                 <p class="lead mb-4">Your Goal</p>
                 <small>Let's create your own campaign</small>
@@ -17,11 +17,7 @@
                 </div> -->
                 <!-- calendar -->
                 <mat-form-field>
-<<<<<<< HEAD
-                    <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Please choose or enter a date">
-=======
                     <input name="date" [(ngModel)]="newBill.date" matInput [matDatepicker]="picker" placeholder="Please choose or enter a date">
->>>>>>> 07e7c6073fe95073dc1609b8dcd692f753e41cb3
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -42,8 +38,8 @@
                     placeholder="Title">
                 <!--Who are you raising for?-->
                 <!--Zip Code-->
-                <input [(ngModel)]="newBill.address" name="address"  type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
-                    placeholder="Address">
+                <input [(ngModel)]="newBill.address" name="address" type="text" id="defaultSubscriptionFormPassword"
+                    class="form-control mb-4" placeholder="Address">
 
                 <!-- Message -->
                 <div class="form-group">
@@ -61,7 +57,7 @@
                 <!-- <input type="file" class="dropify" name="Image" #AccUserImg> -->
 
                 <!-- Send button -->
-                <button [disabled]="!addBillForm.form.valid" type="submit" class="btn btn-dark" type="submit" (click)="createBill()" >Create
+                <button [disabled]="!addBillForm.form.valid" type="submit" class="btn btn-dark" type="submit" (click)="createBill()">Create
                     Fundraiser</button>
             </form>
         </div>

@@ -7,7 +7,7 @@ import { ConfirmAdminComponent } from '../../confirm-admin/confirm-admin.compone
 import { take, tap, switchMap, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 // login provider
-import { AuthService as socialService} from "angularx-social-login";
+// import { AuthService as socialService } from "angularx-social-login";
 
 @Component({
   selector: "app-login",
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private matDialog: MatDialog,
-    private socialAuthSevice: socialService
+    // private socialAuthSevice: socialService
   ) { }
 
   ngOnInit() {

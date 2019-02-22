@@ -26,7 +26,7 @@ import { StoryComponent } from './components/stories/story/story.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DonationCreditCardComponent } from './components/donation-options/donation-credit-card/donation-credit-card.component';
 import { DonationStuffComponent } from './components/donation-options/donation-stuff/donation-stuff.component';
-import { AboutComponent} from './components/about/about.component';
+import { AboutComponent } from './components/about/about.component';
 
 // map Module
 import { AgmCoreModule } from "@agm/core";
@@ -81,8 +81,8 @@ import { ManageItemComponent } from './components/manage-item/manage-item.compon
     SearchTextPipe,
     ImageUploadComponent,
     ManageItemComponent,
-    ContactComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
