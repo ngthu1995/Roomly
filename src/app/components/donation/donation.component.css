@@ -6,6 +6,10 @@ p.lead {
     font-size: 30px;
 }
 
+small {
+    font-weight: bold;
+}
+
 /* Upload Button*/
 #campaignImage a i {
     color: red;
@@ -37,4 +41,23 @@ mat-form-field{
 
 mdb-date-picker{
     width: 100%
+}
+
+#donate_section h1 {
+    text-align: center;
+    margin: 60px 0;
+}
+
+#dropoff_section h3 {
+    color: #0277bd;
+    margin-bottom: 30px;
+}
+
+#drop_locations {
+    margin-top: 100px;
+}
+
+#dropoff_locations h5 {
+    color: #0277bd;
+    margin-bottom: 20px;
 }

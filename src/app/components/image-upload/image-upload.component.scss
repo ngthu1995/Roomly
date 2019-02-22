@@ -2,6 +2,21 @@ input{
     display: none
 }
 
+.image-upload-container {
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.image-upload-container .fas {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+}
+
 .img-preview-container{
     background-color: #f7f7f7;
     position: relative;
