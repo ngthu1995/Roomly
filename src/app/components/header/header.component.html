@@ -10,10 +10,19 @@
       <li class="nav-item active">
         <a class="nav-link waves-light" routerLink="" mdbWavesEffect>Home<span class="sr-only">Home</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="manage">Manage</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="donation">Donate</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="about">About</a>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="contact">Contact</a>
+      </li>
       <ng-container *ngIf="userIsAuthenticated">
-
-
-
         <li class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect routerLink="profile">Profile</a>
         </li>
@@ -23,20 +32,11 @@
       </ng-container>
       <ng-container *ngIf="!userIsAuthenticated">
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="manage">Manage</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="donation">Donate</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect routerLink="login">Login</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect routerLink="register">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="about">About</a>
         </li>
       </ng-container>
       <!-- <nav> -->
