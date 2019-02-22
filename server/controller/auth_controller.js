@@ -72,7 +72,7 @@ exports.auth = (req, res) => {
                 config.SECRET,
                 { expiresIn: "1h" }
             );
-            return res.json(token);
+            return res.json({token:token,user:user});
         } else {
             return res.status(422).send({
                 err: [{ title: "Wrong Data!", detail: "Wrong email or password" }]
