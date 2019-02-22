@@ -35,9 +35,6 @@ export class ManageComponent implements OnInit, OnDestroy {
 
 
   }
-
-
-
   private fetchBills() {
     this.billService.getManage()
       .subscribe(data => {
