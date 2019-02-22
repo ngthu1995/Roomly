@@ -1,12 +1,5 @@
 footer {
-  margin-top: 20px;
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(117, 175, 244),
-    rgb(72, 149, 241)
-  );
-}
-
-.line-white {
-  border-top: 1px solid rgb(255, 255, 255);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

@@ -14,6 +14,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BannerComponent } from './components/landing/banner/banner.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 /* Bootstrap */
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -81,7 +82,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ManageComponent,
     SearchTextPipe,
     ImageUploadComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
