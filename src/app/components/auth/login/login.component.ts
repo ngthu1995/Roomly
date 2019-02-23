@@ -16,11 +16,7 @@ import { of } from 'rxjs';
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
-<<<<<<< HEAD
-
-=======
   // loginForm: FormGroup;
->>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
   errors: any = [];
   notifyMessage: string = "";
   hide = true;

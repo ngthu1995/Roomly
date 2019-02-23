@@ -33,7 +33,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AgmCoreModule } from "@agm/core";
 import { CamelizePipe } from 'ngx-pipes';
 import { MapService } from './services/map.service';
-import { MapComponent } from './components/donation-options/donation-stuff/map/map.component';
+import { MapComponent } from '../app/components/donation/map/map.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './components/auth/auth.guard';
 import { HTTP_INTERCEPTORS, HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
@@ -115,7 +115,7 @@ import { ErrorInterceptor } from './error-interceptor';
     }),
     ImageCropperModule,
   ],
-  entryComponents: [DonationOptionsComponent, ConfirmAdminComponent, ErrorComponent],
+  entryComponents: [ConfirmAdminComponent, ErrorComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
