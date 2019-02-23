@@ -5,8 +5,9 @@ const billSchema = mongoose.Schema({
     date: { type: Date },
     description: String,
     time: String,
-    address: { type: String, required: true },
-    image: String
+    city: { type: String, default: 'San Francisco' },
+    street: String,
+    image: String,
 })
 
 module.exports = mongoose.model('Bill', billSchema)

@@ -13,23 +13,37 @@ import { ToastrService } from 'ngx-toastr'
 export class DonationComponent implements OnInit {
 
     addBillForm: FormGroup;
+
+    // add Bill
     newBill: Bill
+
+    // fetch bills
+    bills: Bill[] = []
     constructor(private formBuilder: FormBuilder,
         private billService: BillService,
         private toastr: ToastrService) { }
 
     timeFormOptions = timeOptions
+
     ngOnInit() {
         // this.initForm()
 
         this.newBill = new Bill();
 
+        const billObservable = this.billService.getManage();
+
+        billObservable.subscribe((bills: Bill[]) => {
+            this.bills = bills
+            // console.log(this.bill)
+        })
+
     }
 
-    createBill(){
+    createBill() {
         this.billService.createBill(this.newBill).subscribe(
             (bill: Bill) => {
-                this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')            }
+                this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')
+            }
         )
     }
     // private initForm() {

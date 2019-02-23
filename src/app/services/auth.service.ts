@@ -6,10 +6,7 @@ import * as jwt from "jsonwebtoken";
 import * as moment from "moment";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { AuthData } from '../components/auth/auth-data.model';
-<<<<<<< HEAD
-=======
 import { Router } from '@angular/router';
->>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
 
 const jwt = new JwtHelperService();
 
@@ -58,11 +55,7 @@ export class AuthService {
     return this.httpClient.post(this.rootURL + "/register", userData);
   }
 
-<<<<<<< HEAD
-  public login(email: string, password: string): Observable<any> {
-=======
   login(email: string, password: string) {
->>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
     const authData: AuthData = { email: email, password: password }
     return this.httpClient.post<{
       token: string; user: {
@@ -86,13 +79,6 @@ export class AuthService {
     );
   }
 
-  getCurrentUser() {
-    return this.user;
-  }
-
-  getAuthStatusListener() {
-    return this.authStatusListener.asObservable();
-  }
 
   private saveAuthData(
     token: string,
