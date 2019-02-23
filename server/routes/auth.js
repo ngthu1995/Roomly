@@ -8,8 +8,8 @@ const passport = require('../middleware/passport')
 router.post("/login", UserController.loginAuth);
 router.post("/register", UserController.getUser);
 
-router.post('/checkManager', UserController.confirmManager)
-router.post("/sendmail", UserController.sendEmail);
+router.post('/checkManager', UserController.confirmManager);
+router.get('/list', UserController.getUsers);
 
 
 module.exports = router;

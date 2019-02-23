@@ -12,13 +12,16 @@
       <li class="nav-item" *ngIf="isManager">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="manage">Manage</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isManager">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="users">Users</a>
+      </li>
+      <li class="nav-item" *ngIf="!isManager">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="donation">Donate</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isManager">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="about">About</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isManager">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="contact">Contact</a>
       </li>
       <ng-container *ngIf="userIsAuthenticated">

@@ -35,6 +35,19 @@ exports.getUser = (req, res) => {
     }
 }
 
+
+
+// get all users
+exports.getUsers = (req, res) => {
+    User.find({})
+        .then(user => {
+        res.json(user);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
 // exports.getUser = (req, res) => {
 
 //     const requestedUserId = req.params.id;

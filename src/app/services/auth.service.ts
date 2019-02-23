@@ -28,6 +28,11 @@ export class AuthService {
   private readonly rootURL = "http://localhost:3000/api/users";
   private router: Router
   private decodedToken;
+  apptsObservable = new BehaviorSubject([]);
+
+
+
+
 
   constructor(private httpClient: HttpClient) {
     this.decodedToken =
@@ -113,6 +118,14 @@ export class AuthService {
 
   public getAuthToken(): string {
     return localStorage.getItem("user_auth");
+  }
+
+
+  // Get all users information
+  getUsers() {
+    return this.httpClient.get('http://localhost:3000/api/users/list').subscribe((appts: any) => {
+      this.apptsObservable.next(appts);
+    })
   }
 
   checkMangerRole(managerString: string) {

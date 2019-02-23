@@ -5,7 +5,7 @@
                 <h5>Giving = Hope</h5>
         </div>
         <div class="col-12">
-            <form #registerForm="ngForm" class="text-center border border-light p-5">
+            <form #registerForm="ngForm" class="text-center border border-light p-5"  id="register_form">
 
                 <p class="lead mb-4">Register</p>
                 <p>*You are one step away to become part of Hackathon community</p>
@@ -63,7 +63,7 @@
 
 
                 <mat-form-field>
-                    <input [(ngModel)]="formData.passwordConfirmation" id="defaultRegisterFormPassword" class=""
+                    <input [(ngModel)]="formData.passwordConfirmation" id="defaultRegisterFormPassword2" class=""
                         placeholder="Password Confirmation" name="passwordConfirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock"
                         #passwordConfirmation matInput [type]="hideConfirm ? 'password' : 'text'" required>
                     <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility_off' :
@@ -80,7 +80,7 @@
                 </small>
 
                 <!-- Sign up button -->
-                <button (click)='register(registerForm)' [disabled]="!registerForm.form.valid" class="btn btn-dark" type="submit">Register</button>
+                <button (click)='register(registerForm)' [disabled]="!registerForm.form.valid" class="btn btn-dark">Register</button>
                 <hr>
                 <!-- Terms of service -->
                 <p>By clicking
