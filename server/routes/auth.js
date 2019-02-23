@@ -10,6 +10,6 @@ router.post("/register", UserController.getUser);
 
 router.post('/checkManager', UserController.confirmManager)
 router.post("/sendmail", UserController.sendEmail);
-
+router.post('/notiManager', UserController.notiMan)
 
 module.exports = router;

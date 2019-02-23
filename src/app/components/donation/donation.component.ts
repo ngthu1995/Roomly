@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { BillService } from '../../services/bill.service';
 import { Bill } from '../models/bill.model';
 import { SelectOption, timeOptions } from './constants';
@@ -26,11 +26,18 @@ export class DonationComponent implements OnInit {
 
     }
 
-    createBill(){
+    createBill(form: NgForm) {
         this.billService.createBill(this.newBill).subscribe(
             (bill: Bill) => {
-                this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')            }
+                this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')
+            }
         )
+    }
+
+    onSendMail() {
+        this.billService.notiMan().subscribe(_ => {
+            console.log('mail sent')
+        })
     }
     // private initForm() {
     //     this.addBillForm = this.formBuilder.group({

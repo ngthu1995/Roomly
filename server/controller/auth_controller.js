@@ -4,10 +4,30 @@ const bcrypt = require('bcrypt-nodejs')
 const config = require("../config/dev");
 const session = require('express-session');
 const jwt = require("jsonwebtoken");
-
 // Setting up nodemailer
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
+
+exports.notiMan = (req, res) => {
+    const transport = nodemailer.createTransport({
+        service: 'SendGrid',
+        auth: {
+            user: config.SEND_GRID_USERNAME,
+            pass: config.SEND_GRID_PASSWORD
+        }
+    })
+
+    const mailOptions = {
+        to: 'mkavo92@gmail.com',
+        from: 'customerTracker@mail.com',
+        subject: 'New Customer Has Donated',
+        text: 'A new Customer has just donate, please go to this http://localhost4200 to get more info'
+    }
+    transport.sendMail(mailOptions, (err) => {
+        console.log(err)
+    })
+}
+
 
 exports.getUser = (req, res) => {
     exports.createAuth = (req, res, next) => {
@@ -35,38 +55,6 @@ exports.getUser = (req, res) => {
     }
 }
 
-// exports.getUser = (req, res) => {
-
-//     const requestedUserId = req.params.id;
-//     const user = res.locals.user;
-
-//     if (requestedUserId === user.id) {
-
-//         // Display all
-//         User.findById(requestedUserId, (err, foundUser) => {
-//             if (err) {
-//                 return res.status(422).send({
-//                     errors: normalizeErrors(err.errors)
-//                 });
-//             }
-//             return res.json(foundUser);
-//         })
-//     } else {
-
-//         User.findById(requestedUserId)
-//             .select('-revenue -stripeCustomerId -password')
-//             .exec((err, foundUser) => {
-//                 if (err) {
-//                     return res.status(422).send({
-//                         errors: normalizeErrors(err.errors)
-//                     });
-//                 }
-
-//                 return res.json(foundUser)
-//             })
-//     }
-// }
-
 
 // Login User
 exports.loginAuth = async (req, res, next) => {
@@ -93,110 +81,10 @@ exports.loginAuth = async (req, res, next) => {
 }
 
 
-// Login user
-// exports.auth = (req, res) => {
-//     const { password, email } = req.body;
-
-//     if (!password || !email) {
-//         return res.status(422).send({
-//             err: [{ title: "Data missing!", detail: "Provide email and password" }]
-//         });
-//     }
-
-//     User.findOne({ email }, (err, user) => {
-//         if (err) {
-//             return res.status(422).send({
-//                 errors: normalizeErrors(err.errors)
-//             });
-//         }
-
-//         if (!user) {
-//             return res.status(422).send({
-//                 err: [{ title: "Invalid User!", detail: "User does not exist" }]
-//             });
-//         }
-
-//         if (user.hasSamePassword(password)) {
-//             //  return JWT token
-//             const token = jwt.sign(
-//                 {
-//                     userId: user.id,
-//                     username: user.username
-//                 },
-//                 config.SECRET,
-//                 { expiresIn: "1h" }
-//             );
-//             return res.json({token:token,user:user});
-//         } else {
-//             return res.status(422).send({
-//                 err: [{ title: "Wrong Data!", detail: "Wrong email or password" }]
-//             });
-//         }
-//     });
-// };
-
-
 // Facebook login
 exports.authenticateFacebook = (req, res, next) => {
     req.session
 }
-
-
-// Register user
-// exports.register = (req, res) => {
-//     const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
-
-//     if (!password || !email) {
-//         return res.status(422).send({
-//             err: [{ title: "Data missing!", detail: "Provide email and password" }]
-//         });
-//     }
-
-//     if (password !== passwordConfirmation) {
-//         return res.status(422).send({
-//             err: [
-//                 {
-//                     title: "Invalid Password!",
-//                     detail: "Password isn't the same as confirmation"
-//                 }
-//             ]
-//         });
-//     }
-
-//     User.findOne({ email }, (err, existingUser) => {
-//         if (err) {
-//             return res.status(422).send({
-//                 errors: normalizeErrors(err.errors)
-//             });
-//         }
-//         if (existingUser) {
-//             return res.status(422).send({
-//                 err: [
-//                     {
-//                         title: "Invalid Email!",
-//                         detail: "User with this email already exist"
-//                     }
-//                 ]
-//             });
-//         }
-//         // Define a new user
-//         const user = new User({
-//             firstName,
-//             lastName,
-//             phone,
-//             email,
-//             password,
-//         });
-
-//         user.save(err => {
-//             if (err) {
-//                 return res.status(422).send({ errors: normalizeErrors(err.errors) });
-//             }
-
-//             return res.json({ registered: true });
-//         });
-//     });
-// };
 
 
 // Check authentication

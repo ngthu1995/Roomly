@@ -36,7 +36,7 @@ exports.create = async (req, res, next) => {
         const result = await manage.save();
         return res.status(201).json(result)
     } catch (e) {
-        return res.status(500).json({ message: 'Unexpected Error occurred', error: e });
+        return res.status(500).json({ message: 'Please fill out the required fields', error: e });
 
     }
 

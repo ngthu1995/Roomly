@@ -23,6 +23,10 @@ export class BillService {
             }))
     }
 
+    notiMan(): Observable<any> {
+        return this.httpClient.post('http://localhost:3000/api/users/notiManager', '')
+    }
+
     createBill(bill: Bill): Observable<any> {
         return this.httpClient.post(this.rootUrl, bill)
     }
