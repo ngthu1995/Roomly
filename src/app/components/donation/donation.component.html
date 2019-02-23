@@ -18,12 +18,7 @@
                 </div> -->
                 <!-- calendar -->
                 <mat-form-field>
-<<<<<<< HEAD
-                    <input formControlName="date" matInput [matDatepicker]="picker"
-                        placeholder="Please choose or enter a date">
-=======
                     <input name="date" [(ngModel)]="newBill.date" matInput [matDatepicker]="picker" placeholder="Please choose or enter a date">
->>>>>>> 9259585f0ff5c88a8222c811f345e0746bfc79d5
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -40,19 +35,6 @@
                 </mat-form-field>
 
                 <!--Campaign Title-->
-<<<<<<< HEAD
-                <input formControlName="title" type="text" id="defaultSubscriptionFormPassword"
-                    class="form-control mb-4" placeholder="Title">
-                <!--Who are you raising for?-->
-                <!--Zip Code-->
-                <input formControlName="address" type="text" id="defaultSubscriptionFormPassword"
-                    class="form-control mb-4" placeholder="Address">
-
-                <!-- Message -->
-                <div class="form-group">
-                    <textarea formControlName="description" class="form-control rounded-0"
-                        id="exampleFormControlTextarea2" rows="3" placeholder="Description"></textarea>
-=======
                 <input [(ngModel)]="newBill.title" name="title" type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
                     placeholder="Title">
                 <!--Who are you raising for?-->
@@ -64,7 +46,6 @@
                 <div class="form-group">
                     <textarea [(ngModel)]="newBill.description" name="description" class="form-control rounded-0" id="exampleFormControlTextarea2"
                         rows="3" placeholder="Description"></textarea>
->>>>>>> 9259585f0ff5c88a8222c811f345e0746bfc79d5
                 </div>
                 <hr>
                 <div class="form-group">

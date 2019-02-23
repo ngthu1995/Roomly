@@ -5,14 +5,10 @@ const config = require("../config/dev");
 const session = require('express-session');
 const jwt = require("jsonwebtoken");
 
-<<<<<<< HEAD
-const bcrypt = require('bcrypt-nodejs')
-=======
 // Setting up nodemailer
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
->>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
 exports.getUser = (req, res) => {
     exports.createAuth = (req, res, next) => {
         const { email, password } = req.body;
@@ -112,78 +108,6 @@ exports.loginAuth = async (req, res, next) => {
 exports.loginAuth = async (req, res, next) => {
     const { email, password } = req.body;
 
-<<<<<<< HEAD
-    try {
-        const auth = await User.findOne({ email }).lean();
-
-        if (!auth) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        const isMatched = bcrypt.compareSync(password, auth.password);
-
-        if (!isMatched) {
-            return res.status(400).json({ message: "Password does not match" });
-        }
-
-        const { password: userPassword, __v, ...user } = auth;
-
-        const token = jwt.sign(
-            { email: user.email, id: user._id },
-            "secret_long_string",
-            { expiresIn: "1h" }
-        );
-        return res.status(201).json({ token, user });
-    } catch (e) {
-        console.log(e);
-        return res.status(500).json({ message: e.message || "Auth failed" });
-    }
-};
-
-// exports.auth = (req, res) => {
-//     const { password, email } = req.body;
-
-//     if (!password || !email) {
-//         return res.status(422).send({
-//             err: [{ title: "Data missing!", detail: "Provide email and password" }]
-//         });
-//     }
-
-//     User.findOne({ email }, (err, user) => {
-//         if (err) {
-//             return res.status(422).send({
-//                 errors: normalizeErrors(err.errors)
-//             });
-//         }
-
-//         if (!user) {
-//             return res.status(422).send({
-//                 err: [{ title: "Invalid User!", detail: "User does not exist" }]
-//             });
-//         }
-
-//         if (user.hasSamePassword(password)) {
-//             //  return JWT token
-//             const token = jwt.sign(
-//                 {
-//                     userId: user.id,
-//                     username: user.username
-//                 },
-//                 config.SECRET,
-//                 { expiresIn: "1h" }
-//             );
-//             return res.json(token);
-//         } else {
-//             return res.status(422).send({
-//                 err: [{ title: "Wrong Data!", detail: "Wrong email or password" }]
-//             });
-//         }
-//     });
-// };
-
-exports.register = (req, res) => {
-    const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
-=======
 // Login user
 // exports.auth = (req, res) => {
 //     const { password, email } = req.body;
@@ -226,12 +150,11 @@ exports.register = (req, res) => {
 //     });
 // };
 
-
+}
 // Facebook login
 exports.authenticateFacebook = (req, res, next) => {
     req.session
 }
->>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
 
 
 // Register user
@@ -318,11 +241,7 @@ exports.authMiddleware = (req, res, next) => {
 exports.confirmManager = async (req, res, next) => {
     const { managerString } = req.body;
     try {
-<<<<<<< HEAD
-        const hash = bcrypt.hashSync("nothing");
-=======
         const hash = bcrypt.hashSync("home");
->>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
         const isMatched = bcrypt.compareSync(managerString, hash);
         if (!isMatched) {
             return res
