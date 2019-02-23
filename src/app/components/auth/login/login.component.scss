@@ -1,10 +1,41 @@
 .container {
     margin-top: 80px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 p.lead {
     font-size: 30px;
 }
+
+#signin_header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom:  30px;
+}
+
+#signin_header img {
+    margin-bottom: 20px;
+}
+
+#signin_header h5 {
+    font-family: 'Indie Flower', cursive;
+}
+
+#signin_header span {
+    font-weight: bold;
+}
+
+#signin_form {
+    box-shadow: 2px 2px 1px 1px lightgray;
+}
+
 
 button {
     margin: 10px 0 30px 0;

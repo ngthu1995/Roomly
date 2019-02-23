@@ -1,8 +1,13 @@
 <!-- Default form login -->
 <div class="container">
     <div class="row">
+        <div class="col-md-12" id="signin_header">
+            <img src="assets/img/logo.png">
+            <h5>"only by <span>GIVING </span> are you able</h5>
+            <h5>to receive <span>MORE </span> than you already have."</h5>
+        </div>
         <div class="col-12">
-            <form class="text-center border border-light p-5" (submit)="login(loginForm)" #loginForm="ngForm">
+            <form class="text-center border border-light p-5" (submit)="login(loginForm)" #loginForm="ngForm" id="signin_form">
                 <p class="lead mb-4">Sign in</p>
                 <small>*Please provide valid email and password</small>
 
@@ -40,24 +45,6 @@
                 <p>Don't have an account?
                     <a routerLink='/register'>Register</a>
                 </p>
-
-                <!-- Social login -->
-                <p>or sign in with:</p>
-                <div class="socialIcons">
-                    <!--Facebook Login-->
-                    <a routerLink="">
-                        <i class="devicon-facebook-plain colored"></i>
-                    </a>
-                    <!--Twitter Login-->
-                    <a routerLink="">
-                        <i class="devicon-twitter-plain colored"></i>
-                    </a>
-                    <!--Google Login-->
-                    <a routerLink="" style="color: red">
-                        <i class="devicon-google-plain"></i>
-                    </a>
-                </div>
-
 
                 <!--Account Forgotten-->
                 <div class="d-flex justify-content-around">
