@@ -14,6 +14,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BannerComponent } from './components/landing/banner/banner.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { UserlistComponent } from './components/userList/userList.component';
 
 /* Bootstrap */
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -25,6 +27,7 @@ import { StoryComponent } from './components/stories/story/story.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DonationCreditCardComponent } from './components/donation-options/donation-credit-card/donation-credit-card.component';
 import { DonationStuffComponent } from './components/donation-options/donation-stuff/donation-stuff.component';
+import { AboutComponent } from './components/about/about.component';
 
 // map Module
 import { AgmCoreModule } from "@agm/core";
@@ -54,7 +57,9 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
 import { ImageUploadService } from './services/image-upload.service';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { ManageItemComponent } from './components/manage-item/manage-item.component'
+import { ManageItemComponent } from './components/manage-item/manage-item.component';
+import { ErrorComponent } from './components/error/error.component'
+import { ErrorInterceptor } from './error-interceptor';
 
 @NgModule({
   declarations: [
@@ -78,7 +83,11 @@ import { ManageItemComponent } from './components/manage-item/manage-item.compon
     ManageComponent,
     SearchTextPipe,
     ImageUploadComponent,
-    ManageItemComponent
+    ManageItemComponent,
+    AboutComponent,
+    ContactComponent,
+    ErrorComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,
@@ -104,18 +113,23 @@ import { ManageItemComponent } from './components/manage-item/manage-item.compon
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
     }),
-    ImageCropperModule
+    ImageCropperModule,
   ],
-  entryComponents: [DonationOptionsComponent, ConfirmAdminComponent],
+  entryComponents: [DonationOptionsComponent, ConfirmAdminComponent, ErrorComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
     HttpClient,
     BillService,
-    ImageUploadService
+    ImageUploadService,
   ],
   bootstrap: [AppComponent]
 })

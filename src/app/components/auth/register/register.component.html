@@ -1,7 +1,11 @@
 <div class="container">
     <div class="row">
+        <div class="col-md-12" id="register_header">
+                <img src="assets/img/logo.png">
+                <h5>Giving = Hope</h5>
+        </div>
         <div class="col-12">
-            <form #registerForm="ngForm" class="text-center border border-light p-5">
+            <form #registerForm="ngForm" class="text-center border border-light p-5"  id="register_form">
 
                 <p class="lead mb-4">Register</p>
                 <p>*You are one step away to become part of Hackathon community</p>
@@ -59,7 +63,7 @@
 
 
                 <mat-form-field>
-                    <input [(ngModel)]="formData.passwordConfirmation" id="defaultRegisterFormPassword" class=""
+                    <input [(ngModel)]="formData.passwordConfirmation" id="defaultRegisterFormPassword2" class=""
                         placeholder="Password Confirmation" name="passwordConfirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock"
                         #passwordConfirmation matInput [type]="hideConfirm ? 'password' : 'text'" required>
                     <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility_off' :
@@ -76,33 +80,12 @@
                 </small>
 
                 <!-- Sign up button -->
-                <button (click)='register(registerForm)' [disabled]="!registerForm.form.valid" class="btn btn-dark"
-                    type="submit">Register</button>
-
-                <!-- Social register -->
-                <p>or sign up with:</p>
-                <div class="socialIcons">
-                    <!--Facebook Login-->
-                    <a routerLink="">
-                        <i class="devicon-facebook-plain colored"></i>
-                    </a>
-                    <!--Twitter Login-->
-                    <a routerLink="">
-                        <i class="devicon-twitter-plain colored"></i>
-                    </a>
-                    <!--Google Login-->
-                    <a routerLink="" style="color: red">
-                        <i class="devicon-google-plain"></i>
-                    </a>
-                </div>
-
+                <button (click)='register(registerForm)' [disabled]="!registerForm.form.valid" class="btn btn-dark">Register</button>
                 <hr>
-
                 <!-- Terms of service -->
                 <p>By clicking
                     <em>Sign up</em> you agree to our
                     <a href="" target="_blank">terms of service</a>
-
             </form>
         </div>
     </div>

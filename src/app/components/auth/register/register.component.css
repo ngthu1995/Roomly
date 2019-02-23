@@ -1,5 +1,11 @@
 .container {
     margin-top: 80px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
 p.lead {
@@ -26,4 +32,31 @@ mat-icon{
 
 .email{
     margin-top: -25px;
+}
+
+#register_header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom:  30px;
+}
+
+#register_header img {
+    margin-bottom: 20px;
+}
+
+#register_header h5 {
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#register_header span {
+    font-weight: bold;
+}
+
+#register_form {
+    box-shadow: 2px 2px 1px 1px lightgray;
 }

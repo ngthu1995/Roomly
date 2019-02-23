@@ -6,6 +6,10 @@ import * as jwt from "jsonwebtoken";
 import * as moment from "moment";
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { AuthData } from '../components/auth/auth-data.model';
+<<<<<<< HEAD
+=======
+import { Router } from '@angular/router';
+>>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
 
 const jwt = new JwtHelperService();
 
@@ -25,7 +29,13 @@ export class AuthService {
   };
   private authStatusListener = new BehaviorSubject<boolean>(false);
   private readonly rootURL = "http://localhost:3000/api/users";
+  private router: Router
   private decodedToken;
+  apptsObservable = new BehaviorSubject([]);
+
+
+
+
 
   constructor(private httpClient: HttpClient) {
     this.decodedToken =
@@ -48,7 +58,11 @@ export class AuthService {
     return this.httpClient.post(this.rootURL + "/register", userData);
   }
 
+<<<<<<< HEAD
   public login(email: string, password: string): Observable<any> {
+=======
+  login(email: string, password: string) {
+>>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
     const authData: AuthData = { email: email, password: password }
     return this.httpClient.post<{
       token: string; user: {
@@ -61,10 +75,12 @@ export class AuthService {
         const { token, user } = response;
         this.token = token;
         this.user = user;
+        console.log(user)
         if (token) {
           this.saveAuthData(token, user);
           this.isAuthenticate = true;
           this.authStatusListener.next(true);
+          // this.router.navigate([''])
         }
       })
     );
@@ -119,6 +135,14 @@ export class AuthService {
     return localStorage.getItem("user_auth");
   }
 
+
+  // Get all users information
+  getUsers() {
+    return this.httpClient.get('http://localhost:3000/api/users/list').subscribe((appts: any) => {
+      this.apptsObservable.next(appts);
+    })
+  }
+
   checkMangerRole(managerString: string) {
     if (!this.user || !this.token) {
       console.log('sanity checked');
@@ -140,5 +164,10 @@ export class AuthService {
     this.user = null;
     this.isAuthenticate = false;
     this.authStatusListener.next(false);
+  }
+
+
+  public sendMessage(userData: any) {
+    return this.httpClient.post(this.rootURL + "/sendemail", userData);
   }
 }
