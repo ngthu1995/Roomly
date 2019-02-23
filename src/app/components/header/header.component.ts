@@ -38,9 +38,6 @@ export class HeaderComponent implements OnInit {
     return this.currentUser && this.currentUser.role === 'admin';
   }
 
-  get isManager(): boolean {
-    return this.currentUser && this.currentUser.role === 'manager';
-  }
 
   logOut() {
     this.authService.logOut();
