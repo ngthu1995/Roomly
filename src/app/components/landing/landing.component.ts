@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  public query: string;
+
+  constructor() { 
+    this.query = "starbucks";
+  }
 
   ngOnInit() {
   }

@@ -46,4 +46,9 @@
       </div>
     </div>
   </section>
+  <div style="padding: 10px 0">
+      <input type="text" placeholder="Search places..." [(ngModel)]="query" />
+      <button (click)="map.places(query)">Search</button>
+  </div>
+  <here-map #map appId="XufnLXmqCCHMHZOirBJf" appCode="U2SchvTp6_gAgHEb8tcVdg" lat="37.7397" lng="-121.4252" width="75%" height="530px"></here-map>
 </div>
