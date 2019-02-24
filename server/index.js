@@ -6,48 +6,46 @@ const app = express();
 const config = require("./config/dev");
 
 const userRoutes = require("./routes/auth"),
-    billRoutes = require('./routes/bill'),
-    imageRoutes = require('./routes/image-upload')
-const path = require('path')
+  billRoutes = require("./routes/bill"),
+  imageRoutes = require("./routes/image-upload");
+const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-const passort = require('./middleware/passport')
+const passort = require("./middleware/passport");
 
 app.use(cors());
 mongoose
-    .connect(config.DB_URL, {
-        useNewUrlParser: true,
-        useCreateIndex: true
-    })
-    .then(() => {
-        console.log('connected to db')
-    })
-    .catch(err => console.log(err));
+  .connect(config.DB_URL, {
+    useNewUrlParser: true,
+    useCreateIndex: true
+  })
+  .then(() => {
+    console.log("connected to db");
+  })
+  .catch(err => console.log(err));
 
 app.use(bodyParser.json());
 
-
 app.use("/api/users", userRoutes);
-app.use('/api/bill', billRoutes)
-app.use('/api/image', imageRoutes)
+app.use("/api/bill", billRoutes);
+app.use("/api/image", imageRoutes);
 
+if (process.env.NODE_ENV === "production") {
+  const appPath = path.join(__dirname, "../client/dist/", "rental");
 
-if (process.env.NODE_ENV === 'production') {
-    const appPath = path.join(__dirname, '../client/dist/', 'rental')
+  // we want to use all the express static
+  app.use(express.static(appPath));
 
-    // we want to use all the express static 
-    app.use(express.static(appPath))
-
-    // this will catch every request
-    app.get('*', (req, res) => {
-        res.sendfile(path.resolve(appPath, 'index.html'))
-    })
-    //
+  // this will catch every request
+  app.get("*", (req, res) => {
+    res.sendfile(path.resolve(appPath, "index.html"));
+  });
+  //
 }
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log("I am running");
+  console.log("I am running");
 });

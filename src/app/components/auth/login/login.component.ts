@@ -37,6 +37,12 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // this.initForm();
+    // this.authStatusSub = this.auth.getAuthStatusListener().subscribe(
+    //   authStatus => {
+    //     console.log(authStatus)
+    //   }
+    // )
 
     this.route.params.subscribe(params => {
       if (params["registered"] === "success") {

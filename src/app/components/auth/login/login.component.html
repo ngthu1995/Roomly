@@ -17,10 +17,13 @@
                 <!-- Email -->
                 <div class="col">
                     <mat-form-field>
-                        <input matInput name="email" ngModel type="email" id="defaultLoginFormEmail" class=""
-                            placeholder="E-mail" #emailInput="ngModel" required email>
-                        <mat-error *ngIf="emailInput.invalid">Please enter a valid email</mat-error>
+                        <input matInput name="email" type="email" id="defaultLoginFormEmail" class="" placeholder="E-mail"
+                            #emailInput="ngModel" ngModel required email>
+                        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+                        <!-- <input matInput name="email" ngModel type="email" id="defaultLoginFormEmail" class=""
+                                placeholder="E-mail" required email> -->
                     </mat-form-field>
+
                 </div>
                 <!-- <div *ngIf="isInvalidForm('email')" class="alert alert-danger">
                     <div *ngIf="isRequired('email')">Email is required.</div>
@@ -29,13 +32,15 @@
                 <!-- Password -->
                 <div class="col">
                     <mat-form-field>
-                        <input matInput name="password" ngModel [type]="hide ? 'password' : 'text'" id="defaultLoginFormPassword"
-                            class="" placeholder="Password" #passwordInput="ngModel" required>
+                        <input matInput name="password" [type]="hide ? 'password' : 'text'" id="defaultLoginFormPassword"
+                            class="" placeholder="Password" #passwordInput="ngModel" ngModel required>
+                        <!-- <input matInput name="password" ngModel [type]="hide ? 'password' : 'text'"
+                                id="defaultLoginFormPassword" class="" placeholder="Password" required> -->
                         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
                             'visibility'}}</mat-icon>
-                        <mat-error *ngIf="passwordInput.invalid">Password is required</mat-error>
-
+                        <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
                     </mat-form-field>
+
                 </div>
 
                 <!-- Sign in button -->

@@ -33,8 +33,5 @@ export class RegisterComponent implements OnInit {
       },
       () => { }
     );
-    this.auth.sendMessage(this.formData).subscribe(() => {
-      console.log('message sent');
-    })
   }
 }

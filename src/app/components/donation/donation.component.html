@@ -35,24 +35,12 @@
                 </mat-form-field>
 
                 <!--Campaign Title-->
-                <!-- <input [(ngModel)]="newBill.title" name="title" type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
-                    placeholder="Title"> -->
-
-                <mat-form-field>
-                    <input matInput name="title" #titleInput="ngModel" ngModel [(ngModel)]="newBill.title" placeholder="Title">
-                    <mat-error *ngIf="titleInput.invalid">Title is required</mat-error>
-                </mat-form-field>
+                <input [(ngModel)]="newBill.title" name="title" type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4"
+                    placeholder="Title">
                 <!--Who are you raising for?-->
                 <!--Zip Code-->
-                <!-- <input [(ngModel)]="newBill.address" name="address" type="text" id="defaultSubscriptionFormPassword"
-                    class="form-control mb-4" placeholder="Address"> -->
-
-                <mat-form-field>
-                    <input matInput name="address" #addressInput="ngModel" ngModel [(ngModel)]="newBill.address"
-                        placeholder="Address">
-                    <mat-error *ngIf="addressInput.invalid">Address is required</mat-error>
-                </mat-form-field>
-
+                <input [(ngModel)]="newBill.street" name="street" type="text" id="defaultSubscriptionFormPassword"
+                    class="form-control mb-4" placeholder="street">
 
                 <!-- Message -->
                 <div class="form-group">
@@ -67,57 +55,80 @@
                     </app-image-upload>
                 </div>
                 <button [disabled]="!addBillForm.form.valid" type="submit" class="btn btn-outline-dark" type="submit"
-                    (click)="createBill()" (click)="onSendMail()">Donate</button>
+                    (click)="createBill()">Schedule Your Time</button>
             </form>
         </div>
     </div>
-    <h1>Or</h1>
-    <!--Drop Off Location-->
-    <div class="row">
-        <div class="col-md-12" id="dropoff_section">
-            <h3>DROP IT OFF</h3>
-            <p>Drop off your gently used furniture and household goods to us and furnish a home for someone in need.
-                Every year we redistribute thousands of furniture items and household goods to the formerly homeless,
-                women and children escaping abusive situations.</p>
-            <p>Check out one of our donation drop off partners!</p>
-            <br>
-            <p><span style="font-weight: 500">*Notice: </span>Any item can be dropped off at our warehouse. They must
-                be in good condition for our families. See what Items We Accept and what Items We Do Not Accept here.</p>
 
-        </div>
-        <!--Drop Off Section-->
-        <div class="col-md-12" id="dropoff_locations" style="margin-top: 50px; margin-bottom: 30px">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Home Sweet Home Warehouse</h5>
-                    <p><span style="font-weight: 500">Address: </span>290 Hanley Industrial Ct. Brentwood, MO 63144</p>
-                    <p><span style="font-weight: 500">Bussiness Time: </span>9am - 2pm (Mon-Fri)</p>
-                    <p><span style="font-weight: 500">Phone: </span>314-448-9838</p>
-                    <p><span style="font-weight: 500">*Notice: </span>Any item can be dropped off at our warehouse.
-                        They must be in good condition for our families. See what <a href="https://homesweethomestl.org/wp-content/uploads/2018/12/HSH-Donation-Brochure.pdf">Items
-                            We Accept </a>and what <a href="https://homesweethomestl.org/wp-content/uploads/2016/03/Items-We-Do-Not-Accept-3.pdf">Items
-                            We Do Not Accept </a> here.</p>
-                    <p style="font-weight: bold">*Please go to the back of the building and ring the doorbell. Someone
-                        will be out to assist you. Thank you!</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3117.164143653364!2d-90.3391624482925!3d38.622104770627445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8cae2a15c5e45%3A0x7702ccca96c8b8de!2s290+Hanley+Industrial+Ct%2C+Brentwood%2C+MO+63144!5e0!3m2!1sen!2sus!4v1550864675703"
-                        width="80%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <div class="card">
+        <div class="card-body">
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Where to find us.</h2>
+                    <br />
+                    <ul class="list-group border-0">
+                        <li class="list-group-item border-0">
+                            <i class="fas fa-map-marker-alt"></i>{{bills.street}} , {{bills.city}} + CA
+                        </li>
+                        <!-- will implement phone number when know the phone number -->
+                    </ul>
                 </div>
-                <div class="col-md-6">
-                    <h5>Kirkwood United Methodist Church</h5>
-                    <p><span style="font-weight: 500">Address: </span>201 W Adams Ave
-                        Kirkwood, MO 63122</p>
-                    <p><span style="font-weight: 500">Bussiness Time: </span>9am - 2pm (Mon-Fri)</p>
-                    <p><span style="font-weight: 500">Phone: </span>314-996-5223</p>
-                    <p><span style="font-weight: 500">*Notice: </span>Can accept all furniture and household items. You
-                        can see a full list of <a href="https://homesweethomestl.org/wp-content/uploads/2018/12/HSH-Donation-Brochure.pdf">Items
-                            We Accept </a> and a list of <a href="https://homesweethomestl.org/wp-content/uploads/2016/03/Items-We-Do-Not-Accept-3.pdf">Items
-                            We Do Not Accept </a> here.</p>
-                    <p style="font-weight: bold">*Drop off by appointment only. To schedule an appointment, please call
-                        us at the phone number above.</p>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.8197496595826!2d-90.41154594829302!3d38.583998472859626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8cc338ed6a52b%3A0xed7f204bce997e93!2sKirkwood+U+Methodist+Pre-school!5e0!3m2!1sen!2sus!4v1550865643017"
-                        width="80%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-5 order-md-1" *ngIf="bills">
+                <!-- <img class="featurette-image img-fluid mx-auto" [src]="fullImagePath" alt="Generic placeholder image"> -->
+                <app-map [location]="bills.city + ',' + bills.street"></app-map>
+            </div>
+        </div>
+        <h1>Or</h1>
+        <!--Drop Off Location-->
+        <div class="row">
+            <div class="col-md-12" id="dropoff_section">
+                <h3>DROP IT OFF</h3>
+                <p>Drop off your gently used furniture and household goods to us and furnish a home for someone in
+                    need.
+                    Every year we redistribute thousands of furniture items and household goods to the formerly
+                    homeless,
+                    women and children escaping abusive situations.</p>
+                <p>Check out one of our donation drop off partners!</p>
+            </div>
+            <!--Drop Off Section-->
+            <div class="col-md-12" id="dropoff_locations" style="margin-top: 50px; margin-bottom: 30px">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Home Sweet Home Warehouse</h5>
+                        <p><span style="font-weight: 500">Address: </span>290 Hanley Industrial Ct. Brentwood, MO 63144
+                        </p>
+                        <p><span style="font-weight: 500">Bussiness Time: </span>9am - 2pm (Mon-Fri)</p>
+                        <p><span style="font-weight: 500">Phone: </span>314-448-9838</p>
+                        <p><span style="font-weight: 500">*Notice: </span>Any item can be dropped off at our warehouse.
+                            They
+                            must be in good condition for our families. See what <a href="https://homesweethomestl.org/wp-content/uploads/2018/12/HSH-Donation-Brochure.pdf">Items
+                                We Accept </a>and what <a href="https://homesweethomestl.org/wp-content/uploads/2016/03/Items-We-Do-Not-Accept-3.pdf">Items
+                                We Do Not Accept </a> here.</p>
+                        <p style="font-weight: bold">*Please go to the back of the building and ring the doorbell.
+                            Someone
+                            will be out to assist you. Thank you!</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3117.164143653364!2d-90.3391624482925!3d38.622104770627445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8cae2a15c5e45%3A0x7702ccca96c8b8de!2s290+Hanley+Industrial+Ct%2C+Brentwood%2C+MO+63144!5e0!3m2!1sen!2sus!4v1550864675703"
+                            width="80%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Kirkwood United Methodist Church</h5>
+                        <p><span style="font-weight: 500">Address: </span>201 W Adams Ave
+                            Kirkwood, MO 63122</p>
+                        <p><span style="font-weight: 500">Bussiness Time: </span>9am - 2pm (Mon-Fri)</p>
+                        <p><span style="font-weight: 500">Phone: </span>314-996-5223</p>
+                        <p><span style="font-weight: 500">*Notice: </span>Can accept all furniture and household items.
+                            You
+                            can see a full list of <a href="https://homesweethomestl.org/wp-content/uploads/2018/12/HSH-Donation-Brochure.pdf">Items
+                                We Accept </a> and a list of <a href="https://homesweethomestl.org/wp-content/uploads/2016/03/Items-We-Do-Not-Accept-3.pdf">Items
+                                We Do Not Accept </a> here.</p>
+                        <p style="font-weight: bold">*Drop off by appointment only. To schedule an appointment, please
+                            call
+                            us at the phone number above.</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.8197496595826!2d-90.41154594829302!3d38.583998472859626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8cc338ed6a52b%3A0xed7f204bce997e93!2sKirkwood+U+Methodist+Pre-school!5e0!3m2!1sen!2sus!4v1550865643017"
+                            width="80%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

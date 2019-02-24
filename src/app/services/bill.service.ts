@@ -13,7 +13,12 @@ export class BillService {
     private addBillSubject: Subject<Bill> = new Subject<Bill>();
 
 
+
+
     constructor(private httpClient: HttpClient) { }
+
+
+    // addBill
     addBill(bill: Bill) {
         return this.httpClient
             .post<Bill>(this.rootUrl, bill, {
@@ -23,10 +28,8 @@ export class BillService {
             }))
     }
 
-    notiMan(): Observable<any> {
-        return this.httpClient.post('http://localhost:3000/api/users/notiManager', '')
-    }
 
+    // Create bill
     createBill(bill: Bill): Observable<any> {
         return this.httpClient.post(this.rootUrl, bill)
     }
@@ -66,6 +69,10 @@ export class BillService {
                     })
                 }
             }))
+    }
+
+    fetchApi() {
+        return this.httpClient.get('https://geocoder.api.here.com/6.2/geocode.json');
     }
 
 

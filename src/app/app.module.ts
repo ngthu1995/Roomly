@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HereMapsModule } from 'ng2-heremaps';
 
 // components
 import { AppComponent } from './app.component';
@@ -15,6 +16,9 @@ import { BannerComponent } from './components/landing/banner/banner.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { UserlistComponent } from './components/userList/userList.component';
+import { HereMapComponent } from './components/donation/here_map/here-map.component';
+
 
 /* Bootstrap */
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -32,7 +36,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AgmCoreModule } from "@agm/core";
 import { CamelizePipe } from 'ngx-pipes';
 import { MapService } from './services/map.service';
-import { MapComponent } from './components/donation-options/donation-stuff/map/map.component';
+import { MapComponent } from '../app/components/donation/map/map.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './components/auth/auth.guard';
 import { HTTP_INTERCEPTORS, HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
@@ -85,7 +89,9 @@ import { ErrorInterceptor } from './error-interceptor';
     ManageItemComponent,
     AboutComponent,
     ContactComponent,
-    ErrorComponent
+    ErrorComponent,
+    UserlistComponent,
+    HereMapComponent
   ],
   imports: [
     BrowserModule,
@@ -113,7 +119,7 @@ import { ErrorInterceptor } from './error-interceptor';
     }),
     ImageCropperModule,
   ],
-  entryComponents: [DonationOptionsComponent, ConfirmAdminComponent, ErrorComponent],
+  entryComponents: [ConfirmAdminComponent, ErrorComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

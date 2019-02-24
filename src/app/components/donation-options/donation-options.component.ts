@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DonationOptionsComponent implements OnInit {
 
-  constructor(private matDialogRef: MatDialogRef<DonationOptionsComponent>,
+  constructor(
     private auth: AuthService) { }
 
   ngOnInit() {

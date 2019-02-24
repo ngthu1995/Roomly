@@ -1,0 +1,10 @@
+<agm-map (mapReady)="mapReadyHandler()" [latitude]="lat" [longitude]="lng" [zoom]="16">
+  <agm-circle *ngIf="!isPositionError && lat && lng" [latitude]="lat" [longitude]="lng" [radius]="800"
+    [fillOpacity]="0">
+    <div #map style="width: 1280px; height: 768px"></div>
+  </agm-circle>
+
+  <agm-info-window *ngIf="isPositionError" [latitude]="0" [longitude]="0" [maxWidth]="300" [isOpen]="true">
+    Can't find this location
+  </agm-info-window>
+</agm-map>
