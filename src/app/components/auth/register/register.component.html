@@ -1,92 +1,170 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12" id="register_header">
-                <img src="assets/img/logo.png">
-                <h5>Giving = Hope</h5>
-        </div>
-        <div class="col-12">
-            <form #registerForm="ngForm" class="text-center border border-light p-5"  id="register_form">
-
-                <p class="lead mb-4">Register</p>
-                <p>*You are one step away to become part of Hackathon community</p>
-
-                <div class="form-row mb-4">
-                    <div class="col">
-                        <!-- First name -->
-                        <mat-form-field>
-                            <input matInput [(ngModel)]="formData.firstName" type="text" id="defaultRegisterFormFirstName"
-                                class="" placeholder="First name" name="firstName" #firstName required>
-                        </mat-form-field>
-                    </div>
-
-                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-                        <div *ngIf="firstName.errors.required">First Name is required.</div>
-
-                        <!-- Last name -->
-                    </div>
-                    <div class="col">
-                        <!-- Last name -->
-                        <mat-form-field>
-                            <input matInput [(ngModel)]="formData.lastName" type="text" id="defaultRegisterFormLastName"
-                                class="" placeholder="Last name" name="lastName" #lastName required>
-                        </mat-form-field>
-                    </div>
-
-                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
-                        <div *ngIf="lastName.errors.required">Last Name is required.</div>
-                    </div>
-                </div>
-
-                <!-- E-mail -->
-                <mat-form-field class="email">
-                    <input matInput [(ngModel)]="formData.email" type="email" id="defaultRegisterFormEmail" class=""
-                        placeholder="E-mail" name="email" #email required>
-                </mat-form-field>
-                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-                    <div *ngIf="email.errors.required">Email is required.</div>
-                </div>
-
-                <!-- Password -->
-                <mat-form-field>
-                    <input [(ngModel)]="formData.password" id="defaultRegisterFormPassword" class="" placeholder="Password"
-                        name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock" #password matInput
-                        [type]="hide ? 'password' : 'text'" required>
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </mat-form-field>
-                <br>
-
-                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                    <div *ngIf="password.errors.required">Password is required.</div>
-                    <br>
-
-                </div>
-
-
-                <mat-form-field>
-                    <input [(ngModel)]="formData.passwordConfirmation" id="defaultRegisterFormPassword2" class=""
-                        placeholder="Password Confirmation" name="passwordConfirmation" aria-describedby="defaultRegisterFormPasswordHelpBlock"
-                        #passwordConfirmation matInput [type]="hideConfirm ? 'password' : 'text'" required>
-                    <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility_off' :
-                        'visibility'}}</mat-icon>
-                </mat-form-field>
-                <br>
-                <!-- Phone number -->
-                <mat-form-field>
-                    <input matInput [(ngModel)]="formData.phone" type="text" id="defaultRegisterPhonePassword" class=""
-                        placeholder="Phone number" name="phone" aria-describedby="defaultRegisterFormPhoneHelpBlock">
-                </mat-form-field>
-                <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-                    Optional - for two step authentication
-                </small>
-
-                <!-- Sign up button -->
-                <button (click)='register(registerForm)' [disabled]="!registerForm.form.valid" class="btn btn-dark">Register</button>
-                <hr>
-                <!-- Terms of service -->
-                <p>By clicking
-                    <em>Sign up</em> you agree to our
-                    <a href="" target="_blank">terms of service</a>
-            </form>
-        </div>
+  <div class="row">
+    <div class="col-md-12" id="register_header">
+      <h5>Giving = Hope</h5>
     </div>
+    <div class="col-12">
+      <form
+        #registerForm="ngForm"
+        class="text-center border border-light p-5"
+        id="register_form"
+      >
+        <p class="lead mb-4">Register</p>
+        <p>*You are one step away to become part of Hackathon community</p>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <!-- First name -->
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="formData.firstName"
+                type="text"
+                id="defaultRegisterFormFirstName"
+                class=""
+                placeholder="First name"
+                name="firstName"
+                #firstName
+                required
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="firstName.errors.required">First Name is required.</div>
+
+            <!-- Last name -->
+          </div>
+          <div class="col">
+            <!-- Last name -->
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="formData.lastName"
+                type="text"
+                id="defaultRegisterFormLastName"
+                class=""
+                placeholder="Last name"
+                name="lastName"
+                #lastName
+                required
+              />
+            </mat-form-field>
+          </div>
+
+          <div
+            *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="lastName.errors.required">Last Name is required.</div>
+          </div>
+        </div>
+
+        <!-- E-mail -->
+        <mat-form-field class="email">
+          <input
+            matInput
+            [(ngModel)]="formData.email"
+            type="email"
+            id="defaultRegisterFormEmail"
+            class=""
+            placeholder="E-mail"
+            name="email"
+            #email
+            required
+          />
+        </mat-form-field>
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="email.errors.required">Email is required.</div>
+        </div>
+
+        <!-- Password -->
+        <mat-form-field>
+          <input
+            [(ngModel)]="formData.password"
+            id="defaultRegisterFormPassword"
+            class=""
+            placeholder="Password"
+            name="password"
+            aria-describedby="defaultRegisterFormPasswordHelpBlock"
+            #password
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            required
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+        <br />
+
+        <div
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="password.errors.required">Password is required.</div>
+          <br />
+        </div>
+
+        <mat-form-field>
+          <input
+            [(ngModel)]="formData.passwordConfirmation"
+            id="defaultRegisterFormPassword2"
+            class=""
+            placeholder="Password Confirmation"
+            name="passwordConfirmation"
+            aria-describedby="defaultRegisterFormPasswordHelpBlock"
+            #passwordConfirmation
+            matInput
+            [type]="hideConfirm ? 'password' : 'text'"
+            required
+          />
+          <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{
+            hideConfirm ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+        <br />
+        <!-- Phone number -->
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="formData.phone"
+            type="text"
+            id="defaultRegisterPhonePassword"
+            class=""
+            placeholder="Phone number"
+            name="phone"
+            aria-describedby="defaultRegisterFormPhoneHelpBlock"
+          />
+        </mat-form-field>
+        <small
+          id="defaultRegisterFormPhoneHelpBlock"
+          class="form-text text-muted mb-4"
+        >
+          Optional - for two step authentication
+        </small>
+
+        <!-- Sign up button -->
+        <button
+          (click)="register(registerForm)"
+          [disabled]="!registerForm.form.valid"
+          class="btn btn-dark"
+        >
+          Register
+        </button>
+        <hr />
+        <!-- Terms of service -->
+        <p>
+          By clicking <em>Sign up</em> you agree to our
+          <a href="" target="_blank">terms of service</a>
+        </p>
+      </form>
+    </div>
+  </div>
 </div>
