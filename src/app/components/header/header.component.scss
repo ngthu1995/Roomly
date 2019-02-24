@@ -1,10 +1,7 @@
 .position {
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(117, 175, 244),
-    rgb(72, 149, 241)
-  );
+  background-color: red;
+}
+
+a {
+  color: white;
 }

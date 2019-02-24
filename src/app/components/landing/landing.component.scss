@@ -1,3 +1,51 @@
-.container{
-    margin-bottom: 80px;
+.bg-beige {
+  background: #f5f0e8;
 }
+
+.container {
+  padding-bottom: 80px;
+}
+
+.line-dash {
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+}
+
+.about-content-statistic {
+  padding: 30px 0;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  padding-bottom: 15px;
+}
+
+.left-side {
+  padding-right: 35px;
+}
+
+.right-side {
+  padding-left: 35px;
+}
+
+.lead {
+  font-size: 1rem;
+}
+
+// .about_content_statistic .left_side h2 {
+//   font-size: 55px;
+//   font-weight: 400;
+//   margin-top: 40px;
+// }
+
+// .about_content_statistic .left_side hr {
+//   width: 100px;
+//   height: 2px;
+// }
