@@ -55,7 +55,7 @@
                     </app-image-upload>
                 </div>
                 <button [disabled]="!addBillForm.form.valid" type="submit" class="btn btn-outline-dark" type="submit"
-                    (click)="createBill()">Post</button>
+                    (click)="createBill()" mat-dialog-close>Post</button>
 
             </form>
         </div>
