@@ -119,7 +119,8 @@ import { PostDetailComponent } from './components/donation/post-detail/post-deta
     }),
     ImageCropperModule,
   ],
-  entryComponents: [ConfirmAdminComponent, ErrorComponent, DonationComponent, PostDetailComponent],
+  entryComponents: [ConfirmAdminComponent, ErrorComponent, DonationComponent, PostDetailComponent,
+    DonationOptionsComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,45 +1,45 @@
-<div class="container">
-  <div class="card">
-      <h5 class="card-header info-color white-text text-center py-4">
-          <strong>Donate Now</strong>
-      </h5>
-      <!--Card content-->
-      <div class="card-body px-lg-5 pt-0">
-          <form [ngClass]="isValidatingCard ? 'loading' : ''">
-              <div class="group">
-            
-                <mat-form-field>
-                  <input matInput placeholder="Amount" type="number" class="example-right-align">
-                  <span matPrefix>$&nbsp;</span>
-                  <span matSuffix>.00</span>
-                </mat-form-field>
-                <label>
-                  <span>Card Number</span>
-                  <div #cardNumber class="field"></div>
-                </label>
-            
-                <label>
-                  <span>Expired Date</span>
-                  <div #cardExpiry class="field"></div>
-                </label>
-            
-                <label>
-                  <span>CVC</span>
-                  <div #cardCvc class="field"></div>
-                </label>
-              </div>
-              <div class="outcome">
-                <div *ngIf="error" class="error">
-                  {{error}}
-                </div>
-                <div *ngIf="token" class="success alert alert-success">
-                  Card Accepted Successfully!
-                </div>
-              </div>
-              <div class="donation-options-button">
-                  <button [disabled]="!isCardValid()" (click)="onSubmit()" type="button">Submit</button>
-              </div>
-          </form>
-        </div>
-  </div>
+<!-- <div class="container">
+  <div class="card"> -->
+<h5 class=" info-color white-text text-center py-4">
+  <strong>Donate Now</strong>
+</h5>
+<!--Card content-->
+<div class="px-lg-5 pt-0">
+  <form [ngClass]="isValidatingCard ? 'loading' : ''">
+    <div class="group">
+
+      <mat-form-field>
+        <input matInput placeholder="Amount" type="number" class="example-right-align">
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+      <label>
+        <span>Card Number</span>
+        <div #cardNumber class="field"></div>
+      </label>
+
+      <label>
+        <span>Expired Date</span>
+        <div #cardExpiry class="field"></div>
+      </label>
+
+      <label>
+        <span>CVC</span>
+        <div #cardCvc class="field"></div>
+      </label>
+    </div>
+    <div class="outcome">
+      <div *ngIf="error" class="error">
+        {{error}}
+      </div>
+      <div *ngIf="token" class="success alert alert-success">
+        Card Accepted Successfully!
+      </div>
+    </div>
+    <div class="donation-options-button">
+      <button [disabled]="!isCardValid()" mat-dialog-close (click)="onSubmit()" type="button">Submit</button>
+    </div>
+  </form>
 </div>
+<!-- </div>
+</div> -->
