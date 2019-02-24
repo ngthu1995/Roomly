@@ -76,7 +76,7 @@
 </div> -->
 <h1>Manage Tracker For Manager</h1>
 <table class="table">
-  <thead>
+  <!-- <thead>
     <tr>
       <th class="image" scope="col">Image</th>
       <th scope="col">Title
@@ -97,16 +97,19 @@
       <th>Time</th>
 
     </tr>
-  </thead>
+  </thead> -->
   <tbody>
-    <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)" routerLink="/manage/{{b._id}}">
-      <th scope="row"><img class="image" src="{{b.image}}" alt="">
 
-      </th>
-      <td>{{b.userName}}</td>
-      <td>{{b.description}}</td>
-      <td>{{b.street}}</td>
-      <td>{{formatDate(b.createdAt)}}</td>
+    <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)">
+      <a routerLink="/manage/{{b._id}}">
+        <th scope="row"><img class="image" src="{{b.image}}" alt="">
+
+        </th>
+        <td>{{b.userName}}</td>
+        <td>{{b.description}}</td>
+        <td>{{b.street}}</td>
+        <td>{{formatDate(b.createdAt)}}</td>
+      </a>
     </tr>
   </tbody>
 </table>

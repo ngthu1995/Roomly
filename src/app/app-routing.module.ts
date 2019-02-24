@@ -27,10 +27,9 @@ const routes: Routes = [
   { path: 'story', component: StoryComponent },
   {
     path: 'manage', component: ManageComponent,
-    children: [{
-      path: ":postId", component: PostDetailComponent
-    }]
+
   },
+  { path: 'manage/:postId', component: PostDetailComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'users', component: UserlistComponent },

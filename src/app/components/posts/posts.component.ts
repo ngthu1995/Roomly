@@ -12,11 +12,11 @@ export class PostsComponent {
 
     constructor(private matDialog: MatDialog) { }
 
-    // openPost() {
-    //     this.matDialog.open(DonationComponent, {
-    //         width: '700px',
-    //         height: '700px'
-    //     })
-    // }
+    openPost() {
+        this.matDialog.open(DonationComponent, {
+            width: '700px',
+            height: '700px'
+        })
+    }
 
 }

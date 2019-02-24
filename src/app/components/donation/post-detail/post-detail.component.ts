@@ -24,7 +24,6 @@ export class PostDetailComponent implements OnInit {
 
   getPost(postId: string) {
     return this.postService.getPostById(postId).subscribe(post => {
-      debugger;
       console.log(post)
       this.post = post;
       console.log('clicked')
