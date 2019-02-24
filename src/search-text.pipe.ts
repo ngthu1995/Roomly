@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import * as moment from 'moment';
 
 @Pipe({
     name: 'searchText',
@@ -6,20 +7,30 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchTextPipe implements PipeTransform {
 
-    transform(items: Array<any>, titleSearch: string, descriptionSearch: string, addressSearch: string, dateSearch: string) {
+    transform(items: Array<any>, titleSearch: string, descriptionSearch: string, addressSearch: string, dateSearchFrom: string, dateSearchTo: string) {
         if (items && items.length) {
             return items.filter(item => {
-                if (titleSearch && item.title.toLowerCase().indexOf(titleSearch.toLowerCase()) === -1) {
+                if (titleSearch && item.userName.toLowerCase().indexOf(titleSearch.toLowerCase()) === -1) {
                     return false;
                 }
                 if (descriptionSearch && item.description.toLowerCase().indexOf(descriptionSearch.toLowerCase()) === -1) {
                     return false;
                 }
-                if (addressSearch && item.address.toLowerCase().indexOf(addressSearch.toLowerCase()) === -1) {
+                if (addressSearch && item.street.toLowerCase().indexOf(addressSearch.toLowerCase()) === -1) {
                     return false;
                 }
-                if (dateSearch && item.date.toLowerCase().indexOf(dateSearch.toLowerCase()) === -1) {
-                    return false
+                
+                if (dateSearchFrom) {
+                    let createdTime:number = moment(item.createdAt).valueOf();
+                    let searchFromTime:number = moment(dateSearchFrom).valueOf();
+                    let searchToTime:number = null;
+                    if(dateSearchTo){
+                        searchToTime = moment(dateSearchTo).valueOf();
+                    }else{
+                        searchToTime = moment().valueOf();
+                    }
+                    if(createdTime < searchFromTime || createdTime>searchToTime)
+                        return false
                 }
                 return true;
             })
