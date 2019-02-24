@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
 class FileSnippet {
-  static readonly IMAGE_SIZE = { width: 800, height: 400 }
+  static readonly IMAGE_SIZE = { width: 800, height: 350 }
 
   pending: boolean = false;
   status: string = "INIT";
