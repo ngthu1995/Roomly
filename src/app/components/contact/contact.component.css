@@ -42,3 +42,9 @@ p {
   display: flex;
   flex-direction: row;
 }
+
+.contact-map {
+  position: absolute;
+  right: 0px;
+  width: 100%;
+}

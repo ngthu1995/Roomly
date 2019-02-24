@@ -10,13 +10,13 @@
         <a class="nav-link waves-light" routerLink="" mdbWavesEffect>Home<span class="sr-only">Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="manage">Manage</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="manage">Posts</a>
       </li>
       <li class="nav-item" *ngIf="isManager">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="users">Users</a>
       </li>
       <li class="nav-item" *ngIf="!isManager">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="posts">Posts</a>
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="posts">Contribution</a>
       </li>
       <li class="nav-item" *ngIf="!isManager">
         <a class="nav-link waves-light" mdbWavesEffect routerLink="about">About</a>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-donation-credit-card',
   templateUrl: './donation-credit-card.component.html',
@@ -25,7 +26,7 @@ export class DonationCreditCardComponent implements OnInit, OnDestroy {
   error: string = '';
   token: any;
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     this.stripe = Stripe(environment.STRIPE_PK)
     this.elements = this.stripe.elements();
 
@@ -68,6 +69,7 @@ export class DonationCreditCardComponent implements OnInit, OnDestroy {
     } else {
       this.token = token;
       this.paymentConfirmed.next(token);
+      this.toastr.success('Thanks For Donating Money', 'Success')
     }
   }
 
