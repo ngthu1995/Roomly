@@ -93,7 +93,7 @@
           <input matInput [(ngModel)]="addressSearch" placeholder="Address">
           </mat-form-field>
       </th>
-      <th scope="col">
+      <t scope="col">
         <!-- <input class="textBox justify-content-center" type="text" placeholder="Search by Address" [(ngModel)]="dateSearch" /> -->
 <!-- <p class="input-group">>
         <input class="textBox justify-content-center" [matDatepicker]="myDatepicker" type="text" placeholder="Search by Date" [(ngModel)]="dateSearch">
@@ -104,19 +104,21 @@
 
 <div class="manage">
   <div class="manage-header">
-      <h1>Manage Tracker For Manager</h1>
-      <mat-form-field>
-        <input matInput [matDatepicker]="fromDatepicker" (focus)="fromDatepicker.open()" [(ngModel)]="dateSearchFrom"
-          placeholder="From Date">
-        <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #fromDatepicker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [matDatepicker]="toDatepicker" (focus)="toDatepicker.open()" [(ngModel)]="dateSearchTo" placeholder="To Date">
-        <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #toDatepicker></mat-datepicker>
-      </mat-form-field>
+    <h1>Manage Tracker For Manager</h1>
+    <mat-form-field>
+      <input matInput [matDatepicker]="fromDatepicker" (focus)="fromDatepicker.open()" [(ngModel)]="dateSearchFrom"
+        placeholder="From Date">
+      <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #fromDatepicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="toDatepicker" (focus)="toDatepicker.open()" [(ngModel)]="dateSearchTo"
+        placeholder="To Date">
+      <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #toDatepicker></mat-datepicker>
+    </mat-form-field>
   </div>
+<<<<<<< HEAD
     <!--List-->
     <div class="container">
         <table class="table">
@@ -136,3 +138,31 @@
     </div>
 </div>
 
+=======
+  <!--List-->
+  <div class="container">
+    <table class="table">
+      <!-- <thead class="thead-dark">
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Description</th>
+          <th scope="col">Address</th>
+          <th scope="col">Created At</th>
+        </tr>
+      </thead> -->
+      <tbody>
+        <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)">
+          <a routerLink="/manage/{{b._id}}">
+            <td scope="row"><img class="image" src="{{b.image}}" alt="">
+            </td>
+            <!-- <td>{{b.userName}}</td> -->
+            <td>{{b.description}}</td>
+            <td>{{b.street}}</td>
+            <td>{{formatDate(b.createdAt)}}</td>
+          </a>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+>>>>>>> 17b82a64e5a61a84e45ad96992271a9cbfd18fbd

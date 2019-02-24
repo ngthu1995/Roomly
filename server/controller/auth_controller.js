@@ -178,60 +178,60 @@ exports.loginAuth = async (req, res, next) => {
 // }
 
 // Register user
-// exports.register = (req, res) => {
-//     const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
+exports.register = (req, res) => {
+  const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
 
-//     if (!password || !email) {
-//         return res.status(422).send({
-//             err: [{ title: "Data missing!", detail: "Provide email and password" }]
-//         });
-//     }
+  if (!password || !email) {
+    return res.status(422).send({
+      err: [{ title: "Data missing!", detail: "Provide email and password" }]
+    });
+  }
 
-//     if (password !== passwordConfirmation) {
-//         return res.status(422).send({
-//             err: [
-//                 {
-//                     title: "Invalid Password!",
-//                     detail: "Password isn't the same as confirmation"
-//                 }
-//             ]
-//         });
-//     }
+  if (password !== passwordConfirmation) {
+    return res.status(422).send({
+      err: [
+        {
+          title: "Invalid Password!",
+          detail: "Password isn't the same as confirmation"
+        }
+      ]
+    });
+  }
 
-//     User.findOne({ email }, (err, existingUser) => {
-//         if (err) {
-//             return res.status(422).send({
-//                 errors: normalizeErrors(err.errors)
-//             });
-//         }
-//         if (existingUser) {
-//             return res.status(422).send({
-//                 err: [
-//                     {
-//                         title: "Invalid Email!",
-//                         detail: "User with this email already exist"
-//                     }
-//                 ]
-//             });
-//         }
-//         // Define a new user
-//         const user = new User({
-//             firstName,
-//             lastName,
-//             phone,
-//             email,
-//             password,
-//         });
+  User.findOne({ email }, (err, existingUser) => {
+    if (err) {
+      return res.status(422).send({
+        errors: normalizeErrors(err.errors)
+      });
+    }
+    if (existingUser) {
+      return res.status(422).send({
+        err: [
+          {
+            title: "Invalid Email!",
+            detail: "User with this email already exist"
+          }
+        ]
+      });
+    }
+    // Define a new user
+    const user = new User({
+      firstName,
+      lastName,
+      phone,
+      email,
+      password,
+    });
 
-//         user.save(err => {
-//             if (err) {
-//                 return res.status(422).send({ errors: normalizeErrors(err.errors) });
-//             }
+    user.save(err => {
+      if (err) {
+        return res.status(422).send({ errors: normalizeErrors(err.errors) });
+      }
 
-//             return res.json({ registered: true });
-//         });
-//     });
-// };
+      return res.json({ registered: true });
+    });
+  });
+};
 
 // Check authentication
 exports.authMiddleware = (req, res, next) => {
