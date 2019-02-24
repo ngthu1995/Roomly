@@ -25,7 +25,7 @@ export class AuthService {
     role: UserRole;
   };
   private authStatusListener = new BehaviorSubject<boolean>(false);
-  private readonly rootURL = "http://localhost:3000/api/users";
+  private readonly rootURL = "http://localhost:3001/api/users";
   private router: Router
   private decodedToken;
   apptsObservable = new BehaviorSubject([]);
@@ -124,7 +124,7 @@ export class AuthService {
 
   // Get all users information
   getUsers() {
-    return this.httpClient.get('http://localhost:3000/api/users/list').subscribe((appts: any) => {
+    return this.httpClient.get('http://localhost:3001/api/users/list').subscribe((appts: any) => {
       this.apptsObservable.next(appts);
     })
   }
@@ -138,7 +138,7 @@ export class AuthService {
     /**
      * TODO: checkManager route on backend. req.body = {managerString: string}
      */
-    return this.httpClient.post<any>('http://localhost:3000/api/users/checkManager', {
+    return this.httpClient.post<any>('http://localhost:3001/api/users/checkManager', {
       managerString
     });
   }

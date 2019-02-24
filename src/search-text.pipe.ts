@@ -9,13 +9,13 @@ export class SearchTextPipe implements PipeTransform {
     transform(items: Array<any>, titleSearch: string, descriptionSearch: string, addressSearch: string, dateSearch: string) {
         if (items && items.length) {
             return items.filter(item => {
-                if (titleSearch && item.title.toLowerCase().indexOf(titleSearch.toLowerCase()) === -1) {
+                if (titleSearch && item.userName.toLowerCase().indexOf(titleSearch.toLowerCase()) === -1) {
                     return false;
                 }
                 if (descriptionSearch && item.description.toLowerCase().indexOf(descriptionSearch.toLowerCase()) === -1) {
                     return false;
                 }
-                if (addressSearch && item.address.toLowerCase().indexOf(addressSearch.toLowerCase()) === -1) {
+                if (addressSearch && item.street.toLowerCase().indexOf(addressSearch.toLowerCase()) === -1) {
                     return false;
                 }
                 if (dateSearch && item.date.toLowerCase().indexOf(dateSearch.toLowerCase()) === -1) {
