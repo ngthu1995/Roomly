@@ -15,7 +15,7 @@ class DecodedToken {
   username: string = "";
 }
 type UserRole = 'user' | 'admin' | 'manager';
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   private isAuthenticate = false;
   private token: string;
@@ -78,6 +78,7 @@ export class AuthService {
       })
     );
   }
+
 
   private saveAuthData(
     token: string,

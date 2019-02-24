@@ -13,6 +13,7 @@ import { ManageComponent } from './components/manage/manage.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { UserlistComponent } from './components/userList/userList.component';
+import { DonationOptionsComponent } from './components/donation-options/donation-options.component';
 
 const routes: Routes = [
   { path: "", component: LandingComponent },
@@ -23,9 +24,10 @@ const routes: Routes = [
   { path: 'stories', component: StoriesComponent },
   { path: 'story', component: StoryComponent },
   { path: 'manage', component: ManageComponent },
-  { path: 'about', component: AboutComponent},
+  { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'users', component: UserlistComponent }
+  { path: 'users', component: UserlistComponent },
+  { path: 'donate', component: DonationOptionsComponent }
 ];
 
 

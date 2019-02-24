@@ -41,7 +41,7 @@ exports.getUser = (req, res) => {
 exports.getUsers = (req, res) => {
     User.find({})
         .then(user => {
-        res.json(user);
+            res.json(user);
         })
         .catch(err => {
             console.log(err);
@@ -105,6 +105,8 @@ exports.loginAuth = async (req, res, next) => {
     }
 }
 
+// exports.loginAuth = async (req, res, next) => {
+//     const { email, password } = req.body;
 
 // Login user
 // exports.auth = (req, res) => {
@@ -150,9 +152,9 @@ exports.loginAuth = async (req, res, next) => {
 
 
 // Facebook login
-exports.authenticateFacebook = (req, res, next) => {
-    req.session
-}
+// exports.authenticateFacebook = (req, res, next) => {
+//     req.session
+// }
 
 
 // Register user
@@ -275,31 +277,31 @@ function notAuthorized(res) {
 }
 
 
-exports.sendEmail = () => {
-    var options = {
-        auth: {
-            api_user: 'tintinla',
-            api_key: 'Botrinty123!'
-        }
-    }
+    // exports.sendEmail = () => {
+    //     var options = {
+    //         auth: {
+    //             api_user: 'tintinla',
+    //             api_key: 'Botrinty123!'
+    //         }
+    //     }
 
-    var client = nodemailer.createTransport(sgTransport(options));
+    //     var client = nodemailer.createTransport(sgTransport(options));
 
-    // Nodemails 
-    var email = {
-        from: 'homesweethomek@gmail.com',
-        to: user.email,
-        subject: 'Home Sweet Home',
-        text: 'Hello <strong>${user.firstName}</strong>,<br><br>Thank you for registering at Home Sweet Home.',
-        html: `Hello <strong>${user.firstName}</strong>,<br><br>Thank you for registering at Home Sweet Home.`
-    };
+    //     // Nodemails 
+    //     var email = {
+    //         from: 'homesweethomek@gmail.com',
+    //         to: user.email,
+    //         subject: 'Home Sweet Home',
+    //         text: 'Hello <strong>${user.firstName}</strong>,<br><br>Thank you for registering at Home Sweet Home.',
+    //         html: `Hello <strong>${user.firstName}</strong>,<br><br>Thank you for registering at Home Sweet Home.`
+    //     };
 
-    client.sendMail(email, function (err, info) {
-        if (err) {
-            console.log(error);
-        }
-        else {
-            console.log('Message sent: ' + info.response);
-        }
-    });
-}
+    //     client.sendMail(email, function (err, info) {
+    //         if (err) {
+    //             console.log(error);
+    //         }
+    //         else {
+    //             console.log('Message sent: ' + info.response);
+    //         }
+    //     });
+    // }

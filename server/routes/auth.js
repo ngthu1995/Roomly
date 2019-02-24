@@ -11,5 +11,5 @@ router.post("/register", UserController.getUser);
 router.post('/checkManager', UserController.confirmManager);
 router.get('/list', UserController.getUsers);
 
-
+// router.post('/checkManager', UserController.confirmManager)
 module.exports = router;

@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
@@ -35,7 +34,12 @@ export class HeaderComponent implements OnInit {
     return false
   }
 
+  get isAdmin(): boolean {
+    return this.currentUser && this.currentUser.role === 'admin';
+  }
+
   logOut() {
     this.authService.logOut();
+
   }
 }
