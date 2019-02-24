@@ -27,7 +27,6 @@ const routes: Routes = [
   { path: 'story', component: StoryComponent },
   {
     path: 'manage', component: ManageComponent,
-
   },
   { path: 'manage/:postId', component: PostDetailComponent },
   { path: 'about', component: AboutComponent },
