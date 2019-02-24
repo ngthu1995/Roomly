@@ -104,36 +104,44 @@
 
 <div class="manage">
   <div class="manage-header">
-      <h1>Manage Tracker For Manager</h1>
-      <mat-form-field>
-        <input matInput [matDatepicker]="fromDatepicker" (focus)="fromDatepicker.open()" [(ngModel)]="dateSearchFrom"
-          placeholder="From Date">
-        <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #fromDatepicker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [matDatepicker]="toDatepicker" (focus)="toDatepicker.open()" [(ngModel)]="dateSearchTo" placeholder="To Date">
-        <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #toDatepicker></mat-datepicker>
-      </mat-form-field>
+    <h1>Manage Tracker For Manager</h1>
+    <mat-form-field>
+      <input matInput [matDatepicker]="fromDatepicker" (focus)="fromDatepicker.open()" [(ngModel)]="dateSearchFrom"
+        placeholder="From Date">
+      <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #fromDatepicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="toDatepicker" (focus)="toDatepicker.open()" [(ngModel)]="dateSearchTo"
+        placeholder="To Date">
+      <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #toDatepicker></mat-datepicker>
+    </mat-form-field>
   </div>
-    <!--List-->
-    <div class="container">
-        <table class="table">
-          <tbody>
-            <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)">
-              <a routerLink="/manage/{{b._id}}">
-                <th scope="row"><img class="image" src="{{b.image}}" alt="">
-        
-                </th>
-                <td>{{b.userName}}</td>
-                <td>{{b.description}}</td>
-                <td>{{b.street}}</td>
-                <td>{{formatDate(b.createdAt)}}</td>
-              </a>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-</div>
+  <!--List-->
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)">
+          <a routerLink="/manage/{{b._id}}">
+            <th scope="row"><img class="image" src="{{b.image}}" alt="">
 
+            </th>
+            <td>{{b.userName}}</td>
+            <td>{{b.description}}</td>
+            <td>{{b.street}}</td>
+            <td>{{formatDate(b.createdAt)}}</td>
+          </a>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
