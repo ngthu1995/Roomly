@@ -118,6 +118,7 @@ import { PostDetailComponent } from './components/donation/post-detail/post-deta
       positionClass: 'toast-top-right'
     }),
     ImageCropperModule,
+    BrowserAnimationsModule
   ],
   entryComponents: [ConfirmAdminComponent, ErrorComponent, DonationComponent, PostDetailComponent,
     DonationOptionsComponent],

@@ -124,7 +124,6 @@
             <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)">
               <a routerLink="/manage/{{b._id}}">
                 <th scope="row"><img class="image" src="{{b.image}}" alt="">
-        
                 </th>
                 <td>{{b.userName}}</td>
                 <td>{{b.description}}</td>
