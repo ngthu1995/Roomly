@@ -13,7 +13,6 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { DonationComponent } from './components/donation/donation.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BannerComponent } from './components/landing/banner/banner.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { UserlistComponent } from './components/userList/userList.component';
@@ -74,7 +73,6 @@ import { ErrorInterceptor } from './error-interceptor';
     DonationComponent,
     ProfileComponent,
     BannerComponent,
-    CarouselComponent,
     FooterComponent,
     DonationOptionsComponent,
     StoriesComponent,

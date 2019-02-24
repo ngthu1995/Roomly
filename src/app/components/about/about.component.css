@@ -64,23 +64,3 @@ iframe {
 .about_side_content ul li {
     font-weight: 600;
 }
-
-
-.about_button {
-    width: 100%;
-    background: lightgray;
-    height: 120px;
-    text-align: center;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: black;
-    margin-top: 60px;
-}
-
-.about_button:hover {
-    background-color: #7cb342;
-    color: white;
-}
