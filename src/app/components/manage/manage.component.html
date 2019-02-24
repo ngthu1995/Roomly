@@ -78,35 +78,58 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="image" scope="col">Image</th>
-      <th scope="col">Title
-
-        <input class="textBox justify-content-center" type="text" placeholder="Search by Title" [(ngModel)]="titleSearch" />
+      <th class="image" scope="col"></th>
+      <th scope="col">
+          <mat-form-field>
+              <input matInput [(ngModel)]="titleSearch" placeholder="Title">
+              </mat-form-field>
+        </th>
+      <th scope="col">
+          <mat-form-field>
+              <input matInput [(ngModel)]="descriptionSearch" placeholder="Description">
+              </mat-form-field>
       </th>
-      <th scope="col">Description
-
-        <input class="textBox justify-content-center" type="text" placeholder="Search by name" [(ngModel)]="descriptionSearch" />
+      <th>
+        <mat-form-field>
+          <input matInput [(ngModel)]="addressSearch" placeholder="Address">
+          </mat-form-field>
       </th>
-      <th>Address
-        <input class="textBox justify-content-center" type="text" placeholder="Search by Address" [(ngModel)]="addressSearch" />
+      <th scope="col">
+        <!-- <input class="textBox justify-content-center" type="text" placeholder="Search by Address" [(ngModel)]="dateSearch" /> -->
+        <!-- <p class="input-group">>
+        <input class="textBox justify-content-center" [matDatepicker]="myDatepicker" type="text" placeholder="Search by Date" [(ngModel)]="dateSearch">
+        <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+        </p> -->
+        <mat-form-field>
+          <input matInput [matDatepicker]="fromDatepicker" (focus)="fromDatepicker.open()" [(ngModel)] = "dateSearchFrom" placeholder="From Date">
+          <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #fromDatepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="toDatepicker" (focus)="toDatepicker.open()" [(ngModel)] = "dateSearchTo" placeholder="To Date">
+            <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #toDatepicker></mat-datepicker>
+          </mat-form-field>
+        <!-- <input [matDatepicker]="myDatepicker">
+        <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker> -->
+        
       </th>
-      <th scope="col">Date
-        <input class="textBox justify-content-center" type="text" placeholder="Search by Address" [(ngModel)]="dateSearch" />
-
-      </th>
-      <th>Time</th>
+      <!-- <th>Time</th> -->
 
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)" routerLink="/manage/{{b._id}}">
+    <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearchFrom: dateSearchTo)" routerLink="/manage/{{b._id}}">
       <th scope="row"><img class="image" src="{{b.image}}" alt="">
 
       </th>
       <td>{{b.userName}}</td>
       <td>{{b.description}}</td>
       <td>{{b.street}}</td>
-      <td>{{formatDate(b.createdAt)}}</td>
+      <td>{{b.createdAt | date:'medium'}}
+</td>
     </tr>
   </tbody>
 </table>
