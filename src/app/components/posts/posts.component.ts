@@ -19,8 +19,10 @@ export class PostsComponent {
             width: '700px',
             height: '700px'
         })
-            .afterClosed().subscribe(_ => {
-                this.router.navigate(['manage'])
+            .afterClosed().subscribe(res => {
+                if (res) {
+                    this.router.navigate(['manage'])
+                }
             })
     }
 
