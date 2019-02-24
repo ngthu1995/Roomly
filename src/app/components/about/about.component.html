@@ -1,7 +1,20 @@
 <div class="container">
-    <div class="about-header">
-        <h1>About Us</h1>
+  <div class="about-header">
+    <h1>About Us</h1>
+  </div>
+  <!--About Us Content-->
+  <div class="row">
+    <!--Main Content-->
+    <div class="col-md-8">
+      <div class="about_content">
+        <h4>Why ROOMLY?</h4>
+        <p>
+          When you grow-up feeling supported, understood, and encouraged, opportunity abounds! Roomly believes in supporting the strong foundations of families in our community.
+By providing friendship, mentorship, we believe part of that stability comes from establishing a first home stocked with the necessities for everyday life. Roomly can help make taking the first step to stable home life comfortable and accessible and deliver positive futures for all our children and families.
+        </p>
+      </div>
     </div>
+<<<<<<< HEAD
     <!--About Us Content-->
     <div class="row">
         <!--Main Content-->
@@ -26,5 +39,28 @@
                 </ul>
             </div>
         </div>
+=======
+    <!--Side Content-->
+    <div class="col-md-4 about_side_content">
+      <div class="Boards of Directors">
+        <h3>Members</h3>
+        <ul class="member-list">
+          <li>Thu Nguyen – Front End/ UI Design</li>
+          <li>Khang Nguyen – Software Engineer</li>
+          <li>Tin La – Software Engineer</li>
+          <li>Mai Huynh - Front End/ Content Manager</li>
+          <li>Nathan Nguyen - Content Manager</li>
+          <li>Binh Nguyen - Content Manager</li>
+        </ul>
+      </div>
+>>>>>>> 902c3dce771fc7a6c6a4f72f6f9eea58fba46423
     </div>
+  </div>
+  <mdb-carousel-item *ngFor="let item of slides; let i = index">
+    <div
+      class="col-md-4"
+      [ngClass]="{ 'd-none d-md-block': cardIndex !== 0 }"
+      *ngFor="let card of item; let cardIndex = index"
+    >
+
 </div>

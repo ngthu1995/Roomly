@@ -41,11 +41,10 @@ li {
 }
 
 .landing-video {
-  width: 100%;
-  margin: 50px;
 }
 
-.landing-video h4, h5 {
+.landing-video h4,
+h5 {
   font-family: Indie Flower, sans-serif;
 }
 
@@ -53,7 +52,7 @@ li {
   font-weight: bold;
 }
 
-.landing-video iframe{
+.landing-video iframe {
   width: 100%;
   height: 320px;
 }
@@ -62,7 +61,6 @@ li {
   margin-top: 30px;
   margin-bottom: 20px;
 }
-
 
 // .about_content_statistic .left_side h2 {
 //   font-size: 55px;
