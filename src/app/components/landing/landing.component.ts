@@ -6,7 +6,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./landing.component.scss"]
 })
 export class LandingComponent implements OnInit {
-  constructor() {}
+  public query: string;
+
+  constructor() {
+    this.query = "starbucks";
+  }
 
   ngOnInit() {}
 }

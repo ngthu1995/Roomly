@@ -2,6 +2,9 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MapService } from 'src/app/services/map.service';
 
+
+declare var H : any;
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -9,8 +12,10 @@ import { MapService } from 'src/app/services/map.service';
 })
 export class MapComponent implements OnInit {
   @Input() location: string;
-
   @Input() locationSubject: Subject<any>;
+
+
+  
 
   isPositionError: boolean = false;
 

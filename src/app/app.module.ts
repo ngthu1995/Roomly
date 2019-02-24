@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HereMapsModule } from 'ng2-heremaps';
 
 // components
 import { AppComponent } from './app.component';
@@ -16,6 +17,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { UserlistComponent } from './components/userList/userList.component';
+import { HereMapComponent } from './components/donation/here_map/here-map.component';
+
 
 /* Bootstrap */
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -87,7 +90,8 @@ import { ErrorInterceptor } from './error-interceptor';
     AboutComponent,
     ContactComponent,
     ErrorComponent,
-    UserlistComponent
+    UserlistComponent,
+    HereMapComponent
   ],
   imports: [
     BrowserModule,
