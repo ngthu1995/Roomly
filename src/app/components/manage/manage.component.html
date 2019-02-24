@@ -118,27 +118,6 @@
       <mat-datepicker #toDatepicker></mat-datepicker>
     </mat-form-field>
   </div>
-<<<<<<< HEAD
-    <!--List-->
-    <div class="container">
-        <table class="table">
-          <tbody>
-            <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)">
-              <a routerLink="/manage/{{b._id}}">
-                <th scope="row"><img class="image" src="{{b.image}}" alt="">
-                </th>
-                <td>{{b.userName}}</td>
-                <td>{{b.description}}</td>
-                <td>{{b.street}}</td>
-                <td>{{formatDate(b.createdAt)}}</td>
-              </a>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-</div>
-
-=======
   <!--List-->
   <div class="container">
     <table class="table">
@@ -165,4 +144,3 @@
     </table>
   </div>
 </div>
->>>>>>> 17b82a64e5a61a84e45ad96992271a9cbfd18fbd

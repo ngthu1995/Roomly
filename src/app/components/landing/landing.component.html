@@ -7,30 +7,33 @@
   <div class="about-content-statistic">
     <div class="row">
       <div class="col-md-6 left-side">
-        <h1 class="font-weight-bold text-primary">578424</h1>
-        <hr />
-        <p class="">Homeless in the United States</p>
+          <div [@slideInLeft]="{ value: slideInLeft, params: { timing: myTiming || 1, delay: myDelay || 2 } }">
+              <h1 class="font-weight-bold text-primary">578424</h1>
+              <hr />
+              <p class="">Homeless in the United States</p>
+          </div>
       </div>
       <div class="col-md-6 right-side">
-        <ul class="lead">
-          <li>
-            In January 2014, there were 578,424 people experiencing homelessness
-            on any given night in the United States.
-          </li>
-          <li>Of those 578,424 people, 216,197 are in families.</li>
-          <li>Roughly 9% of homeless people are veterans.</li>
-          <li>
-            There are almost 11,000 people experiencing homelessness in the
-            state of Missouri.
-          </li>
-          <li>Over 30% of Missouri’s homeless are estimated to be families.</li>
-        </ul>
-        <p>
-          (Statistics from
-          <a href="https://endhomelessness.org/"
-            >The National Alliance to End Homelessness.)</a
-          >
-        </p>
+        <div [@slideInRight]="{ value: slideInRight, params: { timing: myTiming || 1, delay:  2 } }">
+            <ul class="lead">
+                <li>
+                  In January 2014, there were 578,424 people experiencing homelessness
+                  on any given night in the United States.
+                </li>
+                <li>Of those 578,424 people, 216,197 are in families.</li>
+                <li>Roughly 9% of homeless people are veterans.</li>
+                <li>
+                  There are almost 11,000 people experiencing homelessness in the
+                  state of Missouri.
+                </li>
+                <li>Over 30% of Missouri’s homeless are estimated to be families.</li>
+              </ul>
+              <p>
+                (Statistics from
+                <a href="https://endhomelessness.org/"
+                  >The National Alliance to End Homelessness.)</a>
+              </p>
+        </div>
       </div>
     </div>
   </div>
@@ -45,20 +48,24 @@
       <div class="row">
         <div class="col-md-6 left-side">
           <h2 class="h1 py-5 font-weight-bold ">Mission</h2>
-          <p>
-            The mission of Home Sweet Home is to give families a sense of pride
-            and to improve the quality of their lives by providing basic
-            household furnishings.
-          </p>
+          <div [@zoomIn]="{ value: zoomIn, params: { timing: myTiming || 5, delay: 5 } }">
+              <p>
+                  The mission of Home Sweet Home is to give families a sense of pride
+                  and to improve the quality of their lives by providing basic
+                  household furnishings.
+              </p>
+          </div>
         </div>
         <div class="col-md-6 right-side">
           <h2 class="h1 py-5 font-weight-bold ">Services</h2>
-          <p>
-            Our services will include pick up of donations by truck, working
-            with case managers at partner agencies to get clients access to
-            furniture, and delivery of new and gently-used furniture and
-            household items to client apartments and homes.
-          </p>
+          <div [@zoomIn]="{ value: zoomIn, params: { timing: myTiming || 5, delay: myDelay || 2 } }">
+              <p>
+                Our services will include pick up of donations by truck, working
+                with case managers at partner agencies to get clients access to
+                furniture, and delivery of new and gently-used furniture and
+                household items to client apartments and homes.
+              </p>
+          </div>
         </div>
       </div>
     </div>
@@ -72,15 +79,17 @@
   <div class="about_content_intro">
     <div class="row">
       <div class="col-md-6 text-center left-side" style="margin-top: 20px">
-        <div class="quote">
-          <h4>
-            <span>"</span>The world is a dangerous place, not becausethos who do
-            evil
-          </h4>
-          <h4>but because of those who look on and do nothing.</h4>
-          <h5>-Albert Einstein<span>"</span></h5>
-        </div>
-        <a href="/posts" class="btn btn-dark">Take Action Now</a>
+          <div [@fadeInRight]="{ value: fadeInLeft, params: { timing: myTiming || 5, delay: 2 } }">
+              <div class="quote">
+                  <h4>
+                    <span>"</span>The world is a dangerous place, not becausethos who do
+                    evil
+                  </h4>
+                  <h4>but because of those who look on and do nothing.</h4>
+                  <h5>-Albert Einstein<span>"</span></h5>
+                </div>
+                <a href="/posts" class="btn btn-dark">Take Action Now</a>
+          </div>
       </div>
       <div class="col-md-6 right-side" style="margin-top: 20px">
         <iframe
@@ -114,30 +123,36 @@
       <div class="row">
         <!--Reason 1-->
         <div class="col-md-4">
+            <div [@fadeInLeft]="{ value: fadeInLeft, params: { timing: myTiming || 5, delay:  2 } }">
           <img src="./../../../assets/img/hand_icon.png" alt="location icon" />
           <h5 class="font-weight-bold mt-3">Embrace Community</h5>
-          <p class="grey-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.
-          </p>
+              <p class="grey-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.
+              </p>
+          </div>
         </div>
         <!--Reason 2-->
         <div class="col-md-4">
+            <div [@fadeInLeft]="{ value: fadeInLeft, params: { timing: myTiming || 5, delay: myDelay || 2 } }">
           <img src="./../../../assets/img/tree_icon.png" alt="hand icon" />
           <h5 class="font-weight-bold mt-3">Connect Generations</h5>
-          <p class="grey-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.
-          </p>
+                <p class="grey-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.
+                </p>
+            </div>
         </div>
         <!--Reason 3-->
         <div class="col-md-4">
-          <img src="./../../../assets/img/globe_icon.png" alt="hand icon" />
-          <h5 class="font-weight-bold mt-3">Share Love</h5>
-          <p class="grey-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.
-          </p>
+          <div [@fadeInLeft]="{ value: fadeInLeft, params: { timing: myTiming || 5, delay: myDelay || 2 } }">
+            <img src="./../../../assets/img/globe_icon.png" alt="hand icon" />
+            <h5 class="font-weight-bold mt-3">Share Love</h5>
+            <p class="grey-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.
+            </p>
+          </div>
         </div>
       </div>
     </section>
