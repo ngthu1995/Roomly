@@ -58,11 +58,12 @@ export class BillService {
                     bills: billData.bill.map(bill => {
                         console.log(billData.bill)
                         return {
-                            title: bill.title,
+                            userName: bill.userName,
                             description: bill.description,
                             address: bill.address,
                             date: bill.date,
                             time: bill.time,
+
                             _id: bill._id
                         }
 
@@ -75,6 +76,9 @@ export class BillService {
         return this.httpClient.get('https://geocoder.api.here.com/6.2/geocode.json');
     }
 
+    public getPostById(postId: string): Observable<any> {
+        return this.httpClient.get(this.rootUrl + '/' + postId)
+    }
 
 
     // getBills(): Observable<any> {

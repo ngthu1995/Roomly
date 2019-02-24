@@ -4,6 +4,7 @@ import { BillService } from '../../services/bill.service';
 import { Bill } from '../models/bill.model';
 import { SelectOption, timeOptions } from './constants';
 import { ToastrService } from 'ngx-toastr'
+import * as moment from 'moment'
 @Component({
     selector: 'app-donation',
     templateUrl: './donation.component.html',
@@ -33,8 +34,8 @@ export class DonationComponent implements OnInit {
         const billObservable = this.billService.getManage();
 
         billObservable.subscribe((bills: Bill[]) => {
-            this.bills = bills
-            // console.log(this.bill)
+            this.bills.push(...bills)
+            console.log(this.bills)
         })
 
     }
@@ -45,6 +46,10 @@ export class DonationComponent implements OnInit {
                 this.toastr.success('You have successfully book a donation. Please check email for the confirmation', 'Success')
             }
         )
+    }
+
+    formatDate(date: string): string {
+        return `${moment(date).fromNow()}`
     }
 
     // onSendMail() {

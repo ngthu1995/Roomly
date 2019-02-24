@@ -34,7 +34,7 @@ import { AboutComponent } from './components/about/about.component';
 
 // map Module
 import { AgmCoreModule } from "@agm/core";
-import { CamelizePipe } from 'ngx-pipes';
+import { CamelizePipe, UcWordsPipe } from 'ngx-pipes';
 import { MapService } from './services/map.service';
 import { MapComponent } from '../app/components/donation/map/map.component';
 import { AuthService } from './services/auth.service';
@@ -63,6 +63,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ManageItemComponent } from './components/manage-item/manage-item.component';
 import { ErrorComponent } from './components/error/error.component'
 import { ErrorInterceptor } from './error-interceptor';
+import { PostDetailComponent } from './components/donation/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { ErrorInterceptor } from './error-interceptor';
     ContactComponent,
     ErrorComponent,
     UserlistComponent,
-    HereMapComponent
+    HereMapComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -134,6 +136,7 @@ import { ErrorInterceptor } from './error-interceptor';
     HttpClient,
     BillService,
     ImageUploadService,
+    UcWordsPipe
   ],
   bootstrap: [AppComponent]
 })

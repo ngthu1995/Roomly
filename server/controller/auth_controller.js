@@ -9,23 +9,23 @@ var nodemailer = require("nodemailer");
 var sgTransport = require("nodemailer-sendgrid-transport");
 
 exports.notiMan = (req, res) => {
-    const transport = nodemailer.createTransport({
-        service: 'SendGrid',
-        auth: {
-            user: config.SEND_GRID_USERNAME,
-            pass: config.SEND_GRID_PASSWORD
-        }
-    })
-
-    const mailOptions = {
-        to: 'mkavo92@gmail.com',
-        from: 'customerTracker@mail.com',
-        subject: 'New Customer Has Donated',
-        text: 'A new Customer has just donate, please go to this http://localhost4200 to get more info'
+  const transport = nodemailer.createTransport({
+    service: 'SendGrid',
+    auth: {
+      user: config.SEND_GRID_USERNAME,
+      pass: config.SEND_GRID_PASSWORD
     }
-    transport.sendMail(mailOptions, (err) => {
-        console.log(err)
-    })
+  })
+
+  const mailOptions = {
+    to: 'mkavo92@gmail.com',
+    from: 'customerTracker@mail.com',
+    subject: 'New Customer Has Donated',
+    text: 'A new Customer has just donate, please go to this http://localhost4200 to get more info'
+  }
+  transport.sendMail(mailOptions, (err) => {
+    console.log(err)
+  })
 }
 
 
@@ -66,8 +66,6 @@ exports.getUsers = (req, res) => {
     });
 };
 
-<<<<<<< HEAD
-=======
 // exports.getUser = (req, res) => {
 
 //     const requestedUserId = req.params.id;
@@ -99,7 +97,6 @@ exports.getUsers = (req, res) => {
 //             })
 //     }
 // }
->>>>>>> 1c487a8d0f7cc52a3a4c42d85c42dcd102e7edd7
 
 // Login User
 exports.loginAuth = async (req, res, next) => {
@@ -133,8 +130,6 @@ exports.loginAuth = async (req, res, next) => {
 // exports.loginAuth = async (req, res, next) => {
 //     const { email, password } = req.body;
 
-<<<<<<< HEAD
-=======
 // Login user
 // exports.auth = (req, res) => {
 //     const { password, email } = req.body;
@@ -177,14 +172,11 @@ exports.loginAuth = async (req, res, next) => {
 //     });
 // };
 
->>>>>>> 1c487a8d0f7cc52a3a4c42d85c42dcd102e7edd7
 // Facebook login
 // exports.authenticateFacebook = (req, res, next) => {
 //     req.session
 // }
 
-<<<<<<< HEAD
-=======
 // Register user
 // exports.register = (req, res) => {
 //     const { firstName, lastName, email, phone, password, passwordConfirmation } = req.body;
@@ -241,7 +233,6 @@ exports.loginAuth = async (req, res, next) => {
 //     });
 // };
 
->>>>>>> 1c487a8d0f7cc52a3a4c42d85c42dcd102e7edd7
 // Check authentication
 exports.authMiddleware = (req, res, next) => {
   const token = req.headers.authorization;
