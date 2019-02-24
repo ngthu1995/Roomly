@@ -18,13 +18,11 @@
                 <!-- Email -->
                 <div class="col">
                     <mat-form-field>
-                        <<<<<<< HEAD <input matInput name="email" type="email" id="defaultLoginFormEmail" class=""
+                        <input matInput name="email" type="email" id="defaultLoginFormEmail" class=""
                             placeholder="E-mail" #emailInput="ngModel" ngModel required email>
                             <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
-                            =======
-                            <input matInput name="email" ngModel type="email" id="defaultLoginFormEmail" class=""
-                                placeholder="E-mail" required email>
-                            >>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
+                            <!-- <input matInput name="email" ngModel type="email" id="defaultLoginFormEmail" class=""
+                                placeholder="E-mail" required email> -->
                     </mat-form-field>
 
                 </div>
@@ -35,13 +33,11 @@
                 <!-- Password -->
                 <div class="col">
                     <mat-form-field>
-                        <<<<<<< HEAD <input matInput name="password" [type]="hide ? 'password' : 'text'"
+                        <input matInput name="password" [type]="hide ? 'password' : 'text'"
                             id="defaultLoginFormPassword" class="" placeholder="Password" #passwordInput="ngModel"
                             ngModel required>
-                            =======
-                            <input matInput name="password" ngModel [type]="hide ? 'password' : 'text'"
-                                id="defaultLoginFormPassword" class="" placeholder="Password" required>
-                            >>>>>>> cdd393ce8eacf64d2703fd1e59910035393fe184
+                            <!-- <input matInput name="password" ngModel [type]="hide ? 'password' : 'text'"
+                                id="defaultLoginFormPassword" class="" placeholder="Password" required> -->
                             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' :
                             'visibility'}}</mat-icon>
                             <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
