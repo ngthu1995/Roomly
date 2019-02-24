@@ -1,0 +1,10 @@
+.container {
+    margin-top: 100px;
+}
+
+/* Post Header*/
+#posts-header .posts-header-items{
+    border: 1px solid black;
+    box-shadow: 2px 2px 1px 1px lightgray;
+    padding: 60px 0;
+}

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HereMapsModule } from 'ng2-heremaps';
+
 
 // components
 import { AppComponent } from './app.component';
@@ -29,8 +29,8 @@ import { StoriesComponent } from './components/stories/stories.component';
 import { StoryComponent } from './components/stories/story/story.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DonationCreditCardComponent } from './components/donation-options/donation-credit-card/donation-credit-card.component';
-import { DonationStuffComponent } from './components/donation-options/donation-stuff/donation-stuff.component';
 import { AboutComponent } from './components/about/about.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 // map Module
 import { AgmCoreModule } from "@agm/core";
@@ -80,7 +80,6 @@ import { ErrorInterceptor } from './error-interceptor';
     StoriesComponent,
     StoryComponent,
     DonationCreditCardComponent,
-    DonationStuffComponent,
     MapComponent,
     ConfirmAdminComponent,
     ManageComponent,
@@ -91,7 +90,8 @@ import { ErrorInterceptor } from './error-interceptor';
     ContactComponent,
     ErrorComponent,
     UserlistComponent,
-    HereMapComponent
+    HereMapComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

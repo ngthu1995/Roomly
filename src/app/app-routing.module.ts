@@ -14,12 +14,13 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { UserlistComponent } from './components/userList/userList.component';
 import { DonationOptionsComponent } from './components/donation-options/donation-options.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 const routes: Routes = [
   { path: "", component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'donation', component: DonationComponent },
+  { path: 'post-form', component: DonationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'stories', component: StoriesComponent },
   { path: 'story', component: StoryComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'users', component: UserlistComponent },
-  { path: 'donate', component: DonationOptionsComponent }
+  { path: 'donate', component: DonationOptionsComponent },
+  { path: 'posts', component: PostsComponent }
 ];
 
 
