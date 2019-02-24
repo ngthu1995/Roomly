@@ -17,28 +17,41 @@ exports.get = async (req, res, next) => {
 
 exports.create = async (req, res, next) => {
     const {
-        title,
-        date,
         description,
-        time,
-        address,
-        image
+        city,
+        street,
+        image,
+        createdAt,
+        userName
     } = req.body;
     try {
         const manage = new Bill({
-            title,
-            date,
+            userName,
+            createdAt,
             description,
-            time,
-            address,
+            city,
+            street,
             image
         });
         const result = await manage.save();
         return res.status(201).json(result)
     } catch (e) {
-        return res.status(500).json({ message: 'Unexpected Error occurred', error: e });
+        return res.status(500).json({ message: 'Please fill out the required fields', error: e });
 
     }
+}
+exports.getId = (req, res) => {
+    const postId = req.params.id;
+    Bill.findById(postId)
+        .exec((err, foundPost) => {
+            if (err) {
+                res.status(422).send({
+                    err: [{ title: "Post Error!", detail: "Couldn't find that post" }]
+                })
+            }
+            return res.json(foundPost)
+        })
+}
 
-};
+
 

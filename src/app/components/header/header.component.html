@@ -7,64 +7,38 @@
   <links>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link waves-light" routerLink="" mdbWavesEffect
-          >Home<span class="sr-only">Home</span></a
-        >
+        <a class="nav-link waves-light" routerLink="" mdbWavesEffect>Home<span class="sr-only">Home</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="manage">Manage</a>
       </li>
       <li class="nav-item" *ngIf="isManager">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="manage"
-          >Manage</a
-        >
-      </li>
-      <li class="nav-item" *ngIf="isManager">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="users"
-          >Users</a
-        >
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="users">Users</a>
       </li>
       <li class="nav-item" *ngIf="!isManager">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="donation"
-          >Donate</a
-        >
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="posts">Posts</a>
       </li>
       <li class="nav-item" *ngIf="!isManager">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="about"
-          >About</a
-        >
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="about">About</a>
       </li>
       <li class="nav-item" *ngIf="!isManager">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="contact"
-          >Contact</a
-        >
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="contact">Contact</a>
       </li>
       <ng-container *ngIf="userIsAuthenticated">
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="profile"
-            >Profile</a
-          >
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="profile">Profile</a>
         </li>
         <li>
-          <a class="nav-link waves-light" mdbWavesEffect (click)="logOut()"
-            >Logout</a
-          >
+          <a class="nav-link waves-light" mdbWavesEffect (click)="logOut()">Logout</a>
         </li>
       </ng-container>
       <ng-container *ngIf="!userIsAuthenticated">
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="login"
-            >Login</a
-          >
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="login">Login</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="register"
-            >Register</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect routerLink="donate"
-            >Test Donate</a
-          >
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="register">Register</a>
         </li>
       </ng-container>
     </ul>

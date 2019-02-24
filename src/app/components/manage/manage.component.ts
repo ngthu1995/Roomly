@@ -3,7 +3,9 @@ import { BillService } from '../../services/bill.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Bill } from '../models/bill.model';
-
+import * as moment from 'moment'
+import { MatDialog } from '@angular/material';
+import { PostDetailComponent } from '../donation/post-detail/post-detail.component';
 @Component({
   selector: 'app-manage',
   templateUrl: './manage.component.html',
@@ -14,7 +16,7 @@ export class ManageComponent implements OnInit, OnDestroy {
   titleSearch = '';
   descriptionSearch = '';
   addressSearch = '';
-
+  dateSearch = ''
   bills: Bill[] = []
 
   // bills: Bill[] = []
@@ -22,7 +24,8 @@ export class ManageComponent implements OnInit, OnDestroy {
   // manage = []
 
   destroy$: Subject<null> = new Subject<null>()
-  constructor(private billService: BillService) { }
+  constructor(private billService: BillService,
+    private matDialog: MatDialog) { }
 
   ngOnInit() {
     // this.fetchBills();
@@ -32,6 +35,19 @@ export class ManageComponent implements OnInit, OnDestroy {
       this.bills = bills
       // console.log(this.bill)
     })
+  }
+
+  openDetail() {
+    this.matDialog.open(PostDetailComponent, {
+      width: '700px',
+      height: '700px'
+    })
+  }
+
+
+
+  formatDate(date: string): string {
+    return `${moment(date).fromNow()}`
   }
   // this.billService.addBillSubject$
   //   .pipe(takeUntil(this.destroy$))

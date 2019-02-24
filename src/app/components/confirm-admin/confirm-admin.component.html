@@ -1,7 +1,7 @@
 <mat-card-title>
-  <h1>Please Enter a Confirmation String here</h1>
+  <h2>Please Enter a Confirmation String here</h2>
 </mat-card-title>
-
+<br>
 <form (submit)="onConfirmManager(confirmMan)" #confirmMan="ngForm">
   <mat-form-field>
     <input [type]="hide ? 'password' : 'text'" name="managerString" ngModel matInput placeholder="Enter Key here"
@@ -9,7 +9,9 @@
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     <mat-error *ngIf="keyInput.invalid">Please enter a key</mat-error>
   </mat-form-field>
-
+  <small class="font-weight-bold">p/s: For Security Purpose, We need to confirm that you're a manager</small>
+  <br>
+  <br>
   <button type="submit" class="btn btn-primary">Submit</button>
   <button mat-dialog-close class="btn btn-danger">Cancel</button>
 </form>

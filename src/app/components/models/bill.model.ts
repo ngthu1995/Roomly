@@ -1,11 +1,9 @@
 export class Bill {
-    title: string;
+    userName: string;
     description: string;
     city: string;
     street: string;
-    state: string;
-    date: string;
-    time: string;
+    createdAt: string;
     image: string;
     _id?: string
 }

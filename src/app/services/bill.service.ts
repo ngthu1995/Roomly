@@ -9,12 +9,12 @@ import { Injectable } from '@angular/core';
 })
 export class BillService {
     private bill: Bill[] = [];
-    private readonly rootUrl = 'http://localhost:3000/api/bill';
+    private readonly rootUrl = 'http://localhost:3001/api/bill';
     private addBillSubject: Subject<Bill> = new Subject<Bill>();
-    
 
 
-    
+
+
     constructor(private httpClient: HttpClient) { }
 
 
@@ -58,11 +58,12 @@ export class BillService {
                     bills: billData.bill.map(bill => {
                         console.log(billData.bill)
                         return {
-                            title: bill.title,
+                            userName: bill.userName,
                             description: bill.description,
                             address: bill.address,
                             date: bill.date,
                             time: bill.time,
+
                             _id: bill._id
                         }
 
@@ -75,6 +76,10 @@ export class BillService {
         return this.httpClient.get('https://geocoder.api.here.com/6.2/geocode.json');
     }
 
+    public getPostById(postId: string): Observable<any> {
+        console.log(postId)
+        return this.httpClient.get(`http://localhost:3001/api/bill/${postId}`)
+    }
 
 
     // getBills(): Observable<any> {

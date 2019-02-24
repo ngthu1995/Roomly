@@ -4,10 +4,30 @@ const bcrypt = require("bcrypt-nodejs");
 const config = require("../config/dev");
 const session = require("express-session");
 const jwt = require("jsonwebtoken");
-
 // Setting up nodemailer
 var nodemailer = require("nodemailer");
 var sgTransport = require("nodemailer-sendgrid-transport");
+
+exports.notiMan = (req, res) => {
+  const transport = nodemailer.createTransport({
+    service: 'SendGrid',
+    auth: {
+      user: config.SEND_GRID_USERNAME,
+      pass: config.SEND_GRID_PASSWORD
+    }
+  })
+
+  const mailOptions = {
+    to: 'mkavo92@gmail.com',
+    from: 'customerTracker@mail.com',
+    subject: 'New Customer Has Donated',
+    text: 'A new Customer has just donate, please go to this http://localhost4200 to get more info'
+  }
+  transport.sendMail(mailOptions, (err) => {
+    console.log(err)
+  })
+}
+
 
 exports.getUser = (req, res) => {
   exports.createAuth = (req, res, next) => {

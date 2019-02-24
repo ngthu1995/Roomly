@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { BillService } from '../../services/bill.service';
 import { Bill } from '../models/bill.model';
 import { SelectOption, timeOptions } from './constants';
-import { ToastrService } from 'ngx-toastr'
+// import { ToastrService } from 'ngx-toastr'
+import * as moment from 'moment'
+import { ToastrService } from 'ngx-toastr';
+import { HereService } from '../../services/here.service';
 @Component({
-    selector: 'app-donation',
+    selector: 'app-post-form',
     templateUrl: './donation.component.html',
     styleUrls: ['./donation.component.css']
 })
 
 export class DonationComponent implements OnInit {
+
+
+    // define location
+    public query: string;
+    public position: string;
+    public locations: Array<any>;
 
     addBillForm: FormGroup;
 
@@ -21,7 +30,8 @@ export class DonationComponent implements OnInit {
     bills: Bill[] = []
     constructor(private formBuilder: FormBuilder,
         private billService: BillService,
-        private toastr: ToastrService) { }
+        private toastr: ToastrService,
+        private here: HereService) { }
 
     timeFormOptions = timeOptions
 
@@ -32,9 +42,14 @@ export class DonationComponent implements OnInit {
 
         const billObservable = this.billService.getManage();
 
+
+        // setting up query
+        this.query = this.newBill.street;
+        this.position = "";
+
         billObservable.subscribe((bills: Bill[]) => {
-            this.bills = bills
-            // console.log(this.bill)
+            this.bills.push(...bills)
+            console.log(this.bills)
         })
 
     }
@@ -46,6 +61,16 @@ export class DonationComponent implements OnInit {
             }
         )
     }
+
+    formatDate(date: string): string {
+        return `${moment(date).fromNow()}`
+    }
+
+    // onSendMail() {
+    //     this.billService.notiMan().subscribe(_ => {
+    //         console.log('mail sent')
+    //     })
+    // }
     // private initForm() {
     //     this.addBillForm = this.formBuilder.group({
     //         title: [''],
@@ -75,7 +100,31 @@ export class DonationComponent implements OnInit {
     handleImageUpload(imageUrl: string) {
         this.newBill.image = imageUrl
     }
+
+
     handleImageError() {
         this.newBill.image = undefined
     }
+
+    // // Get location
+    // public getAddress() {
+    //     if(this.query != "") {
+    //         this.here.getAddress(this.query).then(result => {
+    //             this.locations = <Array<any>>result;
+    //         }, error => {
+    //             console.error(error);
+    //         });
+    //     }
+    // }
+
+
+    // public getAddressFromLatLng() {
+    //     if(this.position != "") {
+    //         this.here.getAddressFromLatLng(this.position).then(result => {
+    //             this.locations = <Array<any>>result;
+    //         }, error => {
+    //             console.error(error);
+    //         });
+    //     }
+    // }
 }

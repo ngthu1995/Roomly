@@ -52,73 +52,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // onLogin(form: NgForm) {
-  //   if (form.invalid) {
-  //     return;
-  //   }
-  //   this.auth.login(form.value.email, form.value.password)
-  // }
-
-
-  // initForm() {
-  //   this.loginForm = this.fb.group({
-  //     email: [
-  //       "",
-  //       [
-  //         Validators.required,
-  //         Validators.pattern(
-  //           "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
-  //         )
-  //       ]
-  //     ],
-  //     password: ["", Validators.required]
-  //   });
-  // }
-
-  // isInvalidForm(fieldName): boolean {
-  //   return;
-  //   this.loginForm.controls[fieldName].invalid &&
-  //     (this.loginForm.controls[fieldName].dirty ||
-  //       this.loginForm.controls[fieldName].touched);
-  // }
-
-  // isRequired(fieldName): boolean {
-  //   return this.loginForm.controls[fieldName].errors.required;
-  // }
-
-  // isPattern(fieldName): boolean {
-  //   return this.loginForm.controls[fieldName].errors.pattern;
-  // }
-
-  // login() {
-  //   this.auth.login(this.loginForm.value).subscribe(
-  //     token => {
-  //       this.router.navigate([""]);
-  //     },
-
-  //     errorResponse => {
-  //       console.log(errorResponse);
-  //       this.errors = errorResponse.error.err;
-  //     },
-
-  //     () => { }
-  //   );
-  // }
-
-  // login() {
-  //   this.auth.login(this.loginForm.value).subscribe(
-  //     token => {
-  //     },
-
-  //     errorResponse => {
-  //       console.log(errorResponse);
-  //       this.errors = errorResponse.error.err;
-  //     },
-
-  //     () => { }
-  //   );
-  // }
-
 
 
   login(form: NgForm) {
@@ -130,9 +63,6 @@ export class LoginComponent implements OnInit {
       .pipe(
         switchMap(({ token, user }) => {
           if (user && user.role === "manager") {
-            /**
-             * TODO: create ConfirmManagerComponent
-             */
             const confirmManagerDialogRef = this.matDialog.open(
               ConfirmAdminComponent,
               {
@@ -142,20 +72,7 @@ export class LoginComponent implements OnInit {
             );
             return confirmManagerDialogRef.afterClosed().pipe(
               take(1),
-              /**
-               * TODO: Should check for dialog close with no data (user click X, or cancel) to remove Authenticated data in LocalStorage??
-               */
-              /**
-               * TODO: if tap() doesn't work, change to switchMap
-               * switchMap(inputValue => {
-               *  if (!inputValue || inputValue === '') {
-               *    this.authService.clearAuthData();
-               *    return of(null);
-               *  }
-               *
-               *  return of(inputValue);
-               * })
-               */
+
               tap(inputValue => {
                 if (!inputValue || inputValue === "") {
                   this.auth.clearAuthData();

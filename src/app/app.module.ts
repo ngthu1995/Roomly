@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HereMapsModule } from 'ng2-heremaps';
+
 
 // components
 import { AppComponent } from './app.component';
@@ -13,7 +13,6 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { DonationComponent } from './components/donation/donation.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BannerComponent } from './components/landing/banner/banner.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { UserlistComponent } from './components/userList/userList.component';
@@ -29,12 +28,12 @@ import { StoriesComponent } from './components/stories/stories.component';
 import { StoryComponent } from './components/stories/story/story.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DonationCreditCardComponent } from './components/donation-options/donation-credit-card/donation-credit-card.component';
-import { DonationStuffComponent } from './components/donation-options/donation-stuff/donation-stuff.component';
 import { AboutComponent } from './components/about/about.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 // map Module
 import { AgmCoreModule } from "@agm/core";
-import { CamelizePipe } from 'ngx-pipes';
+import { CamelizePipe, UcWordsPipe } from 'ngx-pipes';
 import { MapService } from './services/map.service';
 import { MapComponent } from '../app/components/donation/map/map.component';
 import { AuthService } from './services/auth.service';
@@ -63,6 +62,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ManageItemComponent } from './components/manage-item/manage-item.component';
 import { ErrorComponent } from './components/error/error.component'
 import { ErrorInterceptor } from './error-interceptor';
+import { PostDetailComponent } from './components/donation/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -74,13 +74,11 @@ import { ErrorInterceptor } from './error-interceptor';
     DonationComponent,
     ProfileComponent,
     BannerComponent,
-    CarouselComponent,
     FooterComponent,
     DonationOptionsComponent,
     StoriesComponent,
     StoryComponent,
     DonationCreditCardComponent,
-    DonationStuffComponent,
     MapComponent,
     ConfirmAdminComponent,
     ManageComponent,
@@ -91,7 +89,9 @@ import { ErrorInterceptor } from './error-interceptor';
     ContactComponent,
     ErrorComponent,
     UserlistComponent,
-    HereMapComponent
+    HereMapComponent,
+    PostDetailComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +119,7 @@ import { ErrorInterceptor } from './error-interceptor';
     }),
     ImageCropperModule,
   ],
-  entryComponents: [ConfirmAdminComponent, ErrorComponent],
+  entryComponents: [ConfirmAdminComponent, ErrorComponent, DonationComponent, PostDetailComponent],
   providers: [MapService, CamelizePipe, AuthService, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
@@ -134,6 +134,7 @@ import { ErrorInterceptor } from './error-interceptor';
     HttpClient,
     BillService,
     ImageUploadService,
+    UcWordsPipe
   ],
   bootstrap: [AppComponent]
 })

@@ -47,7 +47,7 @@ module.exports = {
         passport.use(new FacebookStrategy({
             clientID: '410434029753704',
             clientSecret: '2b39c39ab69487730e1e24bf29685159',
-            callbackURL: 'http://localhost:3000'
+            callbackURL: 'http://localhost:3001'
         },
         function(accessToken, refreshToken, profile, done) {
             // asynchronous
