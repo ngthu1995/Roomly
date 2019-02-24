@@ -14,27 +14,28 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { UserlistComponent } from './components/userList/userList.component';
 import { DonationOptionsComponent } from './components/donation-options/donation-options.component';
-import { PostDetailComponent } from './components/donation/post-detail/post-detail.component'
+import { PostsComponent } from './components/posts/posts.component';
+import { PostDetailComponent } from './components/donation/post-detail/post-detail.component';
+
 const routes: Routes = [
   { path: "", component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'post-form', component: DonationComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'stories', component: StoriesComponent },
   { path: 'story', component: StoryComponent },
-  { path: 'manage', component: ManageComponent },
+  {
+    path: 'manage', component: ManageComponent,
+    children: [{
+      path: ":postId", component: PostDetailComponent
+    }]
+  },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'users', component: UserlistComponent },
   { path: 'donate', component: DonationOptionsComponent },
-  {
-    path: 'donation', component: DonationComponent,
-    children: [{
-      path: ':postId',
-      component: PostDetailComponent
-    }]
-  },
-
+  { path: 'posts', component: PostsComponent }
 ];
 
 

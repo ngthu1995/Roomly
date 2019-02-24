@@ -99,13 +99,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)">
-      <th scope="row"><img class="image" src="{{b.image}}" alt=""></th>
-      <td>{{b.title}}</td>
+    <tr *ngFor="let b of (bills | searchText:  titleSearch: descriptionSearch: addressSearch: dateSearch)" routerLink="/manage/{{b._id}}">
+      <th scope="row"><img class="image" src="{{b.image}}" alt="">
+
+      </th>
+      <td>{{b.userName}}</td>
       <td>{{b.description}}</td>
-      <td>{{b.address}}</td>
-      <td>{{b.date | date}}</td>
-      <td>{{b.time}}</td>
+      <td>{{b.street}}</td>
+      <td>{{formatDate(b.createdAt)}}</td>
     </tr>
   </tbody>
 </table>

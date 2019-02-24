@@ -1,10 +1,10 @@
 <section id="rentalDetails" *ngIf="rental">
   <div class="upper-section">
     <div class="row">
-      <div class="col-md-6"><img src="{{ bill.image }}" alt="" /></div>
+      <div class="col-md-6"><img src="{{ post.image }}" alt="" /></div>
       <div class="col-md-6">
         <!-- Will be replaced with map !!!! -->
-        <app-map [location]="bill.city + ',' + bill.street"></app-map>
+        <app-map [location]="post.city + ',' + post.street"></app-map>
       </div>
     </div>
   </div>
@@ -18,17 +18,17 @@
           </h2> -->
           <div class="rental-owner">
             <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="" />
-            <span>{{ bill.userName}}</span>
+            <span>{{ post.userName}}</span>
           </div>
 
           <!-- <h1 class="rental-title">{{ rental.title }}</h1> -->
-          <h2 class="rental-city">{{ bill.street }}</h2>
+          <h2 class="rental-city">{{ post.street }}</h2>
           <!-- <div class="rental-room-info">
             <span><i class="fa fa-building"></i>{{ rental.bedrooms }} bedrooms</span>
             <span><i class="fa fa-user"></i> {{ rental.bedrooms + 4 }} guests</span>
             <span><i class="fa fa-bed"></i> {{ rental.bedrooms + 2 }} beds</span>
           </div> -->
-          <p class="rental-description">{{ bill.description }}</p>
+          <p class="rental-description">{{ post.description }}</p>
           <hr />
           <div class="rental-assets">
             <h3 class="title">Assets</h3>

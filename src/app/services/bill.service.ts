@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class BillService {
     private bill: Bill[] = [];
-    private readonly rootUrl = 'http://localhost:3000/api/bill';
+    private readonly rootUrl = 'http://localhost:3001/api/bill';
     private addBillSubject: Subject<Bill> = new Subject<Bill>();
 
 
@@ -77,7 +77,8 @@ export class BillService {
     }
 
     public getPostById(postId: string): Observable<any> {
-        return this.httpClient.get(this.rootUrl + '/' + postId)
+        console.log(postId)
+        return this.httpClient.get(`http://localhost:3001/api/bill/${postId}`)
     }
 
 

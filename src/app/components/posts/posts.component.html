@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <!--Posts header-->
+        <div class="col-md-12" id="posts-header">
+            <div class="row">
+                <!--Post a place-->
+                <div class="col-md-5 posts-header-items text-center">
+                    <p class="lead">Have an extra place for stay?</p>
+                    <a (click)="openPost()" class="btn btn-info">Post Now</a>
+                </div>
+                <div class="col-md-2 text-center" style="margin-top: 20px">
+                    <h2>OR</h2>
+                </div>
+                <!--Post a place-->
+                <div class="col-md-5 posts-header-items text-center">
+                    <p class="lead">Have extra pennys?</p>
+                    <a routerLink="/donate" class="btn btn-info">
+                        Donate Now
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--Posts body-->
+        <div class="col-md-12 text-center" style="margin-top: 60px; text-shadow: 2px 2px 1px 1px lightgrey">
+            <h3>Check out our members' contributions below</h3>
+        </div>
+        <div class="col-md-12" id="posts-list">
+            <div class="col-2"></div>
+            <div class="col-8"></div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>

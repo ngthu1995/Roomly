@@ -16,14 +16,18 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.getPost(params['postId'])
+      console.log(params)
+      this.getPost(params["postId"])
     })
 
   }
 
   getPost(postId: string) {
     return this.postService.getPostById(postId).subscribe(post => {
+      debugger;
+      console.log(post)
       this.post = post;
+      console.log('clicked')
     })
   }
 
