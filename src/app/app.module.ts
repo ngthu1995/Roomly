@@ -91,7 +91,7 @@ import { PostDetailComponent } from './components/donation/post-detail/post-deta
     UserlistComponent,
     HereMapComponent,
     PostDetailComponent,
-    PostsComponent
+    PostsComponent,
   ],
   imports: [
     BrowserModule,

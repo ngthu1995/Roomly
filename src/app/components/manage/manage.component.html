@@ -106,13 +106,12 @@
   <div class="manage-header">
     <h1>Manage Tracker For Manager</h1>
     <mat-form-field>
-      <input matInput [matDatepicker]="fromDatepicker" (focus)="fromDatepicker.open()" [(ngModel)]="dateSearchFrom"
-        placeholder="From Date">
+      <input matInput [matDatepicker]="fromDatepicker" (focus)="fromDatepicker.open()" placeholder="From Date">
       <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
       <mat-datepicker #fromDatepicker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
-      <input matInput [matDatepicker]="toDatepicker" (focus)="toDatepicker.open()" [(ngModel)]="dateSearchTo"
+      <input matInput [matDatepicker]="toDatepicker" (focus)="toDatepicker.open()" [(ngModel)]="dateSearch"
         placeholder="To Date">
       <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
       <mat-datepicker #toDatepicker></mat-datepicker>
