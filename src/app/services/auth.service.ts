@@ -124,7 +124,7 @@ export class AuthService {
 
   // Get all users information
   getUsers() {
-    return this.httpClient.get('https://roomly.netlify.com/api/users/list').subscribe((appts: any) => {
+    return this.httpClient.get('http://localhost:3000/api/users/list').subscribe((appts: any) => {
       this.apptsObservable.next(appts);
     })
   }
@@ -138,7 +138,7 @@ export class AuthService {
     /**
      * TODO: checkManager route on backend. req.body = {managerString: string}
      */
-    return this.httpClient.post<any>('https://roomly.netlify.com/api/users/checkManager', {
+    return this.httpClient.post<any>('http://localhost:3000/api/users/checkManager', {
       managerString
     });
   }

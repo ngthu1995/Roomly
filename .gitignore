@@ -46,3 +46,7 @@ Thumbs.db
 
 #Ignoring keys
 server/config/dev.js
+
+
+#Lambda
+/lambda

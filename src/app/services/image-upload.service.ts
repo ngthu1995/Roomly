@@ -8,7 +8,7 @@ import { map } from 'rxjs/internal/operators/map';
     providedIn: "root"
 })
 export class ImageUploadService {
-    private rootURL = 'https://roomly.netlify.com/api/image'
+    private rootURL = 'http://localhost:3000/api/image'
     constructor(private httpClient: HttpClient) { }
 
     public uploadImage(image: File): Observable<string | any> {

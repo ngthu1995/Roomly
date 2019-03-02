@@ -1,0 +1,4 @@
+[build]
+  Command = "ng build"
+  Functions = "lambda"
+  Publish = "build"
