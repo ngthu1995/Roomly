@@ -1,7 +1,7 @@
 const User = require("../models/auth");
 const { normalizeErrors } = require("../helpers/mongoose");
 const bcrypt = require("bcrypt-nodejs");
-const config = require("../config/dev");
+const config = require("../config/keys");
 const session = require("express-session");
 const jwt = require("jsonwebtoken");
 // Setting up nodemailer

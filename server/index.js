@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-const config = require("./config/dev");
+const config = require("./config/keys");
 
 const userRoutes = require("./routes/auth"),
   billRoutes = require("./routes/bill"),

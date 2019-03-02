@@ -42,3 +42,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+
+#Ignoring keys
+server/config/dev.js

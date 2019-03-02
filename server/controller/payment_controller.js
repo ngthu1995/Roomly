@@ -1,6 +1,6 @@
 const { normalizeErrors } = require('../helpers/mongoose')
 const Payment = require('../models/payment')
-const config = require('../config/index')
+const config = require('../config/keys');
 const stripe = require('stripe')(config.STRIPE_SECRET_KEY)
 const User = require('../models/auth')
 
