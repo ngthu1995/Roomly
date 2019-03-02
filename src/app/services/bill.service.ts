@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class BillService {
     private bill: Bill[] = [];
-    private readonly rootUrl = 'http://localhost:3001/api/bill';
+    private readonly rootUrl = 'https://roomly.netlify.com/api/bill';
     private addBillSubject: Subject<Bill> = new Subject<Bill>();
 
 
@@ -78,7 +78,7 @@ export class BillService {
 
     public getPostById(postId: string): Observable<any> {
         console.log(postId)
-        return this.httpClient.get(`http://localhost:3001/api/bill/${postId}`)
+        return this.httpClient.get(`https://roomly.netlify.com/api/bill/${postId}`)
     }
 
 
